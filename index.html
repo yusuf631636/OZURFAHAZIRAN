@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Öz Urfa Kebap | Nisan - Ağustos 2026 Komple Rapor</title>
+    <title>Öz Urfa Kebap | Eylül 2026 Komple Rapor</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -29,69 +29,84 @@
         .main-button-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 14px;
+            gap: 8px;
+            margin-bottom: 16px;
             justify-content: center;
         }
         .main-btn {
             background: white;
-            border: none;
-            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            padding: 10px 16px;
             border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.7rem;
+            font-weight: 800;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             color: #2c3e4e;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
             flex: 1 0 auto;
             justify-content: center;
-            min-width: 55px;
+            min-width: 80px;
         }
         .main-btn.active {
             background: #f97316;
             color: white;
             border-color: #f97316;
-            box-shadow: 0 6px 14px rgba(249,115,22,0.25);
+            box-shadow: 0 6px 16px rgba(249,115,22,0.45);
+            animation: pulse-active 1.8s infinite;
+        }
+        @keyframes pulse-active {
+            0%, 100% {
+                box-shadow: 0 6px 16px rgba(249,115,22,0.45);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 6px 26px rgba(249,115,22,0.85), 0 0 0 4px rgba(249,115,22,0.2);
+                transform: scale(1.05);
+            }
         }
         .main-btn:hover:not(.active) {
             background: #fff3e6;
             border-color: #fdba74;
+            transform: translateY(-2px);
         }
         .sub-button-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 14px;
+            gap: 6px;
+            margin-bottom: 16px;
             justify-content: center;
-            padding: 4px 0;
-            border-bottom: 2px solid #e2e8f0;
+            padding: 6px 0 10px;
+            border-bottom: 3px solid #e2e8f0;
         }
         .sub-btn {
             background: #f1f5f9;
-            border: none;
-            padding: 5px 10px;
+            border: 2px solid #e2e8f0;
+            padding: 7px 12px;
             border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.6rem;
+            font-weight: 700;
+            font-size: 0.65rem;
             cursor: pointer;
             transition: 0.2s;
             color: #334155;
             flex: 1 0 auto;
             text-align: center;
-            max-width: 80px;
+            min-width: 90px;
+            max-width: 160px;
         }
         .sub-btn.active {
             background: #f97316;
             color: white;
-            box-shadow: 0 4px 10px rgba(249,115,22,0.2);
+            border-color: #f97316;
+            box-shadow: 0 4px 12px rgba(249,115,22,0.35);
+            transform: scale(1.03);
         }
         .sub-btn:hover:not(.active) {
             background: #e2e8f0;
+            border-color: #cbd5e1;
         }
         .content-card {
             background: white;
@@ -127,8 +142,6 @@
         .profit-card { background: linear-gradient(135deg, #1f3b2c, #2b5a42); color: white; }
         .profit-card .stat-number { color: #facc15; }
         .profit-card h4 { color: #ffecb3; }
-        .warning-note { background: #fffbeb; border-left: 4px solid #eab308; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
-        .warning-note strong { color: #92400e; }
         .info-note { background: #eef2ff; border-left: 4px solid #3b82f6; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
         .footer { text-align: center; font-size: 0.55rem; color: #5f7d9c; padding: 14px 0 6px; border-top: 1px solid #e2edf2; margin-top: 12px; }
         .positive { color: #15803d; font-weight: 800; }
@@ -142,27 +155,127 @@
         .trend-item:last-child { border-bottom: none; }
         .best { color: #15803d; font-weight: 800; }
         .worst { color: #dc2626; font-weight: 800; }
+        .borclar-card {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 3px solid #fb923c;
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 6px 18px rgba(251,146,60,0.2);
+        }
+        .borclar-card h2 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #9a3412;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .borclar-card .borc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 10px;
+            border-bottom: 1px dashed #fdba74;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #7c2d12;
+        }
+        .borclar-card .borc-item:last-child { border-bottom: none; }
+        .borclar-card .borc-item .tutar {
+            font-family: monospace;
+            font-weight: 900;
+            font-size: 0.85rem;
+            color: #c2410c;
+        }
+        .borclar-card .kira-uyari {
+            background: #dc2626;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .elektrik-alarm {
+            background: linear-gradient(135deg, #7f1d1d, #dc2626);
+            color: white;
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 25px rgba(220,38,38,0.35);
+            border: 3px solid #fbbf24;
+            animation: pulse-alarm 2s infinite;
+        }
+        @keyframes pulse-alarm {
+            0%, 100% { box-shadow: 0 10px 25px rgba(220,38,38,0.35); }
+            50% { box-shadow: 0 10px 35px rgba(220,38,38,0.65); }
+        }
+        .elektrik-alarm h2 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fef3c7;
+            text-transform: uppercase;
+        }
+        .elektrik-alarm .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .elektrik-alarm .row:last-child { border-bottom: none; }
+        .elektrik-alarm .row .val { color: #fde047; font-family: monospace; font-size: 1rem; font-weight: 900; }
+        .elektrik-alarm .date-badge {
+            background: #fbbf24;
+            color: #7f1d1d;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            display: inline-block;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
         @media (max-width: 480px) {
-            .main-btn { font-size: 0.6rem; padding: 6px 8px; }
-            .sub-btn { font-size: 0.5rem; padding: 4px 6px; max-width: 65px; }
+            .main-btn { font-size: 0.7rem; padding: 8px 10px; min-width: 70px; }
+            .sub-btn { font-size: 0.55rem; padding: 5px 8px; min-width: 75px; max-width: 110px; }
             .stat-number { font-size: 0.85rem; }
             .card-header { font-size: 0.8rem; padding: 8px 10px; }
             .card-body { padding: 8px 10px; }
             table { font-size: 0.55rem; min-width: 280px; }
             th, td { padding: 4px 4px; }
             .amount-right { font-size: 0.6rem; }
+            .elektrik-alarm h2 { font-size: 0.9rem; }
+            .elektrik-alarm .row { font-size: 0.7rem; }
+            .elektrik-alarm .row .val { font-size: 0.85rem; }
+            .borclar-card h2 { font-size: 0.85rem; }
+            .borclar-card .borc-item { font-size: 0.65rem; }
+            .borclar-card .borc-item .tutar { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 <div class="dashboard">
     <div class="brand">
-        <h1>🧾 ÖZ URFA KEBAP <small>Nisan - Ağustos 2026</small></h1>
-        <div class="sub">📊 5 ay | En güncel: Ağustos</div>
+        <h1>🧾 ÖZ URFA KEBAP <small>Eylül 2026 Güncel</small></h1>
+        <div class="sub">📊 6 ay | En güncel: Eylül</div>
     </div>
 
     <div class="main-button-bar">
-        <button class="main-btn active" data-main="agustos">🌾 Ağustos</button>
+        <button class="main-btn active" data-main="eylul">🍂 Eylül</button>
+        <button class="main-btn" data-main="agustos">🌾 Ağustos</button>
         <button class="main-btn" data-main="temmuz">☀️ Temmuz</button>
         <button class="main-btn" data-main="haziran">☀️ Haziran</button>
         <button class="main-btn" data-main="mayis">🌙 Mayıs</button>
@@ -170,29 +283,184 @@
     </div>
 
     <div id="subButtonBar" class="sub-button-bar">
-        <button class="sub-btn active" data-sub="overview">📊 Özet</button>
-        <button class="sub-btn" data-sub="personel">👥 Personel</button>
-        <button class="sub-btn" data-sub="nakit">💰 Nakit</button>
-        <button class="sub-btn" data-sub="kredi">💳 Kredi</button>
-        <button class="sub-btn" data-sub="allgider">📋 Tüm Gider</button>
-        <button class="sub-btn" data-sub="analysis">📈 Analiz</button>
+        <button class="sub-btn active" data-sub="overview">📊 Eylül Özeti</button>
+        <button class="sub-btn" data-sub="personel">👥 Eylül Personel</button>
+        <button class="sub-btn" data-sub="nakit">💰 Kasadan Yapılan Nakit</button>
+        <button class="sub-btn" data-sub="kredi">💳 Yusuf Usta Kredi/EFT</button>
+        <button class="sub-btn" data-sub="allgider">📋 Genel Tüm Gider</button>
+        <button class="sub-btn" data-sub="analysis">📈 Ay Karşılaştırma</button>
     </div>
 
     <div id="tabContent"></div>
 
     <div class="footer">
-        ⚡ Nisan 30g · Mayıs 24g · Haziran 25g · Temmuz 27g · Ağustos 26g (Pazartesi kapalı)<br>
+        ⚡ Eylül 26g · Ağustos 26g · Temmuz 27g · Haziran 25g · Mayıs 24g · Nisan 30g (Pazartesi kapalı)<br>
         📌 Kira: Nis,May,Haz,Ağu,Eyl ödenmedi – Temmuz ödendi<br>
-        📌 Yusuf 65.350 · Kasap Şifa 25.000 · Orhan 31.000 · Nadir 29.000 · Ambalaj 16.973<br>
-        📦 Online %50 komisyon
+        ⚡ Elektrik ceza: Toplam 370.146,16 ₺ · İlk taksit 61.691,03 ₺ · Son ödeme 03.10.2026<br>
+        📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)
     </div>
 </div>
 
 <script>
     // ============================================================
-    // AĞUSTOS 2026 (En güncel)
+    // EYLÜL 2026 (En güncel)
     // ============================================================
-    const agustosCalismaGunu = 26; // 5 pazartesi
+    const eylulCalismaGunu = 26;
+    const eylulNakitData = [
+        { date: "01.09 09:28", desc: "yağ", amount: 480 },
+        { date: "01.09 12:46", desc: "test", amount: 1 },
+        { date: "01.09 12:53", desc: "test", amount: 1 },
+        { date: "01.09 15:00", desc: "kurdan", amount: 200 },
+        { date: "01.09 16:10", desc: "soğancı", amount: 7000 },
+        { date: "01.09 20:45", desc: "market yılmaz", amount: 1245 },
+        { date: "01.09 20:45", desc: "pazar yılmaz", amount: 1200 },
+        { date: "02.09 13:32", desc: "yağ", amount: 480 },
+        { date: "05.09 09:07", desc: "maya", amount: 50 },
+        { date: "05.09 16:20", desc: "hasan garson 7 bin ilk taksit bitti", amount: 7000 },
+        { date: "05.09 20:55", desc: "pazar yılmaz", amount: 2355 },
+        { date: "06.09 20:33", desc: "sogan", amount: 3000 },
+        { date: "08.09 20:39", desc: "sogan", amount: 2500 },
+        { date: "08.09 20:40", desc: "PAZAR YILMAZ", amount: 1800 },
+        { date: "08.09 21:03", desc: "MAYA", amount: 50 },
+        { date: "10.09 09:55", desc: "doğan", amount: 1500 },
+        { date: "10.09 14:44", desc: "yoğurt", amount: 140 },
+        { date: "10.09 21:46", desc: "pazar market yılmaz", amount: 1920 },
+        { date: "11.09 16:25", desc: "sogan", amount: 6000 },
+        { date: "12.09 20:32", desc: "market", amount: 600 },
+        { date: "12.09 20:32", desc: "pazar yılmaz", amount: 1200 },
+        { date: "13.09 15:44", desc: "SIVI YAĞ", amount: 480 },
+        { date: "13.09 16:41", desc: "ŞEKER", amount: 60 },
+        { date: "13.09 21:12", desc: "BENZIN", amount: 100 },
+        { date: "15.09 13:51", desc: "kasap oglu su kola borcu ödendi", amount: 1800 },
+        { date: "15.09 21:03", desc: "pazar market yılmaz", amount: 1450 },
+        { date: "16.09 20:08", desc: "SOGAN", amount: 5000 },
+        { date: "16.09 20:43", desc: "MARKET YILMAZ", amount: 960 },
+        { date: "17.09 20:49", desc: "pazar market yılmaz", amount: 1375 },
+        { date: "18.09 15:31", desc: "poset", amount: 100 },
+        { date: "18.09 17:08", desc: "künefe", amount: 1500 },
+        { date: "18.09 21:07", desc: "market", amount: 50 },
+        { date: "18.09 22:05", desc: "market ahmet usta", amount: 1150 },
+        { date: "19.09 16:38", desc: "PAZAR", amount: 220 },
+        { date: "19.09 18:27", desc: "SOGAN", amount: 4000 },
+        { date: "19.09 20:46", desc: "PAZAR YILMAZ", amount: 900 },
+        { date: "20.09 21:21", desc: "market yılmaz", amount: 750 },
+        { date: "22.09 16:03", desc: "MAKINE TAMIR", amount: 300 },
+        { date: "22.09 20:15", desc: "MARKET PAZAR YILMAZ", amount: 2100 },
+        { date: "23.09 19:09", desc: "sogan", amount: 2500 },
+        { date: "24.09 20:27", desc: "pazar yılmaz", amount: 1200 },
+        { date: "25.09 20:47", desc: "yag", amount: 500 },
+        { date: "26.09 15:18", desc: "sogan", amount: 5000 },
+        { date: "26.09 20:41", desc: "MARKET", amount: 1215 },
+        { date: "26.09 20:41", desc: "PAZAR YILMAZ", amount: 700 },
+        { date: "29.09 11:25", desc: "cay bardagı su bardagı", amount: 800 },
+        { date: "29.09 16:37", desc: "sogan", amount: 1500 },
+        { date: "29.09 19:43", desc: "market", amount: 840 },
+        { date: "29.09 19:43", desc: "pazar yılmaz", amount: 700 },
+        { date: "30.09 19:17", desc: "makbul", amount: 200 },
+        { date: "30.09 20:26", desc: "market", amount: 265 }
+    ];
+    const eylulKrediData = [
+        { date: "01.09 10:31", desc: "kasap kredi kartı", amount: 15000 },
+        { date: "01.09 12:34", desc: "doğan kurye eft kredi kartı", amount: 15600 },
+        { date: "03.09 14:33", desc: "TAVUKÇU EFT KREDİ", amount: 10000 },
+        { date: "04.09 12:45", desc: "baharatçı kredi kartı eft", amount: 5000 },
+        { date: "04.09 12:45", desc: "kaşarcı kredi kartı eft", amount: 5000 },
+        { date: "04.09 12:50", desc: "hasan garsan eft kred ile tazminat", amount: 18000 },
+        { date: "04.09 12:51", desc: "orhan et yağı eft kredi kartı", amount: 10000 },
+        { date: "05.09 16:18", desc: "amblaj kredi kartı", amount: 5000 },
+        { date: "08.09 11:17", desc: "kolaci yavuz eft kredi kartı", amount: 7200 },
+        { date: "10.09 09:55", desc: "doğan eft kredi kartı", amount: 12000 },
+        { date: "10.09 14:42", desc: "kolaci eft kredi kartı", amount: 3025 },
+        { date: "10.09 16:13", desc: "pepsi eft kredi kartı", amount: 2890 },
+        { date: "10.09 16:15", desc: "esnaf su eft kredi kartı", amount: 5280 },
+        { date: "10.09 22:25", desc: "Orhan et yağı EFT kredi kartı", amount: 15000 },
+        { date: "11.09 12:26", desc: "KAŞARCI EFT KREDİ KARTI", amount: 5000 },
+        { date: "12.09 11:52", desc: "ayrancı kredi kartı", amount: 12530 },
+        { date: "15.09 13:50", desc: "kasap kredi kartı", amount: 15000 },
+        { date: "16.09 14:01", desc: "limoncu eft kredi kartı", amount: 6000 },
+        { date: "16.09 14:01", desc: "kömürcü eft kredi kartı", amount: 3000 },
+        { date: "16.09 14:01", desc: "turan motorcu yusuf usta elden verdi kredi kartı", amount: 14000 },
+        { date: "17.09 14:21", desc: "orhan et yağı eft kredi kartı", amount: 15000 },
+        { date: "17.09 15:10", desc: "hökümcü eft kredi kartı", amount: 2750 },
+        { date: "18.09 10:05", desc: "kasap kredi kartı", amount: 10000 },
+        { date: "18.09 12:29", desc: "kaşarcı kredi kartı", amount: 5000 },
+        { date: "18.09 14:36", desc: "BAHARATCI KREDİ KARTI EFT", amount: 8000 },
+        { date: "18.09 15:50", desc: "maşa pazar eft kredi kartı", amount: 20000 },
+        { date: "19.09 13:51", desc: "ambalejci eft kredi kartı", amount: 9000 },
+        { date: "19.09 16:18", desc: "KASAP NADİR KREDİ KARTI", amount: 20000 },
+        { date: "22.09 12:06", desc: "dağalgaz kredi kartı", amount: 16600 },
+        { date: "22.09 13:26", desc: "band maya eft kredi kartı", amount: 1500 },
+        { date: "23.09 11:27", desc: "turan eft kredi kartı", amount: 13000 },
+        { date: "24.09 12:20", desc: "kolacı kredi kartı", amount: 4010 },
+        { date: "25.09 12:31", desc: "tavukçu eft kredi kartı", amount: 12000 },
+        { date: "25.09 12:32", desc: "kömürcu eft kredi", amount: 2400 },
+        { date: "25.09 13:44", desc: "doğal fatura eft kredi kartı", amount: 21150 },
+        { date: "26.09 12:32", desc: "kasap orhan eft kredi kartı", amount: 15000 },
+        { date: "26.09 12:37", desc: "ambalajcı kredi kartı", amount: 5000 },
+        { date: "26.09 14:34", desc: "uncu kredi kartı ile", amount: 20000 },
+        { date: "30.09 11:34", desc: "maşo pazar eft kredi kartı", amount: 27500 }
+    ];
+    const eylulTotalNakit = eylulNakitData.reduce((s, t) => s + t.amount, 0);
+    const eylulTotalKredi = eylulKrediData.reduce((s, t) => s + t.amount, 0);
+    const eylulNakitGelir = 921513.38;
+    const eylulKrediGelir = 0;
+    const eylulGetirBrut = 485.00;
+    const eylulYsBrut = 19487.00;
+    const eylulMigrosBrut = 7654.75;
+    const eylulTrendyolBrut = 204720.00;
+    const eylulGetirNet = eylulGetirBrut * 0.5;
+    const eylulYsNet = eylulYsBrut * 0.5;
+    const eylulMigrosNet = eylulMigrosBrut * 0.5;
+    const eylulTrendyolNet = eylulTrendyolBrut * 0.5;
+    const eylulOnlineBrut = eylulGetirBrut + eylulYsBrut + eylulMigrosBrut + eylulTrendyolBrut;
+    const eylulOnlineNet = eylulGetirNet + eylulYsNet + eylulMigrosNet + eylulTrendyolNet;
+    const eylulBrutCiro = eylulNakitGelir + eylulOnlineBrut;
+    const eylulNetCiro = eylulNakitGelir + eylulOnlineNet;
+    const eylulPersonnel = [
+        { name: "Yılmaz Usta (1-24:2200, 25-31:2500)", daily: 0, days: 0, total: (2200*24)+(2500*7) },
+        { name: "Ahmet Usta", daily: 2500, days: eylulCalismaGunu, total: 2500 * eylulCalismaGunu },
+        { name: "Hasan Garson (tazminat ilk taksit)", daily: 0, days: 0, total: 25000 },
+        { name: "Elif Garson", daily: 750, days: eylulCalismaGunu, total: 750 * eylulCalismaGunu },
+        { name: "Bulaşıkçı Abla", daily: 1200, days: eylulCalismaGunu, total: 1200 * eylulCalismaGunu },
+        { name: "Yusuf Usta", daily: 2000, days: eylulCalismaGunu, total: 2000 * eylulCalismaGunu },
+        { name: "Kasım Usta", daily: 2000, days: eylulCalismaGunu, total: 2000 * eylulCalismaGunu },
+        { name: "Kurye (haftalık)", daily: 15000, days: 4, total: 15000 * 4 },
+        { name: "Yüksek Garson", daily: 2500, days: eylulCalismaGunu, total: 2500 * eylulCalismaGunu }
+    ];
+    const eylulPersonelGider = eylulPersonnel.reduce((s, p) => s + p.total, 0);
+    const eylul = {
+        brütCiro: eylulBrutCiro,
+        netCiro: eylulNetCiro,
+        nakitGider: eylulTotalNakit,
+        krediGider: eylulTotalKredi,
+        personelGider: eylulPersonelGider,
+        calismaGunu: eylulCalismaGunu,
+        gunlukCiro: eylulNetCiro / eylulCalismaGunu,
+        toplamGider: eylulTotalNakit + eylulTotalKredi + eylulPersonelGider,
+        netKar: eylulNetCiro - (eylulTotalNakit + eylulTotalKredi + eylulPersonelGider),
+        telefon: 0,
+        kiraOdenmedi: true,
+        yusufBorcu: 34350,
+        tolgaBorcu: 0,
+        orhanBorcu: 34000,
+        denizKasapNot: "21.000 TL",
+        kasapSifa: 35000,
+        nadirKasap: 18000,
+        ambalajci: 18973,
+        getir: eylulGetirNet,
+        ys: eylulYsNet,
+        migros: eylulMigrosNet,
+        trendyol: eylulTrendyolNet,
+        nakitGelir: eylulNakitGelir,
+        krediGelir: eylulKrediGelir,
+        ayAdi: "Eylül",
+        elektrikCeza: { toplam: 370146.16, ilkTaksit: 61691.03, sonOdeme: "03.10.2026" }
+    };
+
+    // ============================================================
+    // AĞUSTOS 2026
+    // ============================================================
+    const agustosCalismaGunu = 26;
     const agustosNakitData = [
         { date: "01.08 20:22", desc: "pazar yılmaz", amount: 1000 },
         { date: "02.08 11:05", desc: "yağ", amount: 460 },
@@ -310,10 +578,8 @@
         { date: "29.08 12:28", desc: "ayrancı kredi kartı eft", amount: 15635 },
         { date: "29.08 14:01", desc: "uncu kredi kartı", amount: 20000 }
     ];
-    // Toplamlar
-    const agustosTotalNakit = agustosNakitData.reduce((s, t) => s + t.amount, 0) + 74890; // muhasebe eklendi
+    const agustosTotalNakit = agustosNakitData.reduce((s, t) => s + t.amount, 0) + 74890;
     const agustosTotalKredi = agustosKrediData.reduce((s, t) => s + t.amount, 0);
-    // Gelirler
     const agustosNakitGelir = 943750.31;
     const agustosKrediGelir = 83150.00;
     const agustosGetirBrut = 2556.24;
@@ -322,7 +588,6 @@
     const agustosTrendyolNet = agustosTrendyolBrut * 0.5;
     const agustosBrutCiro = agustosNakitGelir + agustosKrediGelir + agustosGetirBrut + agustosTrendyolBrut;
     const agustosNetCiro = agustosNakitGelir + agustosKrediGelir + agustosGetirNet + agustosTrendyolNet;
-    // Personel
     const agustosPersonnel = [
         { name: "Yılmaz Usta (1-24:2200, 25-31:2500)", daily: 0, days: 0, total: (2200*24)+(2500*7) },
         { name: "Ahmet Usta", daily: 2500, days: agustosCalismaGunu, total: 2500 * agustosCalismaGunu },
@@ -355,6 +620,8 @@
         nadirKasap: 29000,
         ambalajci: 16973,
         getir: agustosGetirNet,
+        ys: 0,
+        migros: 0,
         trendyol: agustosTrendyolNet,
         nakitGelir: agustosNakitGelir,
         krediGelir: agustosKrediGelir,
@@ -362,7 +629,7 @@
     };
 
     // ============================================================
-    // TEMMUZ 2026 (önceki veriler aynen, sadece güncellemelerle)
+    // TEMMUZ 2026
     // ============================================================
     const temmuzCalismaGunu = 27;
     const temmuzNakitData = [
@@ -456,6 +723,8 @@
         nadirKasap: 0,
         ambalajci: 0,
         getir: temmuzGetirNet,
+        ys: 0,
+        migros: 0,
         trendyol: temmuzTrendyolNet,
         nakitGelir: temmuzNakitGelir,
         krediGelir: temmuzKrediGelir,
@@ -463,7 +732,7 @@
     };
 
     // ============================================================
-    // HAZİRAN 2026 (önceki veriler)
+    // HAZİRAN 2026
     // ============================================================
     const haziranCalismaGunu = 25;
     const haziranNakitData = [
@@ -561,6 +830,8 @@
         nadirKasap: 0,
         ambalajci: 0,
         getir: haziranGetirNet,
+        ys: 0,
+        migros: 0,
         trendyol: haziranTrendyolNet,
         nakitGelir: haziranNakitGelir,
         krediGelir: haziranKrediGelir,
@@ -568,7 +839,7 @@
     };
 
     // ============================================================
-    // MAYIS 2026 (önceki veriler)
+    // MAYIS 2026
     // ============================================================
     const mayisCalismaGunu = 24;
     const mayisNakit = [
@@ -649,6 +920,8 @@
         nadirKasap: 0,
         ambalajci: 0,
         getir: 0,
+        ys: 0,
+        migros: 0,
         trendyol: 188205.71 * 0.5,
         nakitGelir: 1034774.65 - 188205.71,
         krediGelir: 0,
@@ -658,7 +931,7 @@
     mayis.netKar = mayis.netCiro - mayis.toplamGider;
 
     // ============================================================
-    // NİSAN 2026 (önceki veriler)
+    // NİSAN 2026
     // ============================================================
     const nisanNakitData = [
         { date: "01.04 14:12", desc: "biber", amount: 170 }, { date: "01.04 18:06", desc: "market", amount: 300 },
@@ -746,6 +1019,8 @@
         nadirKasap: 0,
         ambalajci: 0,
         getir: 0,
+        ys: 0,
+        migros: 0,
         trendyol: 0,
         nakitGelir: 959492.37,
         krediGelir: 0,
@@ -755,66 +1030,81 @@
     nisan.netKar = nisan.netCiro - nisan.toplamGider;
 
     // ============================================================
-    // RENDER FONKSİYONLARI
+    // RENDER
     // ============================================================
-    const months = [agustos, temmuz, haziran, mayis, nisan];
-    const monthNames = ['Ağustos', 'Temmuz', 'Haziran', 'Mayıs', 'Nisan'];
-    const personnelData = [agustosPersonnel, temmuzPersonnel, haziranPersonnel, mayisPersonnel, nisanPersonnel];
-    const nakitData = [agustosNakitData, temmuzNakitData, haziranNakitData, mayisNakit, nisanNakitData];
-    const krediData = [agustosKrediData, temmuzKrediData, haziranKrediData, mayisKredi, nisanKrediData];
+    const months = [eylul, agustos, temmuz, haziran, mayis, nisan];
+    const monthNames = ['Eylül', 'Ağustos', 'Temmuz', 'Haziran', 'Mayıs', 'Nisan'];
+    const personnelData = [eylulPersonnel, agustosPersonnel, temmuzPersonnel, haziranPersonnel, mayisPersonnel, nisanPersonnel];
+    const nakitData = [eylulNakitData, agustosNakitData, temmuzNakitData, haziranNakitData, mayisNakit, nisanNakitData];
+    const krediData = [eylulKrediData, agustosKrediData, temmuzKrediData, haziranKrediData, mayisKredi, nisanKrediData];
 
     function getMonthIndex(monthKey) {
-        if (monthKey === 'agustos') return 0;
-        if (monthKey === 'temmuz') return 1;
-        if (monthKey === 'haziran') return 2;
-        if (monthKey === 'mayis') return 3;
-        return 4;
+        if (monthKey === 'eylul') return 0;
+        if (monthKey === 'agustos') return 1;
+        if (monthKey === 'temmuz') return 2;
+        if (monthKey === 'haziran') return 3;
+        if (monthKey === 'mayis') return 4;
+        return 5;
     }
 
-    function renderDebtNotes(month) {
-        let notes = '';
+    function renderBorclarCard(month) {
+        let items = '';
         if (month.kiraOdenmedi === true) {
-            notes += `<div class="warning-note">🏠 <strong>Kira 45.000 TL ödenmedi</strong></div>`;
+            items += `<div class="kira-uyari">🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺</div>`;
         } else if (month.kiraOdenmedi === false) {
-            notes += `<div class="info-note" style="border-left-color:#22c55e;background:#f0fdf4;">✅ <strong>Kira ödendi</strong></div>`;
+            items += `<div class="borc-item" style="color:#15803d;"><span>🏠 Kira</span><span class="tutar" style="color:#15803d;">✅ ÖDENDİ</span></div>`;
         }
-        if (month.yusufBorcu > 0) notes += `<div class="warning-note">🧑‍🍳 <strong>Yusuf Usta borç: ${month.yusufBorcu.toLocaleString('tr-TR')} TL</strong></div>`;
-        if (month.tolgaBorcu > 0) notes += `<div class="warning-note">👤 <strong>Tolga: ${month.tolgaBorcu.toLocaleString('tr-TR')} TL</strong></div>`;
-        if (month.orhanBorcu > 0) notes += `<div class="warning-note">🥩 <strong>Orhan (et yağı): ${month.orhanBorcu.toLocaleString('tr-TR')} TL</strong></div>`;
-        if (month.denizKasapNot) notes += `<div class="warning-note">🐄 <strong>Deniz Kasap: ${month.denizKasapNot}</strong></div>`;
-        if (month.kasapSifa > 0) notes += `<div class="warning-note">🔪 <strong>Kasap Şifa: ${month.kasapSifa.toLocaleString('tr-TR')} TL</strong></div>`;
-        if (month.nadirKasap > 0) notes += `<div class="warning-note">🐟 <strong>Et Balık Nadir Kasap: ${month.nadirKasap.toLocaleString('tr-TR')} TL</strong></div>`;
-        if (month.ambalajci > 0) notes += `<div class="warning-note">📦 <strong>Ambalajcı: ${month.ambalajci.toLocaleString('tr-TR')} TL</strong></div>`;
-        return notes;
+        if (month.yusufBorcu > 0) items += `<div class="borc-item"><span>🧑‍🍳 Yusuf Usta borç</span><span class="tutar">${month.yusufBorcu.toLocaleString('tr-TR')} TL</span></div>`;
+        if (month.tolgaBorcu > 0) items += `<div class="borc-item"><span>👤 Tolga</span><span class="tutar">${month.tolgaBorcu.toLocaleString('tr-TR')} TL</span></div>`;
+        if (month.orhanBorcu > 0) items += `<div class="borc-item"><span>🥩 Orhan (et yağı)</span><span class="tutar">${month.orhanBorcu.toLocaleString('tr-TR')} TL</span></div>`;
+        if (month.denizKasapNot) items += `<div class="borc-item"><span>🐄 Deniz Kasap</span><span class="tutar">${month.denizKasapNot}</span></div>`;
+        if (month.kasapSifa > 0) items += `<div class="borc-item"><span>🔪 Kasap Şifa</span><span class="tutar">${month.kasapSifa.toLocaleString('tr-TR')} TL</span></div>`;
+        if (month.nadirKasap > 0) items += `<div class="borc-item"><span>🐟 Et Balık Nadir Kasap</span><span class="tutar">${month.nadirKasap.toLocaleString('tr-TR')} TL</span></div>`;
+        if (month.ambalajci > 0) items += `<div class="borc-item"><span>📦 Ambalajcı</span><span class="tutar">${month.ambalajci.toLocaleString('tr-TR')} TL</span></div>`;
+        if (!items) return '';
+        return `<div class="borclar-card"><h2>💸 BORÇLAR</h2>${items}</div>`;
+    }
+
+    function renderElektrikAlarm(m) {
+        if (!m.elektrikCeza) return '';
+        const e = m.elektrikCeza;
+        return `
+            <div class="elektrik-alarm">
+                <h2>⚡ ELEKTRİK CEZA UYARISI</h2>
+                <div class="row"><span>TOPLAM CEZA</span><span class="val">${e.toplam.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</span></div>
+                <div class="row"><span>İLK TAKSİT</span><span class="val">${e.ilkTaksit.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</span></div>
+                <div class="row"><span>SON ÖDEME</span><span class="val">${e.sonOdeme}</span></div>
+                <div style="text-align:center;"><span class="date-badge">📅 İLK TAKSİT SON ÖDEME: 03.10.2026</span></div>
+            </div>
+        `;
+    }
+
+    function renderOnlineSection(m, idx) {
+        const hasYs = m.ys && m.ys > 0;
+        const hasMigros = m.migros && m.migros > 0;
+        if (idx <= 2) {
+            let cards = `<div class="stat-card"><h4>Getir</h4><div class="stat-number">${m.getir.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>`;
+            if (hasYs) cards += `<div class="stat-card"><h4>Yemeksepeti</h4><div class="stat-number">${m.ys.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>`;
+            if (hasMigros) cards += `<div class="stat-card"><h4>Migros</h4><div class="stat-number">${m.migros.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>`;
+            cards += `<div class="stat-card"><h4>Trendyol</h4><div class="stat-number">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>`;
+            return `<div class="summary-stats">${cards}</div>`;
+        } else if (idx === 3) {
+            return `<div class="summary-stats"><div class="stat-card"><h4>Getir</h4><div class="stat-number">${m.getir.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div><div class="stat-card"><h4>Trendyol</h4><div class="stat-number">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div></div>`;
+        } else if (idx === 4) {
+            return `<div class="summary-stats"><div class="stat-card"><h4>Trendyol</h4><div class="stat-number">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div></div>`;
+        }
+        return '';
     }
 
     function renderOverview(idx) {
         const m = months[idx];
         const name = monthNames[idx];
-        const isAgustos = (idx === 0);
-        const isTemmuz = (idx === 1);
-        const isHaziran = (idx === 2);
-        const isMayis = (idx === 3);
-        
-        let onlineSection = '';
-        if (isAgustos || isTemmuz || isHaziran) {
-            onlineSection = `
-                <div class="summary-stats">
-                    <div class="stat-card"><h4>Getir</h4><div class="stat-number">${m.getir.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>
-                    <div class="stat-card"><h4>Trendyol</h4><div class="stat-number">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>
-                </div>
-            `;
-        } else if (isMayis) {
-            onlineSection = `
-                <div class="summary-stats">
-                    <div class="stat-card"><h4>Trendyol</h4><div class="stat-number">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div></div>
-                </div>
-            `;
-        }
-        
-        const debtNotes = renderDebtNotes(m);
-        
+        const borclarCard = renderBorclarCard(m);
+        const elektrikAlarm = renderElektrikAlarm(m);
+        const onlineSection = renderOnlineSection(m, idx);
         return `
+            ${elektrikAlarm}
+            ${borclarCard}
             <div class="content-card">
                 <div class="card-header">📈 ${name} (${m.calismaGunu} gün)</div>
                 <div class="card-body">
@@ -834,10 +1124,7 @@
                         <div class="stat-number" style="color:#facc15;">${m.netKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</div>
                         <div style="color:#e2f0e6;font-size:0.7rem;">${m.netCiro.toLocaleString('tr-TR', {minimumFractionDigits:0})} - ${m.toplamGider.toLocaleString('tr-TR', {minimumFractionDigits:0})}</div>
                     </div>
-                    <div class="info-note" style="margin-top:6px;font-size:0.7rem;">
-                        📅 Günlük Ciro: ${m.gunlukCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün
-                    </div>
-                    ${debtNotes}
+                    <div class="info-note" style="margin-top:6px;font-size:0.7rem;">📅 Günlük Ciro: ${m.gunlukCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün</div>
                 </div>
             </div>
             <div class="content-card">
@@ -847,12 +1134,10 @@
                         <thead><tr><th>Kalem</th><th>Tutar (₺)</th></tr></thead>
                         <tbody>
                             <tr><td>Brüt Ciro</td><td class="amount-right">${m.brütCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
-                            ${(isAgustos || isTemmuz || isHaziran) ? `
-                            <tr><td>Getir</td><td class="amount-right">${m.getir.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
-                            <tr><td>Trendyol</td><td class="amount-right">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
-                            ` : isMayis ? `
-                            <tr><td>Trendyol</td><td class="amount-right">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
-                            ` : ''}
+                            ${(m.getir > 0) ? `<tr><td>Getir (net)</td><td class="amount-right">${m.getir.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>` : ''}
+                            ${(m.ys > 0) ? `<tr><td>Yemeksepeti (net)</td><td class="amount-right">${m.ys.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>` : ''}
+                            ${(m.migros > 0) ? `<tr><td>Migros (net)</td><td class="amount-right">${m.migros.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>` : ''}
+                            ${(m.trendyol > 0) ? `<tr><td>Trendyol (net)</td><td class="amount-right">${m.trendyol.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>` : ''}
                             <tr><td>Net Ciro</td><td class="amount-right">${m.netCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
                             <tr><td>Nakit Gider</td><td class="amount-right">${m.nakitGider.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
                             <tr><td>Kredi Kartı/EFT</td><td class="amount-right">${m.krediGider.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>
@@ -871,27 +1156,30 @@
         const m = months[idx];
         const name = monthNames[idx];
         const data = personnelData[idx];
-        let rows = data.map(p => `<tr><td>${p.name}</td><td class="amount-right">${p.daily.toLocaleString('tr-TR')} ₺</td><td class="amount-right">${p.days}</td><td class="amount-right">${p.total.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
+        const borclarCard = renderBorclarCard(m);
+        let rows = data.map(p => `<tr><td>${p.name}</td><td class="amount-right">${p.daily > 0 ? p.daily.toLocaleString('tr-TR') + ' ₺' : '-'}</td><td class="amount-right">${p.days > 0 ? p.days : '-'}</td><td class="amount-right">${p.total.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, p) => s + p.total, 0);
-        return `<div class="content-card"><div class="card-header">👥 ${name} Personel (${data[0].days} gün)</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Personel</th><th>Günlük</th><th>Gün</th><th>Toplam</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div>${renderDebtNotes(m)}</div></div>`;
+        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">👥 ${name} Personel</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Personel</th><th>Günlük</th><th>Gün</th><th>Toplam</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
     }
 
     function renderNakit(idx) {
         const m = months[idx];
         const name = monthNames[idx];
         const data = nakitData[idx];
+        const borclarCard = renderBorclarCard(m);
         let rows = data.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="method-nakit">Nakit</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, t) => s + t.amount, 0);
-        return `<div class="content-card"><div class="card-header">💰 ${name} Nakit Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Nakit</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div>${renderDebtNotes(m)}</div></div>`;
+        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">💰 ${name} Kasadan Yapılan Nakit Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Nakit</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
     }
 
     function renderKredi(idx) {
         const m = months[idx];
         const name = monthNames[idx];
         const data = krediData[idx];
+        const borclarCard = renderBorclarCard(m);
         let rows = data.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="method-kredi">Kredi/EFT</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, t) => s + t.amount, 0);
-        return `<div class="content-card"><div class="card-header">💳 ${name} Kredi Kartı & EFT</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Kredi</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div>${renderDebtNotes(m)}</div></div>`;
+        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">💳 ${name} Yusuf Usta Kredi & EFT Giderleri</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Kredi</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
     }
 
     function renderAllGider(idx) {
@@ -899,11 +1187,12 @@
         const name = monthNames[idx];
         const nData = nakitData[idx];
         const kData = krediData[idx];
+        const borclarCard = renderBorclarCard(m);
         let all = [...nData.map(t => ({...t, type: 'Nakit'})), ...kData.map(t => ({...t, type: 'Kredi'}))];
         all.sort((a,b)=>a.date.localeCompare(b.date));
         let rows = all.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="${t.type === 'Nakit' ? 'method-nakit' : 'method-kredi'}">${t.type}</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = nData.reduce((s, t) => s + t.amount, 0) + kData.reduce((s, t) => s + t.amount, 0);
-        return `<div class="content-card"><div class="card-header">📋 ${name} Tüm Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam (Nakit+Kredi)</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div><div class="info-note" style="margin-top:10px;font-size:0.7rem;">📌 Personel: ${m.personelGider.toLocaleString('tr-TR')} TL<br>📌 Toplam Gider: ${m.toplamGider.toLocaleString('tr-TR')} TL</div>${renderDebtNotes(m)}</div></div>`;
+        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">📋 ${name} Genel Tüm Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam (Nakit+Kredi)</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div><div class="info-note" style="margin-top:10px;font-size:0.7rem;">📌 Personel: ${m.personelGider.toLocaleString('tr-TR')} TL<br>📌 Toplam Gider: ${m.toplamGider.toLocaleString('tr-TR')} TL</div></div></div>`;
     }
 
     function renderAnalysis() {
@@ -933,11 +1222,12 @@
                 <td class="amount-right">${formatted[1]}${icons[1]}</td>
                 <td class="amount-right">${formatted[2]}${icons[2]}</td>
                 <td class="amount-right">${formatted[3]}${icons[3]}</td>
-                <td class="amount-right">${formatted[4]}${icons[4]}</td></tr>`;
+                <td class="amount-right">${formatted[4]}${icons[4]}</td>
+                <td class="amount-right">${formatted[5]}${icons[5]}</td></tr>`;
         });
 
-        const pairs = [{from:1,to:0},{from:2,to:1},{from:3,to:2},{from:4,to:3}];
-        let changeRows = `<tr><th>Metrik</th><th>Ağustos</th><th>Temmuz</th><th>Haziran</th><th>Mayıs</th><th>Nisan</th><th>A↔T</th><th>T↔H</th><th>H↔M</th><th>M↔N</th></tr>`;
+        const pairs = [{from:1,to:0},{from:2,to:1},{from:3,to:2},{from:4,to:3},{from:5,to:4}];
+        let changeRows = `<tr><th>Metrik</th><th>Eylül</th><th>Ağustos</th><th>Temmuz</th><th>Haziran</th><th>Mayıs</th><th>Nisan</th><th>E↔A</th><th>A↔T</th><th>T↔H</th><th>H↔M</th><th>M↔N</th></tr>`;
         ['netKar','netCiro','personelGider','toplamGider'].forEach(key => {
             const vals = months.map(m => m[key]);
             const formatted = vals.map(v => v.toLocaleString('tr-TR', {minimumFractionDigits:0}) + ' ₺');
@@ -954,26 +1244,28 @@
                 <td class="amount-right">${formatted[2]}</td>
                 <td class="amount-right">${formatted[3]}</td>
                 <td class="amount-right">${formatted[4]}</td>
+                <td class="amount-right">${formatted[5]}</td>
                 <td class="amount-right">${changes[0]}</td>
                 <td class="amount-right">${changes[1]}</td>
                 <td class="amount-right">${changes[2]}</td>
-                <td class="amount-right">${changes[3]}</td></tr>`;
+                <td class="amount-right">${changes[3]}</td>
+                <td class="amount-right">${changes[4]}</td></tr>`;
         });
 
         const bestKar = Math.max(...months.map(m => m.netKar));
         const bestIdx = months.findIndex(m => m.netKar === bestKar);
         const worstKar = Math.min(...months.map(m => m.netKar));
         const worstIdx = months.findIndex(m => m.netKar === worstKar);
-        const trend = (months[0].netKar > months[1].netKar && months[1].netKar > months[2].netKar && months[2].netKar > months[3].netKar && months[3].netKar > months[4].netKar) ? '📈 Sürekli Yükseliş' : '➖ Dalgalı';
+        const trend = (months[0].netKar > months[1].netKar && months[1].netKar > months[2].netKar && months[2].netKar > months[3].netKar && months[3].netKar > months[4].netKar && months[4].netKar > months[5].netKar) ? '📈 Sürekli Yükseliş' : '➖ Dalgalı';
 
         return `
             <div class="content-card">
-                <div class="card-header">📊 5 Aylık Analiz</div>
+                <div class="card-header">📊 6 Aylık Analiz</div>
                 <div class="card-body">
                     <h3 style="font-size:0.9rem;margin-bottom:10px;">📋 Metrikler</h3>
-                    <div class="table-wrapper"><table><thead><tr><th>Metrik</th><th class="amount-right">Ağustos</th><th class="amount-right">Temmuz</th><th class="amount-right">Haziran</th><th class="amount-right">Mayıs</th><th class="amount-right">Nisan</th></tr></thead><tbody>${rows}</tbody></table></div>
+                    <div class="table-wrapper"><table><thead><tr><th>Metrik</th><th class="amount-right">Eylül</th><th class="amount-right">Ağustos</th><th class="amount-right">Temmuz</th><th class="amount-right">Haziran</th><th class="amount-right">Mayıs</th><th class="amount-right">Nisan</th></tr></thead><tbody>${rows}</tbody></table></div>
                     <h3 style="font-size:0.9rem;margin:16px 0 10px;">📈 Değişim</h3>
-                    <div class="table-wrapper"><table><thead>${changeRows.slice(0, changeRows.indexOf('</tr>')+5)}</thead><tbody>${changeRows.slice(changeRows.indexOf('</tr>')+5)}</tbody></table></div>
+                    <div class="table-wrapper"><table>${changeRows}</table></div>
                     <div class="trend-card">
                         <h3>🎯 Trend</h3>
                         <div class="trend-item"><span>Net Kâr</span><span class="positive">${trend}</span></div>
@@ -981,7 +1273,7 @@
                         <div class="trend-item"><span>⚠️ En Düşük</span><span class="worst">${monthNames[worstIdx]} (${worstKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺)</span></div>
                         <div class="trend-item" style="border-top:2px solid #bbf7d0;padding-top:8px;"><span>📈 Fark</span><span class="positive">${(bestKar-worstKar).toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</span></div>
                     </div>
-                    <div class="info-note" style="margin-top:10px;font-size:0.7rem;">💡 ${bestIdx===0?'🏆 Ağustos en kârlı ay.':'📌 En kârlı ay ' + monthNames[bestIdx]}</div>
+                    <div class="info-note" style="margin-top:10px;font-size:0.7rem;">💡 ${bestIdx===0?'🏆 Eylül en kârlı ay.':'📌 En kârlı ay ' + monthNames[bestIdx]}</div>
                 </div>
             </div>
         `;
@@ -990,12 +1282,29 @@
     // ============================================================
     // SEKMELER
     // ============================================================
-    let currentMonth = 'agustos';
+    let currentMonth = 'eylul';
     let currentSubTab = 'overview';
     const container = document.getElementById('tabContent');
 
+    function updateSubTabLabels(monthName) {
+        const labels = {
+            overview: `📊 ${monthName} Özeti`,
+            personel: `👥 ${monthName} Personel`,
+            nakit: `💰 Kasadan Yapılan Nakit`,
+            kredi: `💳 Yusuf Usta Kredi/EFT`,
+            allgider: `📋 Genel Tüm Gider`,
+            analysis: `📈 Ay Karşılaştırma`
+        };
+        document.querySelectorAll('.sub-btn').forEach(btn => {
+            const key = btn.dataset.sub;
+            if (labels[key]) btn.textContent = labels[key];
+        });
+    }
+
     function renderCurrent() {
         const idx = getMonthIndex(currentMonth);
+        const monthName = monthNames[idx];
+        updateSubTabLabels(monthName);
         if (currentSubTab === 'overview') container.innerHTML = renderOverview(idx);
         else if (currentSubTab === 'personel') container.innerHTML = renderPersonel(idx);
         else if (currentSubTab === 'nakit') container.innerHTML = renderNakit(idx);
