@@ -9,122 +9,61 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
             font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            padding: 12px 10px;
-            color: #1a2a3a;
-            min-height: 100vh;
+            padding: 12px 10px; color: #1a2a3a; min-height: 100vh;
             -webkit-text-size-adjust: 100%;
         }
         .dashboard { max-width: 1200px; margin: 0 auto; }
         .brand {
-            background: white;
-            border-radius: 24px;
-            padding: 16px 18px;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            background: white; border-radius: 24px; padding: 16px 18px; margin-bottom: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);
         }
         h1 { font-size: 1.4rem; color: #b45309; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
         h1 small { background: #fef3c7; padding: 3px 12px; border-radius: 30px; font-size: 0.6rem; font-weight: 600; color: #92400e; }
         .sub { font-size: 0.75rem; color: #4a627a; border-left: 3px solid #f97316; padding-left: 12px; margin-top: 4px; font-weight: 500; }
-        .main-button-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-            justify-content: center;
-        }
+        .main-button-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; justify-content: center; }
         .main-btn {
-            background: white;
-            border: 2px solid #e2e8f0;
-            padding: 10px 16px;
-            border-radius: 30px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: #2c3e4e;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-            flex: 1 0 auto;
-            justify-content: center;
-            min-width: 80px;
+            background: white; border: 2px solid #e2e8f0; padding: 10px 16px; border-radius: 30px;
+            font-weight: 800; font-size: 0.8rem; cursor: pointer; transition: all 0.25s ease;
+            display: inline-flex; align-items: center; gap: 5px; color: #2c3e4e;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06); flex: 1 0 auto; justify-content: center; min-width: 80px;
         }
         .main-btn.active {
-            background: #f97316;
-            color: white;
-            border-color: #f97316;
+            background: #f97316; color: white; border-color: #f97316;
             box-shadow: 0 6px 16px rgba(249,115,22,0.45);
             animation: pulse-active 1.8s infinite;
         }
         @keyframes pulse-active {
-            0%, 100% {
-                box-shadow: 0 6px 16px rgba(249,115,22,0.45);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 6px 26px rgba(249,115,22,0.85), 0 0 0 4px rgba(249,115,22,0.2);
-                transform: scale(1.05);
-            }
+            0%, 100% { box-shadow: 0 6px 16px rgba(249,115,22,0.45); transform: scale(1); }
+            50% { box-shadow: 0 6px 26px rgba(249,115,22,0.85), 0 0 0 4px rgba(249,115,22,0.2); transform: scale(1.05); }
         }
-        .main-btn:hover:not(.active) {
-            background: #fff3e6;
-            border-color: #fdba74;
-            transform: translateY(-2px);
-        }
+        .main-btn:hover:not(.active) { background: #fff3e6; border-color: #fdba74; transform: translateY(-2px); }
         .sub-button-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 16px;
-            justify-content: center;
-            padding: 6px 0 10px;
-            border-bottom: 3px solid #e2e8f0;
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+            justify-content: center; padding: 6px 0 10px; border-bottom: 3px solid #e2e8f0;
         }
         .sub-btn {
-            background: #f1f5f9;
-            border: 2px solid #e2e8f0;
-            padding: 7px 12px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.65rem;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #334155;
-            flex: 1 0 auto;
-            text-align: center;
-            min-width: 90px;
-            max-width: 160px;
+            background: #f1f5f9; border: 2px solid #e2e8f0; padding: 7px 12px; border-radius: 25px;
+            font-weight: 700; font-size: 0.65rem; cursor: pointer; transition: 0.2s; color: #334155;
+            flex: 1 0 auto; text-align: center; min-width: 90px; max-width: 170px;
         }
         .sub-btn.active {
-            background: #f97316;
-            color: white;
-            border-color: #f97316;
-            box-shadow: 0 4px 12px rgba(249,115,22,0.35);
-            transform: scale(1.03);
+            background: #f97316; color: white; border-color: #f97316;
+            box-shadow: 0 4px 12px rgba(249,115,22,0.35); transform: scale(1.03);
         }
-        .sub-btn:hover:not(.active) {
-            background: #e2e8f0;
-            border-color: #cbd5e1;
+        .sub-btn:hover:not(.active) { background: #e2e8f0; border-color: #cbd5e1; }
+        .sub-btn.personel-highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #78350f; border-color: #f59e0b;
+            box-shadow: 0 4px 12px rgba(245,158,11,0.4);
         }
+        .sub-btn.personel-highlight.active { background: #f97316; color: white; }
         .content-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 24px -6px rgba(0,0,0,0.06);
-            overflow: hidden;
-            margin-bottom: 16px;
+            background: white; border-radius: 20px; box-shadow: 0 10px 24px -6px rgba(0,0,0,0.06);
+            overflow: hidden; margin-bottom: 16px;
         }
         .card-header {
-            background: #fef9e8;
-            padding: 10px 14px;
-            border-bottom: 2px solid #ffedd5;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #9b4a06;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            background: #fef9e8; padding: 10px 14px; border-bottom: 2px solid #ffedd5;
+            font-size: 0.95rem; font-weight: 700; color: #9b4a06; display: flex; align-items: center; gap: 6px;
         }
         .card-body { padding: 12px 14px; }
         .table-wrapper { overflow-x: auto; border-radius: 14px; -webkit-overflow-scrolling: touch; }
@@ -142,6 +81,12 @@
         .profit-card { background: linear-gradient(135deg, #1f3b2c, #2b5a42); color: white; }
         .profit-card .stat-number { color: #facc15; }
         .profit-card h4 { color: #ffecb3; }
+        .avg-card { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; border: 2px solid #60a5fa; }
+        .avg-card .stat-number { color: #fde047; }
+        .avg-card h4 { color: #dbeafe; }
+        .kar-orani-card { background: linear-gradient(135deg, #065f46, #10b981); color: white; border: 2px solid #34d399; }
+        .kar-orani-card .stat-number { color: #fde047; font-size: 1.4rem; }
+        .kar-orani-card h4 { color: #d1fae5; }
         .info-note { background: #eef2ff; border-left: 4px solid #3b82f6; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
         .footer { text-align: center; font-size: 0.55rem; color: #5f7d9c; padding: 14px 0 6px; border-top: 1px solid #e2edf2; margin-top: 12px; }
         .positive { color: #15803d; font-weight: 800; }
@@ -157,59 +102,58 @@
         .worst { color: #dc2626; font-weight: 800; }
         .borclar-card {
             background: linear-gradient(135deg, #fff7ed, #ffedd5);
-            border: 3px solid #fb923c;
-            border-radius: 18px;
-            padding: 14px 16px;
-            margin-bottom: 14px;
-            box-shadow: 0 6px 18px rgba(251,146,60,0.2);
+            border: 3px solid #fb923c; border-radius: 18px; padding: 14px 16px;
+            margin-bottom: 14px; box-shadow: 0 6px 18px rgba(251,146,60,0.2);
         }
         .borclar-card h2 {
-            font-size: 1rem;
-            font-weight: 900;
-            color: #9a3412;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 1rem; font-weight: 900; color: #9a3412; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px;
         }
         .borclar-card .borc-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 7px 10px;
-            border-bottom: 1px dashed #fdba74;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #7c2d12;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 7px 10px; border-bottom: 1px dashed #fdba74;
+            font-size: 0.75rem; font-weight: 600; color: #7c2d12;
         }
         .borclar-card .borc-item:last-child { border-bottom: none; }
-        .borclar-card .borc-item .tutar {
-            font-family: monospace;
-            font-weight: 900;
-            font-size: 0.85rem;
-            color: #c2410c;
-        }
+        .borclar-card .borc-item .tutar { font-family: monospace; font-weight: 900; font-size: 0.85rem; color: #c2410c; }
         .borclar-card .kira-uyari {
-            background: #dc2626;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            background: #dc2626; color: white; padding: 8px 12px; border-radius: 10px;
+            font-size: 0.8rem; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px;
         }
+        .borclar-card .kira-ok {
+            background: #15803d; color: white; padding: 8px 12px; border-radius: 10px;
+            font-size: 0.8rem; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .borclar-card .elektrik-uyari {
+            background: linear-gradient(135deg, #7f1d1d, #dc2626); color: white;
+            padding: 10px 12px; border-radius: 12px; margin-bottom: 10px;
+            border: 2px solid #fbbf24; text-align: center;
+        }
+        .borclar-card .elektrik-uyari .title { font-size: 0.85rem; font-weight: 900; letter-spacing: 0.5px; color: #fef3c7; margin-bottom: 4px; }
+        .borclar-card .elektrik-uyari .amount { font-size: 1rem; font-weight: 900; font-family: monospace; color: #fde047; }
+        .borclar-card .elektrik-uyari .detail { font-size: 0.7rem; color: #fef3c7; margin-top: 4px; font-weight: 700; }
+        .kategori-list { display: flex; flex-direction: column; gap: 8px; }
+        .kategori-item { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: 0.2s; }
+        .kategori-item:hover { border-color: #fdba74; }
+        .kategori-item.open { border-color: #f97316; box-shadow: 0 6px 16px rgba(249,115,22,0.15); }
+        .kategori-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; cursor: pointer; user-select: none; background: white; transition: 0.2s; }
+        .kategori-item.open .kategori-header { background: #fff7ed; }
+        .kategori-header .kategori-name { font-size: 0.85rem; font-weight: 800; color: #1e293b; display: flex; align-items: center; gap: 8px; }
+        .kategori-header .kategori-tutar { font-family: monospace; font-size: 0.9rem; font-weight: 900; color: #c2410c; }
+        .kategori-header .kategori-toggle {
+            background: #f97316; color: white; width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 900;
+            font-size: 0.8rem; margin-left: 10px; transition: 0.3s;
+        }
+        .kategori-item.open .kategori-toggle { transform: rotate(45deg); }
+        .kategori-body { display: none; padding: 0 14px 12px; background: #fffbeb; border-top: 2px dashed #fdba74; }
+        .kategori-item.open .kategori-body { display: block; padding-top: 12px; }
+        .kategori-body table { font-size: 0.65rem; min-width: 100%; }
+        .kategori-body th { background: #fef3c7; }
         .elektrik-alarm {
             background: linear-gradient(135deg, #7f1d1d, #dc2626);
-            color: white;
-            border-radius: 18px;
-            padding: 16px 18px;
-            margin-bottom: 14px;
-            box-shadow: 0 10px 25px rgba(220,38,38,0.35);
-            border: 3px solid #fbbf24;
+            color: white; border-radius: 18px; padding: 16px 18px; margin-bottom: 14px;
+            box-shadow: 0 10px 25px rgba(220,38,38,0.35); border: 3px solid #fbbf24;
             animation: pulse-alarm 2s infinite;
         }
         @keyframes pulse-alarm {
@@ -217,40 +161,19 @@
             50% { box-shadow: 0 10px 35px rgba(220,38,38,0.65); }
         }
         .elektrik-alarm h2 {
-            font-size: 1.1rem;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #fef3c7;
-            text-transform: uppercase;
+            font-size: 1.1rem; font-weight: 900; letter-spacing: 0.5px; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px; color: #fef3c7; text-transform: uppercase;
         }
-        .elektrik-alarm .row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
+        .elektrik-alarm .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.2); font-size: 0.85rem; font-weight: 700; }
         .elektrik-alarm .row:last-child { border-bottom: none; }
         .elektrik-alarm .row .val { color: #fde047; font-family: monospace; font-size: 1rem; font-weight: 900; }
         .elektrik-alarm .date-badge {
-            background: #fbbf24;
-            color: #7f1d1d;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 900;
-            display: inline-block;
-            margin-top: 10px;
-            letter-spacing: 0.5px;
+            background: #fbbf24; color: #7f1d1d; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 900; display: inline-block; margin-top: 10px; letter-spacing: 0.5px;
         }
         @media (max-width: 480px) {
             .main-btn { font-size: 0.7rem; padding: 8px 10px; min-width: 70px; }
-            .sub-btn { font-size: 0.55rem; padding: 5px 8px; min-width: 75px; max-width: 110px; }
+            .sub-btn { font-size: 0.55rem; padding: 5px 8px; min-width: 75px; max-width: 120px; }
             .stat-number { font-size: 0.85rem; }
             .card-header { font-size: 0.8rem; padding: 8px 10px; }
             .card-body { padding: 8px 10px; }
@@ -263,6 +186,16 @@
             .borclar-card h2 { font-size: 0.85rem; }
             .borclar-card .borc-item { font-size: 0.65rem; }
             .borclar-card .borc-item .tutar { font-size: 0.75rem; }
+            .kategori-header { padding: 10px 10px; flex-wrap: wrap; gap: 4px; }
+            .kategori-header .kategori-name { font-size: 0.7rem; flex-wrap: wrap; }
+            .kategori-header .kategori-tutar { font-size: 0.75rem; }
+            .kategori-body { padding: 0 8px 8px; }
+            .kategori-body table { font-size: 0.5rem; }
+            .kategori-body th, .kategori-body td { padding: 3px 2px; }
+            .main-button-bar { gap: 4px; }
+            .main-btn { padding: 8px 8px; font-size: 0.65rem; min-width: 60px; }
+            .sub-button-bar { gap: 4px; }
+            .sub-btn { font-size: 0.5rem; padding: 5px 6px; min-width: 70px; max-width: 100px; }
         }
     </style>
 </head>
@@ -284,7 +217,7 @@
 
     <div id="subButtonBar" class="sub-button-bar">
         <button class="sub-btn active" data-sub="overview">📊 Eylül Özeti</button>
-        <button class="sub-btn" data-sub="personel">👥 Eylül Personel</button>
+        <button class="sub-btn personel-highlight" data-sub="personel">👥 Eylül Personel</button>
         <button class="sub-btn" data-sub="nakit">💰 Kasadan Yapılan Nakit</button>
         <button class="sub-btn" data-sub="kredi">💳 Yusuf Usta Kredi/EFT</button>
         <button class="sub-btn" data-sub="allgider">📋 Genel Tüm Gider</button>
@@ -295,15 +228,15 @@
 
     <div class="footer">
         ⚡ Eylül 26g · Ağustos 26g · Temmuz 27g · Haziran 25g · Mayıs 24g · Nisan 30g (Pazartesi kapalı)<br>
-        📌 Kira: Nis,May,Haz,Ağu,Eyl ödenmedi – Temmuz ödendi<br>
-        ⚡ Elektrik ceza: Toplam 370.146,16 ₺ · İlk taksit 61.691,03 ₺ · Son ödeme 03.10.2026<br>
+        📌 Kira: Ağustos, Eylül ödenmedi – Diğer aylar ödendi<br>
+        ⚡ Elektrik ceza: Toplam 370.146,16 ₺ · 6 taksit × 62.000 ₺ · İlk taksit 03.10.2026 (Gidere dahil değil)<br>
         📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)
     </div>
 </div>
 
 <script>
     // ============================================================
-    // EYLÜL 2026 (En güncel)
+    // EYLÜL 2026
     // ============================================================
     const eylulCalismaGunu = 26;
     const eylulNakitData = [
@@ -402,7 +335,8 @@
     ];
     const eylulTotalNakit = eylulNakitData.reduce((s, t) => s + t.amount, 0);
     const eylulTotalKredi = eylulKrediData.reduce((s, t) => s + t.amount, 0);
-    const eylulNakitGelir = 921513.38;
+    // Net Ciro = 1.157.686,76 (kasa 1.041.513,38 + online net 116.173,38)
+    const eylulNakitGelir = 1041513.38;
     const eylulKrediGelir = 0;
     const eylulGetirBrut = 485.00;
     const eylulYsBrut = 19487.00;
@@ -428,6 +362,7 @@
         { name: "Yüksek Garson", daily: 2500, days: eylulCalismaGunu, total: 2500 * eylulCalismaGunu }
     ];
     const eylulPersonelGider = eylulPersonnel.reduce((s, p) => s + p.total, 0);
+    const eylulNetKar = eylulNetCiro - (eylulTotalNakit + eylulTotalKredi + eylulPersonelGider);
     const eylul = {
         brütCiro: eylulBrutCiro,
         netCiro: eylulNetCiro,
@@ -437,7 +372,8 @@
         calismaGunu: eylulCalismaGunu,
         gunlukCiro: eylulNetCiro / eylulCalismaGunu,
         toplamGider: eylulTotalNakit + eylulTotalKredi + eylulPersonelGider,
-        netKar: eylulNetCiro - (eylulTotalNakit + eylulTotalKredi + eylulPersonelGider),
+        netKar: eylulNetKar,
+        karOrani: eylulNetKar / eylulNetCiro * 100,
         telefon: 0,
         kiraOdenmedi: true,
         yusufBorcu: 34350,
@@ -454,7 +390,14 @@
         nakitGelir: eylulNakitGelir,
         krediGelir: eylulKrediGelir,
         ayAdi: "Eylül",
-        elektrikCeza: { toplam: 370146.16, ilkTaksit: 61691.03, sonOdeme: "03.10.2026" }
+        elektrikCeza: {
+            toplam: 370146.16,
+            ilkTaksit: 62000,
+            taksitSayisi: 6,
+            ilkOdemeTarihi: "03.10.2026",
+            periyod: "Her ayın 25'i",
+            gidereDahil: false
+        }
     };
 
     // ============================================================
@@ -473,7 +416,7 @@
         { date: "08.08 12:16", desc: "yağ", amount: 460 },
         { date: "08.08 12:44", desc: "detarjan", amount: 200 },
         { date: "08.08 19:23", desc: "market", amount: 350 },
-        { date: "08.08 21:07", desc: "tereyaği", amount: 500 },
+        { date: "08.08 21:07", desc: "tereyağı", amount: 500 },
         { date: "08.08 21:08", desc: "yılmaz pazar", amount: 1450 },
         { date: "08.08 21:59", desc: "soğancı", amount: 4000 },
         { date: "09.08 17:19", desc: "market", amount: 350 },
@@ -600,6 +543,7 @@
         { name: "Yüksek Garson (27 Ağu işbaşı)", daily: 2500, days: 5, total: 2500 * 5 }
     ];
     const agustosPersonelGider = agustosPersonnel.reduce((s, p) => s + p.total, 0);
+    const agustosNetKar = agustosNetCiro - (agustosTotalNakit + agustosTotalKredi + agustosPersonelGider);
     const agustos = {
         brütCiro: agustosBrutCiro,
         netCiro: agustosNetCiro,
@@ -609,7 +553,8 @@
         calismaGunu: agustosCalismaGunu,
         gunlukCiro: agustosNetCiro / agustosCalismaGunu,
         toplamGider: agustosTotalNakit + agustosTotalKredi + agustosPersonelGider,
-        netKar: agustosNetCiro - (agustosTotalNakit + agustosTotalKredi + agustosPersonelGider),
+        netKar: agustosNetKar,
+        karOrani: agustosNetKar / agustosNetCiro * 100,
         telefon: 0,
         kiraOdenmedi: true,
         yusufBorcu: 65350,
@@ -703,6 +648,7 @@
         { name: "Kurye (haftalık)", daily: 15000, days: 4, total: 15000 * 4 }
     ];
     const temmuzPersonelGider = temmuzPersonnel.reduce((s, p) => s + p.total, 0);
+    const temmuzNetKar = temmuzNetCiro - (temmuzTotalNakit + temmuzTotalKredi + temmuzPersonelGider);
     const temmuz = {
         brütCiro: temmuzBrutCiro,
         netCiro: temmuzNetCiro,
@@ -712,7 +658,8 @@
         calismaGunu: temmuzCalismaGunu,
         gunlukCiro: temmuzNetCiro / temmuzCalismaGunu,
         toplamGider: temmuzTotalNakit + temmuzTotalKredi + temmuzPersonelGider,
-        netKar: temmuzNetCiro - (temmuzTotalNakit + temmuzTotalKredi + temmuzPersonelGider),
+        netKar: temmuzNetKar,
+        karOrani: temmuzNetKar / temmuzNetCiro * 100,
         telefon: 785,
         kiraOdenmedi: false,
         yusufBorcu: 41155,
@@ -810,6 +757,7 @@
         { name: "Kasım Usta", daily: 2000, days: haziranCalismaGunu, total: 2000 * haziranCalismaGunu }
     ];
     const haziranPersonelGider = haziranPersonnel.reduce((s, p) => s + p.total, 0);
+    const haziranNetKar = haziranNetCiro - (haziranTotalNakit + haziranTotalKredi + haziranPersonelGider);
     const haziran = {
         brütCiro: haziranBrutCiro,
         netCiro: haziranNetCiro,
@@ -819,9 +767,10 @@
         calismaGunu: haziranCalismaGunu,
         gunlukCiro: haziranNetCiro / haziranCalismaGunu,
         toplamGider: haziranTotalNakit + haziranTotalKredi + haziranPersonelGider,
-        netKar: haziranNetCiro - (haziranTotalNakit + haziranTotalKredi + haziranPersonelGider),
+        netKar: haziranNetKar,
+        karOrani: haziranNetKar / haziranNetCiro * 100,
         telefon: 0,
-        kiraOdenmedi: true,
+        kiraOdenmedi: false,
         yusufBorcu: 82850,
         tolgaBorcu: 0,
         orhanBorcu: 0,
@@ -911,7 +860,8 @@
         personelGider: mayisPersonnel.reduce((s, p) => s + p.total, 0),
         toplamGider: 0,
         netKar: 0,
-        kiraOdenmedi: true,
+        karOrani: 0,
+        kiraOdenmedi: false,
         yusufBorcu: 110820,
         tolgaBorcu: 0,
         orhanBorcu: 0,
@@ -929,6 +879,7 @@
     };
     mayis.toplamGider = mayis.nakitGider + mayis.krediGider + mayis.telefon + mayis.personelGider;
     mayis.netKar = mayis.netCiro - mayis.toplamGider;
+    mayis.karOrani = mayis.netKar / mayis.netCiro * 100;
 
     // ============================================================
     // NİSAN 2026
@@ -1009,8 +960,9 @@
         gunlukCiro: 959492.37 / 30,
         toplamGider: 0,
         netKar: 0,
+        karOrani: 0,
         telefon: 0,
-        kiraOdenmedi: true,
+        kiraOdenmedi: false,
         yusufBorcu: 110820,
         tolgaBorcu: 0,
         orhanBorcu: 0,
@@ -1028,6 +980,35 @@
     };
     nisan.toplamGider = nisan.nakitGider + nisan.krediGider + nisan.personelGider;
     nisan.netKar = nisan.netCiro - nisan.toplamGider;
+    nisan.karOrani = nisan.netKar / nisan.netCiro * 100;
+
+    // ============================================================
+    // KATEGORİ SINIFLANDIRICI
+    // ============================================================
+    function kategorize(desc) {
+        const d = desc.toLowerCase();
+        if (d.includes('pazar') || d.includes('market')) return 'pazar_market';
+        if (d.includes('kasap') || d.includes('et ') || d.includes('orhan') || d.includes('nadir') || d.includes('şifa') || d.includes('kuyruk')) return 'kasap_et';
+        if (d.includes('sogan') || d.includes('soğan') || d.includes('sağan')) return 'sogan';
+        if (d.includes('yağ') || d.includes('yag') || d.includes('tereyağ')) return 'yag';
+        if (d.includes('un') || d.includes('bulgur') || d.includes('maya') || d.includes('makbul')) return 'un_ekmek';
+        if (d.includes('kola') || d.includes('pepsi') || d.includes('ayran') || d.includes('su') || d.includes('çay')) return 'icecek';
+        if (d.includes('kaşar')) return 'kasar';
+        if (d.includes('ambalaj') || d.includes('poşet') || d.includes('poset') || d.includes('bardak') || d.includes('streç')) return 'ambalaj';
+        return 'diger';
+    }
+
+    const kategoriInfo = {
+        pazar_market: { name: 'Pazar & Market', icon: '🥬' },
+        kasap_et: { name: 'Kasap & Et', icon: '🥩' },
+        sogan: { name: 'Soğan', icon: '🧅' },
+        yag: { name: 'Yağ', icon: '🫒' },
+        un_ekmek: { name: 'Un & Ekmek & Maya', icon: '🍞' },
+        icecek: { name: 'İçecek & Kola & Ayran', icon: '🥤' },
+        kasar: { name: 'Kaşar', icon: '🧀' },
+        ambalaj: { name: 'Ambalaj & Poşet', icon: '📦' },
+        diger: { name: 'Diğer', icon: '💰' }
+    };
 
     // ============================================================
     // RENDER
@@ -1047,12 +1028,34 @@
         return 5;
     }
 
+    function kategoriOzet(idx) {
+        const nData = nakitData[idx];
+        const kData = krediData[idx];
+        const all = [...nData.map(t => ({...t, tip: 'Nakit'})), ...kData.map(t => ({...t, tip: 'Kredi'}))];
+        const grouped = {};
+        Object.keys(kategoriInfo).forEach(k => grouped[k] = { items: [], total: 0 });
+        all.forEach(t => {
+            const k = kategorize(t.desc);
+            grouped[k].items.push(t);
+            grouped[k].total += t.amount;
+        });
+        return grouped;
+    }
+
     function renderBorclarCard(month) {
         let items = '';
         if (month.kiraOdenmedi === true) {
             items += `<div class="kira-uyari">🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺</div>`;
         } else if (month.kiraOdenmedi === false) {
             items += `<div class="borc-item" style="color:#15803d;"><span>🏠 Kira</span><span class="tutar" style="color:#15803d;">✅ ÖDENDİ</span></div>`;
+        }
+        if (month.elektrikCeza) {
+            const e = month.elektrikCeza;
+            items += `<div class="elektrik-uyari">
+                <div class="title">⚡ ELEKTRİK CEZA (BORÇ)</div>
+                <div class="amount">${e.toplam.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div>
+                <div class="detail">${e.taksitSayisi} taksit × ${e.ilkTaksit.toLocaleString('tr-TR')} ₺ · ${e.periyod}<br>İlk taksit: ${e.ilkOdemeTarihi}</div>
+            </div>`;
         }
         if (month.yusufBorcu > 0) items += `<div class="borc-item"><span>🧑‍🍳 Yusuf Usta borç</span><span class="tutar">${month.yusufBorcu.toLocaleString('tr-TR')} TL</span></div>`;
         if (month.tolgaBorcu > 0) items += `<div class="borc-item"><span>👤 Tolga</span><span class="tutar">${month.tolgaBorcu.toLocaleString('tr-TR')} TL</span></div>`;
@@ -1070,11 +1073,12 @@
         const e = m.elektrikCeza;
         return `
             <div class="elektrik-alarm">
-                <h2>⚡ ELEKTRİK CEZA UYARISI</h2>
+                <h2>⚡ ELEKTRİK CEZA — BORÇ</h2>
                 <div class="row"><span>TOPLAM CEZA</span><span class="val">${e.toplam.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</span></div>
-                <div class="row"><span>İLK TAKSİT</span><span class="val">${e.ilkTaksit.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</span></div>
-                <div class="row"><span>SON ÖDEME</span><span class="val">${e.sonOdeme}</span></div>
-                <div style="text-align:center;"><span class="date-badge">📅 İLK TAKSİT SON ÖDEME: 03.10.2026</span></div>
+                <div class="row"><span>TAKSİT</span><span class="val">${e.taksitSayisi} × ${e.ilkTaksit.toLocaleString('tr-TR')} ₺</span></div>
+                <div class="row"><span>İLK TAKSİT</span><span class="val">${e.ilkOdemeTarihi}</span></div>
+                <div style="text-align:center;"><span class="date-badge">📅 ÖDEME: ${e.periyod} · İLK: ${e.ilkOdemeTarihi}</span></div>
+                <div style="text-align:center;margin-top:8px;font-size:0.7rem;color:#fef3c7;">⚠️ Eylül giderine DAHİL DEĞİL, borç olarak takip ediliyor</div>
             </div>
         `;
     }
@@ -1096,12 +1100,68 @@
         return '';
     }
 
+    function ortalamaCiro() {
+        const gecerliAylar = months.filter(m => m.netCiro > 0);
+        const toplamNet = gecerliAylar.reduce((s, m) => s + m.netCiro, 0);
+        const toplamGun = gecerliAylar.reduce((s, m) => s + m.calismaGunu, 0);
+        return {
+            aylikOrtalama: toplamNet / gecerliAylar.length,
+            gunlukOrtalama: toplamNet / toplamGun
+        };
+    }
+
+    function renderKategoriIcerik(idx) {
+        const m = months[idx];
+        const name = monthNames[idx];
+        const grup = kategoriOzet(idx);
+        let accordionHtml = '';
+        Object.keys(kategoriInfo).forEach(key => {
+            const g = grup[key];
+            if (g.items.length === 0) return;
+            const info = kategoriInfo[key];
+            let satirlar = g.items.map(t => 
+                `<tr>
+                    <td style="white-space:nowrap;">${t.date}</td>
+                    <td>${t.desc}</td>
+                    <td><span class="${t.tip === 'Nakit' ? 'method-nakit' : 'method-kredi'}">${t.tip}</span></td>
+                    <td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td>
+                </tr>`
+            ).join('');
+            accordionHtml += `
+                <div class="kategori-item" data-kategori="${key}">
+                    <div class="kategori-header" onclick="toggleKategori(this)">
+                        <div class="kategori-name">${info.icon} ${info.name} <span style="color:#64748b;font-size:0.7rem;font-weight:600;">(${g.items.length} işlem)</span></div>
+                        <div style="display:flex;align-items:center;">
+                            <span class="kategori-tutar">${g.total.toLocaleString('tr-TR')} ₺</span>
+                            <span class="kategori-toggle">+</span>
+                        </div>
+                    </div>
+                    <div class="kategori-body">
+                        <table>
+                            <thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead>
+                            <tbody>${satirlar}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        });
+        const toplamNakit = nakitData[idx].reduce((s,t)=>s+t.amount,0);
+        const toplamKredi = krediData[idx].reduce((s,t)=>s+t.amount,0);
+        return `<div class="content-card"><div class="card-header">🗂️ ${name} Kategori Detay (Basınca Açılır)</div><div class="card-body"><div class="kategori-list">${accordionHtml}</div><div class="info-note" style="margin-top:12px;">📌 Toplam Nakit: ${toplamNakit.toLocaleString('tr-TR')} ₺ · Toplam Kredi: ${toplamKredi.toLocaleString('tr-TR')} ₺ · Genel Toplam: ${(toplamNakit+toplamKredi).toLocaleString('tr-TR')} ₺</div></div></div>`;
+    }
+
+    window.toggleKategori = function(header) {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+    };
+
     function renderOverview(idx) {
         const m = months[idx];
         const name = monthNames[idx];
         const borclarCard = renderBorclarCard(m);
         const elektrikAlarm = renderElektrikAlarm(m);
         const onlineSection = renderOnlineSection(m, idx);
+        const ort = ortalamaCiro();
         return `
             ${elektrikAlarm}
             ${borclarCard}
@@ -1113,6 +1173,20 @@
                         <div class="stat-card"><h4>Net Ciro</h4><div class="stat-number">${m.netCiro.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</div></div>
                         <div class="stat-card profit-card"><h4>Net Kâr</h4><div class="stat-number">${m.netKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</div></div>
                     </div>
+                    <div class="summary-stats">
+                        <div class="stat-card avg-card">
+                            <h4>📊 GÜNLÜK ORTALAMA CİRO</h4>
+                            <div class="stat-number">${m.gunlukCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün</div>
+                        </div>
+                        <div class="stat-card avg-card">
+                            <h4>📈 6 AYLIK AYLIK ORTALAMA</h4>
+                            <div class="stat-number">${ort.aylikOrtalama.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺/ay</div>
+                        </div>
+                        <div class="stat-card avg-card">
+                            <h4>📉 6 AYLIK GÜNLÜK ORTALAMA</h4>
+                            <div class="stat-number">${ort.gunlukOrtalama.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün</div>
+                        </div>
+                    </div>
                     ${onlineSection}
                     <div class="summary-stats">
                         <div class="stat-card"><h4>Nakit Gider</h4><div class="stat-number">${m.nakitGider.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</div></div>
@@ -1122,9 +1196,13 @@
                     <div class="stat-card profit-card" style="margin-top:6px;">
                         <h4 style="color:#ffecb3;">NET KAR</h4>
                         <div class="stat-number" style="color:#facc15;">${m.netKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</div>
-                        <div style="color:#e2f0e6;font-size:0.7rem;">${m.netCiro.toLocaleString('tr-TR', {minimumFractionDigits:0})} - ${m.toplamGider.toLocaleString('tr-TR', {minimumFractionDigits:0})}</div>
+                        <div style="color:#e2f0e6;font-size:0.7rem;">${m.netCiro.toLocaleString('tr-TR', {minimumFractionDigits:0})} − ${m.toplamGider.toLocaleString('tr-TR', {minimumFractionDigits:0})}</div>
                     </div>
-                    <div class="info-note" style="margin-top:6px;font-size:0.7rem;">📅 Günlük Ciro: ${m.gunlukCiro.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün</div>
+                    <div class="stat-card kar-orani-card" style="margin-top:6px;">
+                        <h4>📊 KÂR ORANI</h4>
+                        <div class="stat-number">${m.karOrani.toFixed(2)}%</div>
+                        <div style="color:#d1fae5;font-size:0.65rem;">Net Kâr / Net Ciro</div>
+                    </div>
                 </div>
             </div>
             <div class="content-card">
@@ -1145,10 +1223,12 @@
                             ${m.telefon > 0 ? `<tr><td>Telefon</td><td class="amount-right">${m.telefon.toLocaleString('tr-TR', {minimumFractionDigits:2})}</td></tr>` : ''}
                             <tr class="total-row"><td><strong>Toplam Gider</strong></td><td class="amount-right"><strong>${m.toplamGider.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</strong></td></tr>
                             <tr style="background:#e6f7ec;"><td><strong>NET KÂR</strong></td><td class="amount-right positive"><strong>${m.netKar.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</strong></td></tr>
+                            <tr style="background:#d1fae5;"><td><strong>KÂR ORANI</strong></td><td class="amount-right positive"><strong>${m.karOrani.toFixed(2)}%</strong></td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            ${renderKategoriIcerik(idx)}
         `;
     }
 
@@ -1156,30 +1236,33 @@
         const m = months[idx];
         const name = monthNames[idx];
         const data = personnelData[idx];
-        const borclarCard = renderBorclarCard(m);
         let rows = data.map(p => `<tr><td>${p.name}</td><td class="amount-right">${p.daily > 0 ? p.daily.toLocaleString('tr-TR') + ' ₺' : '-'}</td><td class="amount-right">${p.days > 0 ? p.days : '-'}</td><td class="amount-right">${p.total.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, p) => s + p.total, 0);
-        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">👥 ${name} Personel</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Personel</th><th>Günlük</th><th>Gün</th><th>Toplam</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
+        return `<div class="content-card" style="border:3px solid #f59e0b;box-shadow:0 10px 30px rgba(245,158,11,0.3);"><div class="card-header" style="background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;font-size:1.05rem;">👥 ${name} PERSONEL</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Personel</th><th>Günlük</th><th>Gün</th><th>Toplam</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
     }
 
     function renderNakit(idx) {
-        const m = months[idx];
         const name = monthNames[idx];
         const data = nakitData[idx];
-        const borclarCard = renderBorclarCard(m);
         let rows = data.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="method-nakit">Nakit</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, t) => s + t.amount, 0);
-        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">💰 ${name} Kasadan Yapılan Nakit Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Nakit</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
+        return `<div class="content-card"><div class="card-header">💰 ${name} Kasadan Yapılan Nakit Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Nakit</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
     }
 
     function renderKredi(idx) {
         const m = months[idx];
         const name = monthNames[idx];
         const data = krediData[idx];
-        const borclarCard = renderBorclarCard(m);
+        const elektrikSatir = m.elektrikCeza ? `<tr style="background:#fee2e2;border-left:4px solid #dc2626;">
+            <td style="white-space:nowrap;">08.09 11:18</td>
+            <td><strong>ELEKTRİK CEZA FATURASI</strong></td>
+            <td><span style="background:#dc2626;color:white;padding:2px 8px;border-radius:16px;font-weight:700;font-size:0.55rem;">⚠️ ÖDENMEDİ</span></td>
+            <td class="amount-right" style="color:#dc2626;text-decoration:line-through;">${m.elektrikCeza.toplam.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</td>
+        </tr>` : '';
         let rows = data.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="method-kredi">Kredi/EFT</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = data.reduce((s, t) => s + t.amount, 0);
-        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">💳 ${name} Yusuf Usta Kredi & EFT Giderleri</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Kredi</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div></div></div>`;
+        const elektrikNot = m.elektrikCeza ? `<div class="info-note" style="margin-top:10px;background:#fef3c7;border-left-color:#dc2626;color:#7c2d12;font-size:0.7rem;font-weight:700;">⚡ <strong>ELEKTRİK CEZA ${m.elektrikCeza.toplam.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</strong> listelenmiştir ancak <strong>ödenmediği için toplam gidere dahil edilmemiştir</strong>.<br>📅 ${m.elektrikCeza.taksitSayisi} taksit × ${m.elektrikCeza.ilkTaksit.toLocaleString('tr-TR')} ₺ · İlk taksit: ${m.elektrikCeza.ilkOdemeTarihi}</div>` : '';
+        return `<div class="content-card"><div class="card-header">💳 ${name} Yusuf Usta Kredi & EFT Giderleri</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${elektrikSatir}${rows}<tr class="total-row"><td colspan="3"><strong>Toplam Kredi (Elektrik Hariç)</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div>${elektrikNot}</div></div>`;
     }
 
     function renderAllGider(idx) {
@@ -1187,12 +1270,11 @@
         const name = monthNames[idx];
         const nData = nakitData[idx];
         const kData = krediData[idx];
-        const borclarCard = renderBorclarCard(m);
         let all = [...nData.map(t => ({...t, type: 'Nakit'})), ...kData.map(t => ({...t, type: 'Kredi'}))];
         all.sort((a,b)=>a.date.localeCompare(b.date));
         let rows = all.map(t => `<tr><td style="white-space:nowrap;">${t.date}</td><td>${t.desc}</td><td><span class="${t.type === 'Nakit' ? 'method-nakit' : 'method-kredi'}">${t.type}</span></td><td class="amount-right">${t.amount.toLocaleString('tr-TR')} ₺</td></tr>`).join('');
         const total = nData.reduce((s, t) => s + t.amount, 0) + kData.reduce((s, t) => s + t.amount, 0);
-        return `${renderElektrikAlarm(m)}${borclarCard}<div class="content-card"><div class="card-header">📋 ${name} Genel Tüm Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam (Nakit+Kredi)</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div><div class="info-note" style="margin-top:10px;font-size:0.7rem;">📌 Personel: ${m.personelGider.toLocaleString('tr-TR')} TL<br>📌 Toplam Gider: ${m.toplamGider.toLocaleString('tr-TR')} TL</div></div></div>`;
+        return `<div class="content-card"><div class="card-header">📋 ${name} Genel Tüm Giderler</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${rows}<tr class="total-row"><td colspan="3"><strong>Toplam (Nakit+Kredi)</strong></td><td class="amount-right"><strong>${total.toLocaleString('tr-TR')} ₺</strong></td></tr></tbody></table></div><div class="info-note" style="margin-top:10px;font-size:0.7rem;">📌 Personel: ${m.personelGider.toLocaleString('tr-TR')} TL<br>📌 Toplam Gider: ${m.toplamGider.toLocaleString('tr-TR')} TL</div></div></div>`;
     }
 
     function renderAnalysis() {
@@ -1201,15 +1283,17 @@
             { label: 'Çalışma Günü', keys: ['calismaGunu'] },
             { label: 'Brüt Ciro (₺)', keys: ['brütCiro'] },
             { label: 'Net Ciro (₺)', keys: ['netCiro'] },
+            { label: 'Günlük Ort. Ciro (₺)', keys: ['gunlukCiro'] },
             { label: 'Nakit Gider (₺)', keys: ['nakitGider'] },
             { label: 'Kredi Gider (₺)', keys: ['krediGider'] },
             { label: 'Personel (₺)', keys: ['personelGider'] },
             { label: 'Toplam Gider (₺)', keys: ['toplamGider'] },
-            { label: 'Net Kâr (₺)', keys: ['netKar'] }
+            { label: 'Net Kâr (₺)', keys: ['netKar'] },
+            { label: 'Kâr Oranı (%)', keys: ['karOrani'] }
         ];
         metrics.forEach(metric => {
             const vals = months.map(m => m[metric.keys[0]]);
-            const formatted = vals.map(v => typeof v === 'number' ? v.toLocaleString('tr-TR', {minimumFractionDigits:0}) : v);
+            const formatted = vals.map(v => typeof v === 'number' ? v.toLocaleString('tr-TR', {minimumFractionDigits: metric.keys[0]==='karOrani'?2:0}) : v);
             const best = Math.max(...vals);
             const worst = Math.min(...vals);
             let icons = vals.map(v => {
@@ -1225,55 +1309,17 @@
                 <td class="amount-right">${formatted[4]}${icons[4]}</td>
                 <td class="amount-right">${formatted[5]}${icons[5]}</td></tr>`;
         });
-
-        const pairs = [{from:1,to:0},{from:2,to:1},{from:3,to:2},{from:4,to:3},{from:5,to:4}];
-        let changeRows = `<tr><th>Metrik</th><th>Eylül</th><th>Ağustos</th><th>Temmuz</th><th>Haziran</th><th>Mayıs</th><th>Nisan</th><th>E↔A</th><th>A↔T</th><th>T↔H</th><th>H↔M</th><th>M↔N</th></tr>`;
-        ['netKar','netCiro','personelGider','toplamGider'].forEach(key => {
-            const vals = months.map(m => m[key]);
-            const formatted = vals.map(v => v.toLocaleString('tr-TR', {minimumFractionDigits:0}) + ' ₺');
-            const changes = pairs.map(p => {
-                const diff = vals[p.to] - vals[p.from];
-                const pct = vals[p.from] !== 0 ? (diff / Math.abs(vals[p.from]) * 100) : 0;
-                const cls = diff > 0 ? 'change-up' : (diff < 0 ? 'change-down' : 'change-same');
-                const arrow = diff > 0 ? '📈' : (diff < 0 ? '📉' : '➖');
-                return `<span class="${cls}">${arrow} ${diff > 0 ? '+' : ''}${diff.toLocaleString('tr-TR', {minimumFractionDigits:0})} (${pct.toFixed(1)}%)</span>`;
-            });
-            changeRows += `<tr><td><strong>${key==='netKar'?'Net Kâr':key==='netCiro'?'Net Ciro':key==='personelGider'?'Personel':'Toplam Gider'}</strong></td>
-                <td class="amount-right">${formatted[0]}</td>
-                <td class="amount-right">${formatted[1]}</td>
-                <td class="amount-right">${formatted[2]}</td>
-                <td class="amount-right">${formatted[3]}</td>
-                <td class="amount-right">${formatted[4]}</td>
-                <td class="amount-right">${formatted[5]}</td>
-                <td class="amount-right">${changes[0]}</td>
-                <td class="amount-right">${changes[1]}</td>
-                <td class="amount-right">${changes[2]}</td>
-                <td class="amount-right">${changes[3]}</td>
-                <td class="amount-right">${changes[4]}</td></tr>`;
-        });
-
-        const bestKar = Math.max(...months.map(m => m.netKar));
-        const bestIdx = months.findIndex(m => m.netKar === bestKar);
-        const worstKar = Math.min(...months.map(m => m.netKar));
-        const worstIdx = months.findIndex(m => m.netKar === worstKar);
-        const trend = (months[0].netKar > months[1].netKar && months[1].netKar > months[2].netKar && months[2].netKar > months[3].netKar && months[3].netKar > months[4].netKar && months[4].netKar > months[5].netKar) ? '📈 Sürekli Yükseliş' : '➖ Dalgalı';
-
+        const ort = ortalamaCiro();
         return `
             <div class="content-card">
                 <div class="card-header">📊 6 Aylık Analiz</div>
                 <div class="card-body">
-                    <h3 style="font-size:0.9rem;margin-bottom:10px;">📋 Metrikler</h3>
-                    <div class="table-wrapper"><table><thead><tr><th>Metrik</th><th class="amount-right">Eylül</th><th class="amount-right">Ağustos</th><th class="amount-right">Temmuz</th><th class="amount-right">Haziran</th><th class="amount-right">Mayıs</th><th class="amount-right">Nisan</th></tr></thead><tbody>${rows}</tbody></table></div>
-                    <h3 style="font-size:0.9rem;margin:16px 0 10px;">📈 Değişim</h3>
-                    <div class="table-wrapper"><table>${changeRows}</table></div>
-                    <div class="trend-card">
-                        <h3>🎯 Trend</h3>
-                        <div class="trend-item"><span>Net Kâr</span><span class="positive">${trend}</span></div>
-                        <div class="trend-item" style="border-top:2px solid #bbf7d0;padding-top:8px;"><span>🏆 En Kârlı</span><span class="best">${monthNames[bestIdx]} (${bestKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺)</span></div>
-                        <div class="trend-item"><span>⚠️ En Düşük</span><span class="worst">${monthNames[worstIdx]} (${worstKar.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺)</span></div>
-                        <div class="trend-item" style="border-top:2px solid #bbf7d0;padding-top:8px;"><span>📈 Fark</span><span class="positive">${(bestKar-worstKar).toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺</span></div>
+                    <div class="summary-stats">
+                        <div class="stat-card avg-card"><h4>📈 6 AYLIK ORTALAMA</h4><div class="stat-number">${ort.aylikOrtalama.toLocaleString('tr-TR', {minimumFractionDigits:0})} ₺/ay</div></div>
+                        <div class="stat-card avg-card"><h4>📊 GÜNLÜK ORTALAMA</h4><div class="stat-number">${ort.gunlukOrtalama.toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺/gün</div></div>
                     </div>
-                    <div class="info-note" style="margin-top:10px;font-size:0.7rem;">💡 ${bestIdx===0?'🏆 Eylül en kârlı ay.':'📌 En kârlı ay ' + monthNames[bestIdx]}</div>
+                    <h3 style="font-size:0.9rem;margin:10px 0;">📋 Metrikler</h3>
+                    <div class="table-wrapper"><table><thead><tr><th>Metrik</th><th class="amount-right">Eylül</th><th class="amount-right">Ağustos</th><th class="amount-right">Temmuz</th><th class="amount-right">Haziran</th><th class="amount-right">Mayıs</th><th class="amount-right">Nisan</th></tr></thead><tbody>${rows}</tbody></table></div>
                 </div>
             </div>
         `;
@@ -1328,6 +1374,9 @@
             document.querySelectorAll('.main-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentMonth = btn.dataset.main;
+            currentSubTab = 'overview';
+            document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.sub-btn[data-sub="overview"]').classList.add('active');
             renderCurrent();
             window.scrollTo({ top: 120, behavior: 'smooth' });
         });
