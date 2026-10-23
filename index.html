@@ -5703,7 +5703,10 @@ body.yazdirma #yazdirAlan { display: block; }
         const h = hesapla(ay);
         const ad = ayAdi(ay.id), yil = ayParca(ay.id).yil;
         const ort = ortalama(yilAylari);
-        const zarar = h.netKar < 0 ? ' zarar' : '';
+        // içinde bulunulan ayda ciro henüz gelmediyse kâr gösterilmez (yalnız gider görünüp "zarar" sanılmasın)
+        const ciroBekleniyor = !h.brut && ay.id === yerelTarih(new Date()).slice(0, 7);
+        const zarar = h.netKar < 0 && !ciroBekleniyor ? ' zarar' : '';
+        const karMetni = ciroBekleniyor ? '—' : paraK(h.netKar) + ' ₺';
         const online = h.platformlar.map(p => `<div class="stat-card"><h4>${esc(p.ad)}</h4><div class="stat-number">${para(p.net, 2)} ₺</div></div>`).join('');
         const karZararSatir = (etiket, deger, k) => `<tr><td>${etiket}</td><td class="amount-right">${para(deger, k == null ? 2 : k)}</td></tr>`;
         // ortalamalar seçili yılın ayları üzerinden (eski raporda "6 AYLIK")
@@ -5725,7 +5728,7 @@ body.yazdirma #yazdirAlan { display: block; }
                     <div class="summary-stats">
                         <div class="stat-card"><h4>Brüt Ciro</h4><div class="stat-number">${paraK(h.brut)} ₺</div></div>
                         <div class="stat-card"><h4>Net Ciro</h4><div class="stat-number">${paraK(h.net)} ₺</div></div>
-                        <div class="stat-card profit-card${zarar}"><h4>Net Kâr</h4><div class="stat-number">${paraK(h.netKar)} ₺</div></div>
+                        <div class="stat-card profit-card${zarar}"><h4>Net Kâr</h4><div class="stat-number">${karMetni}</div></div>
                     </div>
                     <div class="summary-stats">
                         <div class="stat-card avg-card"><h4>📊 GÜNLÜK ORTALAMA CİRO${gd ? ' (BUGÜNE KADAR)' : ''}</h4><div class="stat-number">${para(gd ? gd.ort : h.gunlukCiro, 2)} ₺/gün</div></div>
@@ -5741,12 +5744,12 @@ body.yazdirma #yazdirAlan { display: block; }
                     </div>
                     <div class="stat-card profit-card${zarar}" style="margin-top:6px;">
                         <h4 style="color:#ffecb3;">NET KAR</h4>
-                        <div class="stat-number" style="color:#facc15;">${paraK(h.netKar)} ₺</div>
-                        <div style="color:#e2f0e6;font-size:0.7rem;">${paraK(h.net)} − ${paraK(h.toplamGider)}</div>
+                        <div class="stat-number" style="color:#facc15;">${karMetni}</div>
+                        <div style="color:#e2f0e6;font-size:0.7rem;">${ciroBekleniyor ? 'Ciro gelince hesaplanır' : paraK(h.net) + ' − ' + paraK(h.toplamGider)}</div>
                     </div>
                     <div class="stat-card kar-orani-card" style="margin-top:6px;">
                         <h4>📊 KÂR ORANI</h4>
-                        <div class="stat-number">${h.karOrani.toFixed(2)}%</div>
+                        <div class="stat-number">${ciroBekleniyor ? '—' : h.karOrani.toFixed(2) + '%'}</div>
                         <div style="color:#d1fae5;font-size:0.65rem;">Net Kâr / Net Ciro</div>
                     </div>
                 </div>
@@ -5765,8 +5768,9 @@ body.yazdirma #yazdirAlan { display: block; }
                             ${karZararSatir('Personel', h.personelGider)}
                             ${(ay.ekGiderler || []).filter(e => sayi(e.tutar)).map(e => karZararSatir(esc(e.aciklama || 'Ek gider'), e.tutar)).join('')}
                             <tr class="total-row"><td><strong>Toplam Gider</strong></td><td class="amount-right"><strong>${para(h.toplamGider, 2)} ₺</strong></td></tr>
+                            ${ciroBekleniyor ? `<tr style="background:#f1f5f9;"><td><strong>NET KÂR</strong></td><td class="amount-right"><strong>— (ciro gelince hesaplanır)</strong></td></tr>` : `
                             <tr style="background:${h.netKar < 0 ? '#fee2e2' : '#e6f7ec'};"><td><strong>NET KÂR</strong></td><td class="amount-right ${h.netKar < 0 ? 'negative' : 'positive'}"><strong>${para(h.netKar, 2)} ₺</strong></td></tr>
-                            <tr style="background:#d1fae5;"><td><strong>KÂR ORANI</strong></td><td class="amount-right ${h.netKar < 0 ? 'negative' : 'positive'}"><strong>${h.karOrani.toFixed(2)}%</strong></td></tr>
+                            <tr style="background:#d1fae5;"><td><strong>KÂR ORANI</strong></td><td class="amount-right ${h.netKar < 0 ? 'negative' : 'positive'}"><strong>${h.karOrani.toFixed(2)}%</strong></td></tr>`}
                         </tbody>
                     </table>
                 </div>
