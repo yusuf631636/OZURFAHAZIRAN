@@ -132,7 +132,24 @@ tr.bugun-satir td { background: #fff7ed; }
     font-size: 0.75rem; font-weight: 600; color: #7c2d12;
 }
 .borclar-card .borc-item:last-child { border-bottom: none; }
-.borclar-card .borc-item .tutar { font-family: monospace; font-weight: 900; font-size: 0.85rem; color: #c2410c; }
+.borclar-card .borc-item .tutar { font-family: monospace; font-weight: 900; font-size: 0.85rem; color: #c2410c; text-align: right; }
+.borc-degisim { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; font-family: -apple-system, 'Segoe UI', sans-serif; vertical-align: middle; }
+.borc-degisim.artis { background: #fee2e2; color: #b91c1c; }
+.borc-degisim.azalis { background: #dcfce7; color: #166534; }
+.borc-degisim.yeni { background: #e0e7ff; color: #3730a3; }
+.borc-degisim.ayni { background: #f1f5f9; color: #64748b; }
+.borclar-card .borc-item.kapandi { opacity: 0.75; }
+.borclar-card .borc-item.borc-toplam { border-top: 2px solid #fb923c; border-bottom: none; margin-top: 4px; font-weight: 900; }
+.borclar-card .borc-item.borc-toplam small { display: block; font-size: 0.6rem; color: #9a3412; font-weight: 700; }
+.borclar-card .kira-aylar { font-size: 0.65rem; font-weight: 700; opacity: 0.9; margin-top: 2px; letter-spacing: 0; }
+.taksit-cipler { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-top: 10px; }
+.taksit-cip { background: rgba(255,255,255,0.15); color: #fef3c7; border: 1px solid rgba(255,255,255,0.35); border-radius: 14px; padding: 3px 9px; font-size: 0.68rem; font-weight: 800; }
+.taksit-cip.odendi { background: #15803d; border-color: #86efac; color: white; }
+.taksit-cip.gecikti { background: #fbbf24; color: #7f1d1d; border-color: #fde68a; }
+.duzeltildi { border-bottom: 1px dotted #94a3b8; cursor: help; }
+.bugun-kart { border: 3px solid #f97316; }
+.bugun-kart .card-header { background: linear-gradient(135deg, #fff7ed, #ffedd5); }
+.bugun-saat { margin-left: auto; font-size: 0.65rem; color: #64748b; font-weight: 700; }
 .borclar-card .kira-uyari {
     background: #dc2626; color: white; padding: 8px 12px; border-radius: 10px;
     font-size: 0.8rem; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px;
@@ -257,8 +274,149 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T15:12:45.909Z",
+ "guncelleme": "2026-10-23T22:54:29.570Z",
  "aylar": [
+  {
+   "id": "2026-10",
+   "calismaGunu": 27,
+   "takvim": {
+    "aktif": true,
+    "kapaliHaftaGunleri": [
+     1
+    ],
+    "kapali": [],
+    "acik": []
+   },
+   "gelir": {
+    "nakit": 0,
+    "kredi": 0
+   },
+   "online": {},
+   "giderler": [],
+   "ekGiderler": [],
+   "personel": [
+    {
+     "ad": "Yılmaz Usta (1-24:2200, 25-31:2500)",
+     "gunluk": 0,
+     "tamAy": false,
+     "gun": 0,
+     "toplam": 70300
+    },
+    {
+     "ad": "Ahmet Usta",
+     "gunluk": 2500,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 67500
+    },
+    {
+     "ad": "Hasan Garson (tazminat ilk taksit)",
+     "gunluk": 0,
+     "tamAy": false,
+     "gun": 0,
+     "toplam": 25000
+    },
+    {
+     "ad": "Elif Garson",
+     "gunluk": 750,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 20250
+    },
+    {
+     "ad": "Bulaşıkçı Abla",
+     "gunluk": 1200,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 32400
+    },
+    {
+     "ad": "Yusuf Usta",
+     "gunluk": 2000,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 54000
+    },
+    {
+     "ad": "Kasım Usta",
+     "gunluk": 2000,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 54000
+    },
+    {
+     "ad": "Kurye (haftalık)",
+     "gunluk": 15000,
+     "tamAy": false,
+     "gun": 4,
+     "toplam": 60000
+    },
+    {
+     "ad": "Yüksek Garson",
+     "gunluk": 2500,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 67500
+    },
+    {
+     "ad": "eleman",
+     "gunluk": 200,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 5400
+    }
+   ],
+   "kira": {
+    "durum": "odenmedi",
+    "metin": "🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺"
+   },
+   "borclar": [
+    {
+     "ikon": "🧑‍🍳",
+     "ad": "Yusuf Usta borç",
+     "tutar": 34350
+    },
+    {
+     "ikon": "🥩",
+     "ad": "Orhan (et yağı)",
+     "tutar": 34000
+    },
+    {
+     "ikon": "🐄",
+     "ad": "Deniz Kasap",
+     "metin": "21.000 TL"
+    },
+    {
+     "ikon": "🔪",
+     "ad": "Kasap Şifa",
+     "tutar": 35000
+    },
+    {
+     "ikon": "🐟",
+     "ad": "Et Balık Nadir Kasap",
+     "tutar": 18000
+    },
+    {
+     "ikon": "📦",
+     "ad": "Ambalajcı",
+     "tutar": 18973
+    }
+   ],
+   "alarmlar": [
+    {
+     "ikon": "⚡",
+     "baslik": "ELEKTRİK CEZA",
+     "toplam": 370146.16,
+     "taksitSayisi": 6,
+     "taksit": 62000,
+     "ilkOdeme": "03.10.2026",
+     "periyod": "Her ayın 2'i",
+     "not": "odendi"
+    }
+   ],
+   "notlar": [],
+   "otoSamba": true
+  },
   {
    "id": "2026-09",
    "calismaGunu": 26,
@@ -4944,8 +5102,9 @@ body.yazdirma #yazdirAlan { display: block; }
    "notlar": []
   },
   {
-   "id": "2026-10",
-   "calismaGunu": 27,
+   "id": "2025-11",
+   "calismaGunu": 26,
+   "otoSamba": true,
    "takvim": {
     "aktif": true,
     "kapaliHaftaGunleri": [
@@ -4961,128 +5120,14 @@ body.yazdirma #yazdirAlan { display: block; }
    "online": {},
    "giderler": [],
    "ekGiderler": [],
-   "personel": [
-    {
-     "ad": "Yılmaz Usta (1-24:2200, 25-31:2500)",
-     "gunluk": 0,
-     "tamAy": false,
-     "gun": 0,
-     "toplam": 70300
-    },
-    {
-     "ad": "Ahmet Usta",
-     "gunluk": 2500,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 67500
-    },
-    {
-     "ad": "Hasan Garson (tazminat ilk taksit)",
-     "gunluk": 0,
-     "tamAy": false,
-     "gun": 0,
-     "toplam": 25000
-    },
-    {
-     "ad": "Elif Garson",
-     "gunluk": 750,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 20250
-    },
-    {
-     "ad": "Bulaşıkçı Abla",
-     "gunluk": 1200,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 32400
-    },
-    {
-     "ad": "Yusuf Usta",
-     "gunluk": 2000,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 54000
-    },
-    {
-     "ad": "Kasım Usta",
-     "gunluk": 2000,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 54000
-    },
-    {
-     "ad": "Kurye (haftalık)",
-     "gunluk": 15000,
-     "tamAy": false,
-     "gun": 4,
-     "toplam": 60000
-    },
-    {
-     "ad": "Yüksek Garson",
-     "gunluk": 2500,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 67500
-    },
-    {
-     "ad": "eleman",
-     "gunluk": 200,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 5400
-    }
-   ],
+   "personel": [],
    "kira": {
-    "durum": "odenmedi",
-    "metin": "🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺"
+    "durum": "",
+    "metin": ""
    },
-   "borclar": [
-    {
-     "ikon": "🧑‍🍳",
-     "ad": "Yusuf Usta borç",
-     "tutar": 34350
-    },
-    {
-     "ikon": "🥩",
-     "ad": "Orhan (et yağı)",
-     "tutar": 34000
-    },
-    {
-     "ikon": "🐄",
-     "ad": "Deniz Kasap",
-     "metin": "21.000 TL"
-    },
-    {
-     "ikon": "🔪",
-     "ad": "Kasap Şifa",
-     "tutar": 35000
-    },
-    {
-     "ikon": "🐟",
-     "ad": "Et Balık Nadir Kasap",
-     "tutar": 18000
-    },
-    {
-     "ikon": "📦",
-     "ad": "Ambalajcı",
-     "tutar": 18973
-    }
-   ],
-   "alarmlar": [
-    {
-     "ikon": "⚡",
-     "baslik": "ELEKTRİK CEZA",
-     "toplam": 370146.16,
-     "taksitSayisi": 6,
-     "taksit": 62000,
-     "ilkOdeme": "03.10.2026",
-     "periyod": "Her ayın 2'i",
-     "not": "odendi"
-    }
-   ],
-   "notlar": [],
-   "otoSamba": true
+   "borclar": [],
+   "alarmlar": [],
+   "notlar": []
   }
  ]
 }</script>
@@ -5115,6 +5160,24 @@ body.yazdirma #yazdirAlan { display: block; }
         ['diger', 'Diğer', '💰', []]
     ];
     const SEKMELER = ['ozet', 'gunluk', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
+    // Yazım düzeltme sözlüğü (küçük harf; tek kelime ya da iki kelime). Veri değişmez, raporda düzeltilmiş gösterilir.
+    // Kullanıcı eklemeleri: veri.duzeltmeler {"yanlış": "doğru"} (Düzenle → Notlar). veri.yazimDuzelt === false ile kapanır.
+    const DUZELTMELER = {
+        'sogan': 'soğan', 'sağan': 'soğan', 'sogancı': 'soğancı', 'sağancı': 'soğancı', 'sagancı': 'soğancı',
+        'yag': 'yağ', 'yagı': 'yağı', 'yaği': 'yağı', 'tera': 'tere', 'kunefe': 'künefe', 'kunefeci': 'künefeci',
+        'narket': 'market', 'amblaj': 'ambalaj', 'ambalaş': 'ambalaj', 'ambalejci': 'ambalajcı', 'ambalejcı': 'ambalajcı', 'ambalajci': 'ambalajcı',
+        'kolaci': 'kolacı', 'kkolacı': 'kolacı', 'kaşarci': 'kaşarcı', 'kaşarıcı': 'kaşarcı', 'kasarci': 'kaşarcı',
+        'baharatci': 'baharatçı', 'baharatçi': 'baharatçı', 'baharatcı': 'baharatçı',
+        'kömürcu': 'kömürcü', 'kömurcu': 'kömürcü', 'hkömurcu': 'kömürcü', 'komurcu': 'kömürcü', 'tavukcu': 'tavukçu',
+        'ayranci': 'ayrancı', 'pazarci': 'pazarcı', 'pazarçı': 'pazarcı', 'limoncu': 'limoncu',
+        'dağalgaz': 'doğalgaz', 'dogalgaz': 'doğalgaz', 'doğal gaz': 'doğalgaz', 'elektirik': 'elektrik',
+        'yılmz': 'yılmaz', 'yımaz': 'yılmaz', 'detarjan': 'deterjan', 'dertajan': 'deterjan', 'detarja': 'deterjan',
+        'yogurt': 'yoğurt', 'yugort': 'yoğurt', 'garsan': 'garson', 'kred': 'kredi', 'karti': 'kartı', 'oglu': 'oğlu', 'ödendı': 'ödendi',
+        'pepsieft': 'pepsi eft', 'alparlan': 'alparslan', 'alparsalan': 'alparslan', 'hayrettın': 'hayrettin', 'bügün': 'bugün',
+        'tornavıta': 'tornavida', 'zınpara': 'zımpara', 'çig': 'çiğ', 'legen': 'leğen', 'marol': 'marul', 'sandelye': 'sandalye',
+        'bardagı': 'bardağı', 'cay': 'çay', 'makıne': 'makine', 'tamır': 'tamir', 'benzın': 'benzin', 'kuyrık': 'kuyruk', 'koyruk': 'kuyruk',
+        'kurdan': 'kürdan', 'poset': 'poşet', 'kömürci': 'kömürcü'
+    };
 
     const D = { veri: { aylar: [] }, kok: null, ay: null, sekme: 'ozet', secenek: {} };
 
@@ -5198,6 +5261,37 @@ body.yazdirma #yazdirAlan { display: block; }
         if (/^test\b/.test(d) && Math.abs(sayi(tutar)) <= 10) return 'TEST KAYDI';
         return '';
     }
+    // yazım düzeltme: kelimenin büyük/küçük harf biçimi korunur (SOGAN -> SOĞAN, Sogan -> Soğan)
+    function sozluk() { return Object.assign({}, DUZELTMELER, (D.veri && D.veri.duzeltmeler) || {}); }
+    function harfBicimi(dogru, ornek) {
+        if (ornek === ornek.toLocaleUpperCase('tr-TR') && ornek !== ornek.toLocaleLowerCase('tr-TR')) return dogru.toLocaleUpperCase('tr-TR');
+        if (ornek[0] && ornek[0] === ornek[0].toLocaleUpperCase('tr-TR') && ornek[0] !== ornek[0].toLocaleLowerCase('tr-TR')) return dogru[0].toLocaleUpperCase('tr-TR') + dogru.slice(1);
+        return dogru;
+    }
+    function duzelt(metin) {
+        if (!metin || (D.veri && D.veri.yazimDuzelt === false)) return metin || '';
+        const s = sozluk();
+        const p = String(metin).split(/(\s+)/);   // kelimeler ve aradaki boşluklar
+        for (let i = 0; i < p.length; i += 2) {
+            const k = trKucuk(p[i]);
+            if (!k) continue;
+            const ikili = i + 2 < p.length ? k + ' ' + trKucuk(p[i + 2]) : null;
+            if (ikili && s[ikili] != null) { p[i] = harfBicimi(s[ikili], p[i]); p[i + 1] = ''; p[i + 2] = ''; i += 2; continue; }
+            if (s[k] != null) p[i] = harfBicimi(s[k], p[i]);
+        }
+        return p.join('').replace(/\s{2,}/g, ' ').trim();
+    }
+    // "kime ödendi": ödeme sözcükleri (kredi, kart, eft, nakit, elden…) ve sayılar atılır, kalan ilk 2 kelime (2. kelime
+    // kısaysa 3) ödeme yeridir; kelime sırası önemsiz (pazar yılmaz = yılmaz pazar)
+    const ODEME_SOZCUKLERI = new Set(['kredi', 'kartı', 'kart', 'kartla', 'kartından', 'karttından', 'eft', 'ile', 'nakit', 'elden', 'verdi', 'ödendi', 'ödenen',
+        'borcu', 'borç', 'borcumuz', 'için', 'tl', 'bin', 'ilk', 'taksit', 'bitti', 'kasadan', 'cebinden', 'yusuf', 'usta', 've', 'kart.', 'ödeme', 'fatura', 'faturası']);
+    function odemeYeri(aciklama) {
+        const kelimeler = trKucuk(duzelt(aciklama)).split(/[^0-9a-zçğıöşüâîû]+/).filter(w => w && !/^\d/.test(w) && !ODEME_SOZCUKLERI.has(w));
+        if (!kelimeler.length) return null;
+        const al = kelimeler.slice(0, kelimeler[1] && kelimeler[1].length <= 2 && kelimeler[2] ? 3 : 2);
+        return { anahtar: al.slice().sort().join(' '), ad: al.map(w => w[0].toLocaleUpperCase('tr-TR') + w.slice(1)).join(' ') };
+    }
+
     function kategorize(aciklama) {
         const kelimeler = trKucuk(aciklama).split(/[^0-9a-zçğıöşüâîû]+/).filter(Boolean);
         for (const [anahtar, , , kurallar] of KATEGORILER) {
@@ -5321,33 +5415,125 @@ body.yazdirma #yazdirAlan { display: block; }
     function sekmeler(ay) { return SEKMELER.filter(s => s !== 'gunluk' || (ay.gunluk || []).length); }
 
     function alarmlarHtml(ay) {
-        return (ay.alarmlar || []).filter(a => a && (a.baslik || a.toplam)).map(a => `
+        return (ay.alarmlar || []).filter(a => a && (a.baslik || a.toplam)).map(a => { const p = takipPlani(ay, a); return `
             <div class="elektrik-alarm">
                 <h2>${esc(a.ikon || '⚡')} ${esc(a.baslik)} — BORÇ</h2>
                 <div class="row"><span>${/ceza/i.test(a.baslik || '') ? 'TOPLAM CEZA' : 'TOPLAM'}</span><span class="val">${para(a.toplam, 2)} ₺</span></div>
                 ${sayi(a.taksitSayisi) ? `<div class="row"><span>TAKSİT</span><span class="val">${sayi(a.taksitSayisi)} × ${para(a.taksit)} ₺</span></div>` : ''}
                 ${a.ilkOdeme ? `<div class="row"><span>İLK TAKSİT</span><span class="val">${esc(a.ilkOdeme)}</span></div>` : ''}
+                ${p ? `<div class="row"><span>ÖDENEN</span><span class="val">${p.odenen}/${p.n} taksit · ${para(p.odenenTutar, 2)} ₺</span></div>
+                <div class="row"><span>KALAN</span><span class="val">${p.kalanAdet} taksit · ${para(p.kalanTutar, 2)} ₺</span></div>
+                ${p.siradaki ? `<div class="row"><span>SIRADAKİ</span><span class="val">${p.siradaki.no}. taksit${p.siradaki.tarih ? ' · ' + tarihYaz(p.siradaki.tarih) : ''}${p.siradaki.gecikti ? ' ⚠️ GECİKTİ' : ''}</span></div>` : ''}
+                <div class="taksit-cipler">${p.liste.map(t => `<span class="taksit-cip${t.odendi ? ' odendi' : (t.gecikti ? ' gecikti' : '')}">${t.no}. ${t.odendi ? '✅' : (t.gecikti ? '⚠️' : '⏳')}${t.tarih ? ' ' + tarihYaz(t.tarih).slice(0, 5) : ''}</span>`).join('')}</div>` : ''}
                 ${a.periyod || a.ilkOdeme ? `<div style="text-align:center;"><span class="date-badge">📅 ÖDEME: ${esc(a.periyod || '-')}${a.ilkOdeme ? ' · İLK: ' + esc(a.ilkOdeme) : ''}</span></div>` : ''}
                 ${a.not ? `<div style="text-align:center;margin-top:8px;font-size:0.7rem;color:#fef3c7;">⚠️ ${esc(a.not)}</div>` : ''}
-            </div>`).join('');
+            </div>`; }).join('');
     }
-    function borclarHtml(ay) {
-        let items = '';
+    // ---- kira: her ay ödendi/ödenmedi; yazı (elle yazılmadıysa) bu aya kadar ödenmeyen aylardan hesaplanır
+    function kiraTutari(ay) { return sayi((ay.kira || {}).tutar) || sayi(D.veri.kiraTutari) || 45000; }
+    function kiraDurumu(ay) {
+        const onceki = aylarSirali(D.veri).filter(a => a.id <= ay.id && a.kira && a.kira.durum).reverse();   // eskiden yeniye
+        const odenmeyen = onceki.filter(a => a.kira.durum === 'odenmedi');
+        let ardisik = 0;
+        for (let i = onceki.length - 1; i >= 0 && onceki[i].kira.durum === 'odenmedi'; i--) ardisik++;
+        return { odenmeyen, ardisik, toplam: odenmeyen.reduce((s, a) => s + kiraTutari(a), 0) };
+    }
+    function kiraHtml(ay) {
         const k = ay.kira || {};
-        if (k.durum === 'odenmedi') items += `<div class="kira-uyari">${esc(k.metin || '🏠 KİRA ÖDENMEDİ')}</div>`;
-        else if (k.durum === 'odendi') items += `<div class="borc-item" style="color:#15803d;"><span>🏠 Kira</span><span class="tutar" style="color:#15803d;">✅ ÖDENDİ</span></div>`;
+        if (k.durum !== 'odenmedi' && k.durum !== 'odendi') return '';
+        const d = kiraDurumu(ay);
+        const adlar = d.odenmeyen.map(a => ayAdi(a.id)).join(', ');
+        if (k.durum === 'odenmedi') {
+            if (k.metin) return `<div class="kira-uyari">${esc(k.metin)}</div>`;   // eski aylardaki elle yazılmış metin aynen
+            const n = d.odenmeyen.length, tutar = kiraTutari(ay);
+            const baslik = n === d.ardisik ? `KİRA ${n} AYDIR ÖDENMEDİ` : `${n} AYIN KİRASI ÖDENMEDİ`;
+            return `<div class="kira-uyari">🏠 ${baslik} — ${para(tutar)} ₺ x ${n} = ${para(d.toplam)} ₺${n > 1 ? `<div class="kira-aylar">${esc(adlar)}</div>` : ''}</div>`;
+        }
+        let html = `<div class="borc-item" style="color:#15803d;"><span>🏠 Kira</span><span class="tutar" style="color:#15803d;">✅ ÖDENDİ</span></div>`;
+        if (d.odenmeyen.length) html += `<div class="kira-uyari">🏠 Önceki ${d.odenmeyen.length} ayın kirası ödenmedi — ${para(d.toplam)} ₺<div class="kira-aylar">${esc(adlar)}</div></div>`;
+        return html;
+    }
+    // ---- taksitli borç (elektrik cezası vb.): taksit tarihleri, ödenen / kalan / sıradaki / gecikti
+    function tarihOku(s) { const m = /(\d{1,2})\.(\d{1,2})\.(\d{4})/.exec(s || ''); return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null; }
+    function tarihYaz(d) { return String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + d.getFullYear(); }
+    function taksitPlani(a) {
+        const n = Math.round(sayi(a.taksitSayisi));
+        if (!n) return null;
+        const ilk = tarihOku(a.ilkOdeme), gunM = /(\d{1,2})/.exec(a.periyod || ''), gun = gunM ? +gunM[1] : (ilk ? ilk.getDate() : 0);
+        const tutar = sayi(a.taksit), toplam = sayi(a.toplam) || tutar * n;
+        const odenen = Math.min(n, Math.max(0, Math.round(sayi(a.odenenTaksit))));
+        const bugun = new Date(); bugun.setHours(0, 0, 0, 0);
+        const liste = [];
+        let tarih = ilk;
+        for (let i = 1; i <= n; i++) {
+            if (i > 1 && tarih) {   // sonraki taksit: önceki tarihten sonraki ilk "ödeme günü" (ör. her ayın 25'i)
+                const t = new Date(tarih.getFullYear(), tarih.getMonth(), gun);
+                tarih = t > tarih ? t : new Date(tarih.getFullYear(), tarih.getMonth() + 1, gun);
+            }
+            const miktar = i < n ? tutar : Math.max(0, toplam - tutar * (n - 1)) || tutar;
+            liste.push({ no: i, tarih, miktar, odendi: i <= odenen, gecikti: i > odenen && tarih && tarih < bugun });
+        }
+        const kalanlar = liste.filter(t => !t.odendi);
+        return {
+            liste, n, odenen, kalanAdet: kalanlar.length,
+            odenenTutar: liste.filter(t => t.odendi).reduce((s, t) => s + t.miktar, 0),
+            kalanTutar: kalanlar.reduce((s, t) => s + t.miktar, 0),
+            siradaki: kalanlar[0] || null, geciken: kalanlar.filter(t => t.gecikti).length
+        };
+    }
+    // taksit takibi yalnızca en güncel ayda (eski ayların kopyası güncellenmez; orada eski haliyle kalır)
+    function takipPlani(ay, a) { const son = aylarSirali(D.veri)[0]; return son && son.id === ay.id ? taksitPlani(a) : null; }
+    function taksitOzetMetni(p) {
+        if (!p) return '';
+        if (!p.kalanAdet) return `✅ ${p.n}/${p.n} taksit ödendi, borç bitti`;
+        const s = p.siradaki;
+        return `${p.odenen}/${p.n} taksit ödendi · kalan ${p.kalanAdet} taksit, ${para(p.kalanTutar, 2)} ₺ · sıradaki ${s.no}. taksit${s.tarih ? ' ' + tarihYaz(s.tarih) : ''}${p.geciken ? ` · ⚠️ ${p.geciken} taksit gecikti` : ''}`;
+    }
+
+    function borclarHtml(ay) {
+        let items = kiraHtml(ay);
         (ay.alarmlar || []).filter(a => a && (a.baslik || a.toplam)).forEach(a => {
+            const p = takipPlani(ay, a);
             items += `<div class="elektrik-uyari">
                 <div class="title">${esc(a.ikon || '⚡')} ${esc(a.baslik)} (BORÇ)</div>
-                <div class="amount">${para(a.toplam, 2)} ₺</div>
-                <div class="detail">${sayi(a.taksitSayisi) ? `${sayi(a.taksitSayisi)} taksit × ${para(a.taksit)} ₺ · ` : ''}${esc(a.periyod || '')}${a.ilkOdeme ? `<br>İlk taksit: ${esc(a.ilkOdeme)}` : ''}</div>
+                <div class="amount">${para(p ? p.kalanTutar : a.toplam, 2)} ₺${p && p.odenen ? ' <span style="font-size:0.7rem">kalan</span>' : ''}</div>
+                <div class="detail">${sayi(a.taksitSayisi) ? `${sayi(a.taksitSayisi)} taksit × ${para(a.taksit)} ₺ · ` : ''}${esc(a.periyod || '')}${a.ilkOdeme ? `<br>İlk taksit: ${esc(a.ilkOdeme)}` : ''}${p ? `<br>${esc(taksitOzetMetni(p))}` : ''}</div>
             </div>`;
         });
+        // geçen aya göre değişim (aynı adlı borç): ▲ arttı, ▼ azaldı, yeni, kapandı + toplam
+        const karsilastir = D.veri.borcDegisim !== false;
+        const onceki = karsilastir ? aylarSirali(D.veri).find(a => a.id < ay.id) : null;
+        const anahtar = b => trKucuk(b.ad).trim();
+        const borcTutari = b => sayi(b.tutar) || (b.metin && /^[\d.,\s]+(tl|₺)?$/i.test(b.metin.trim()) ? sayi(b.metin.replace(/[^\d,]/g, '').replace(',', '.')) : 0);
+        const oncekiler = {};
+        if (onceki) (onceki.borclar || []).forEach(b => { if (b.ad) oncekiler[anahtar(b)] = b; });
+        const fark = (simdi, eski) => {
+            const f = simdi - eski;
+            if (!f) return '<span class="borc-degisim ayni">= aynı</span>';
+            return f > 0 ? `<span class="borc-degisim artis" title="geçen ay ${para(eski)} TL">▲ ${para(f)}</span>` : `<span class="borc-degisim azalis" title="geçen ay ${para(eski)} TL">▼ ${para(-f)}</span>`;
+        };
+        let toplam = 0, oncekiToplam = 0, sayilan = 0;
         (ay.borclar || []).forEach(b => {
             const deger = b.metin ? esc(b.metin) : (sayi(b.tutar) ? para(b.tutar) + ' TL' : '');
             if (!deger) return;
-            items += `<div class="borc-item"><span>${esc(b.ikon || '💸')} ${esc(b.ad)}</span><span class="tutar">${deger}</span></div>`;
+            const simdi = borcTutari(b), eski = oncekiler[anahtar(b)];
+            let degisim = '';
+            if (onceki) {
+                if (!eski) degisim = '<span class="borc-degisim yeni">yeni</span>';
+                else if (simdi && borcTutari(eski)) degisim = fark(simdi, borcTutari(eski));
+                delete oncekiler[anahtar(b)];
+            }
+            if (simdi) { toplam += simdi; sayilan++; }
+            items += `<div class="borc-item"><span>${esc(b.ikon || '💸')} ${esc(b.ad)}</span><span class="tutar">${deger}${degisim}</span></div>`;
         });
+        if (onceki) {
+            Object.keys(oncekiler).forEach(k => {
+                const b = oncekiler[k];
+                if (borcTutari(b)) items += `<div class="borc-item kapandi"><span>${esc(b.ikon || '💸')} ${esc(b.ad)}</span><span class="tutar">✅ kapandı <span class="borc-degisim azalis">geçen ay ${para(borcTutari(b))} TL</span></span></div>`;
+            });
+            (onceki.borclar || []).forEach(b => { oncekiToplam += borcTutari(b); });
+            if (sayilan || oncekiToplam) items += `<div class="borc-item borc-toplam"><span>Σ Toplam borç</span><span class="tutar">${para(toplam)} TL${fark(toplam, oncekiToplam)}<small> geçen ay ${para(oncekiToplam)} TL</small></span></div>`;
+        }
         return items ? `<div class="borclar-card"><h2>💸 BORÇLAR</h2>${items}</div>` : '';
     }
     function notlarHtml(ay) {
@@ -5360,7 +5546,9 @@ body.yazdirma #yazdirAlan { display: block; }
         const rozet = g.haric
             ? `<span class="method-haric">⚠️ ${esc(g.not || 'GİDERE DAHİL DEĞİL')}</span>`
             : (g.tur === 'kredi' ? `<span class="method-kredi">${krediEtiket || 'Kredi'}</span>` : '<span class="method-nakit">Nakit</span>');
-        return `<tr${g.haric ? ' class="haric-row"' : ''}><td style="white-space:nowrap;">${tarihKisa(g.tarih)}</td><td>${g.haric ? '<strong>' + esc(g.aciklama) + '</strong>' : esc(g.aciklama)}</td><td>${rozet}</td><td class="amount-right">${g.haric ? para(g.tutar, 2) : tutarYaz(g.tutar)} ₺</td></tr>`;
+        const metin = duzelt(g.aciklama), degisti = metin !== String(g.aciklama || '').trim();
+        const aciklama = `<span${degisti ? ` class="duzeltildi" title="Yazılan: ${esc(g.aciklama)}"` : ''}>${esc(metin)}</span>`;
+        return `<tr${g.haric ? ' class="haric-row"' : ''}><td style="white-space:nowrap;">${tarihKisa(g.tarih)}</td><td>${g.haric ? '<strong>' + aciklama + '</strong>' : aciklama}</td><td>${rozet}</td><td class="amount-right">${g.haric ? para(g.tutar, 2) : tutarYaz(g.tutar)} ₺</td></tr>`;
     }
     // hariç tutulan kaydın uyarı kartı (aynı tutarlı ceza/borç kartı) varsa taksit bilgisi notta görünür
     function haricAlarmi(ay, g) {
@@ -5390,7 +5578,7 @@ body.yazdirma #yazdirAlan { display: block; }
         const grup = {};
         KATEGORILER.forEach(([k]) => { grup[k] = { items: [], total: 0 }; });
         const sayilanlar = (ay.giderler || []).filter(g => !g.haric);
-        tarihSirali(sayilanlar).forEach(g => { const k = kategorize(g.aciklama); grup[k].items.push(g); grup[k].total += sayi(g.tutar); });
+        tarihSirali(sayilanlar).forEach(g => { const k = kategorize(duzelt(g.aciklama)); grup[k].items.push(g); grup[k].total += sayi(g.tutar); });
         let akordeon = '';
         KATEGORILER.forEach(([k, isim, ikon]) => {
             const g = grup[k];
@@ -5410,6 +5598,33 @@ body.yazdirma #yazdirAlan { display: block; }
         return `<div class="content-card"><div class="card-header">🗂️ ${ad} Kategori Detay${D.yazdirModu ? '' : ' (Basınca Açılır)'}</div><div class="card-body"><div class="kategori-list">${akordeon}</div><div class="info-note" style="margin-top:12px;">📌 Toplam Nakit: ${tutarYaz(nakit)} ₺ · Toplam Kredi: ${tutarYaz(kredi)} ₺ · Genel Toplam: ${tutarYaz(nakit + kredi)} ₺</div></div></div>`;
     }
 
+    // 👤 Kime Ne Ödendi: aynı yere yapılan ödemeler bir arada (en çok ödenen üstte), kategori detayı gibi açılır
+    function odemeYerleriHtml(ay) {
+        const gruplar = {};
+        tarihSirali((ay.giderler || []).filter(g => !g.haric)).forEach(g => {
+            const y = odemeYeri(g.aciklama);
+            if (!y) return;
+            const gr = gruplar[y.anahtar] = gruplar[y.anahtar] || { adlar: {}, items: [], nakit: 0, kredi: 0 };
+            gr.adlar[y.ad] = (gr.adlar[y.ad] || 0) + 1;
+            gr.items.push(g);
+            gr[g.tur === 'kredi' ? 'kredi' : 'nakit'] += sayi(g.tutar);
+        });
+        const liste = Object.keys(gruplar).map(k => {
+            const g = gruplar[k];
+            return Object.assign(g, { ad: Object.keys(g.adlar).sort((a, b) => g.adlar[b] - g.adlar[a])[0], toplam: g.nakit + g.kredi });
+        }).sort((a, b) => b.toplam - a.toplam);
+        if (!liste.length) return '';
+        const akordeon = liste.map(g => `
+            <div class="kategori-item">
+                <div class="kategori-header">
+                    <div class="kategori-name">👤 ${esc(g.ad)} <span style="color:#64748b;font-size:0.7rem;font-weight:600;">(${g.items.length} ödeme${g.nakit && g.kredi ? ` · nakit ${tutarYaz(g.nakit)} · kredi ${tutarYaz(g.kredi)}` : (g.kredi ? ' · kredi/EFT' : ' · nakit')})</span></div>
+                    <div style="display:flex;align-items:center;"><span class="kategori-tutar">${tutarYaz(g.toplam)} ₺</span><span class="kategori-toggle">+</span></div>
+                </div>
+                <div class="kategori-body"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${g.items.map(x => giderSatiri(x)).join('')}</tbody></table></div>
+            </div>`).join('');
+        return `<div class="content-card"><div class="card-header">👤 ${ayAdi(ay.id)} Kime Ne Ödendi${D.yazdirModu ? '' : ' (Basınca Açılır)'}</div><div class="card-body"><div class="kategori-list">${akordeon}</div><div class="info-note" style="margin-top:12px;">📌 Aynı yere yapılan ödemeler açıklamadaki ada göre bir araya toplanır (kredi, kart, eft, nakit gibi sözcükler ve yazım hataları dikkate alınmaz). ${liste.length} farklı ödeme yeri.</div></div></div>`;
+    }
+
     // ------------------------------------------------------------ sekmeler
     function ozetHtml(ay, yilAylari) {
         const h = hesapla(ay);
@@ -5422,6 +5637,7 @@ body.yazdirma #yazdirAlan { display: block; }
         const ortEtiket = ort.adet + ' AYLIK' + (yilListesi(aylarSirali(D.veri)).length > 1 ? ' ' + yil : '');
         const tk = takvimOzet(ay);
         return `
+            ${bugunHtml(ay)}
             ${alarmlarHtml(ay)}
             ${borclarHtml(ay)}
             ${notlarHtml(ay)}
@@ -5479,7 +5695,40 @@ body.yazdirma #yazdirAlan { display: block; }
                     </table>
                 </div>
             </div>
-            ${kategoriHtml(ay)}`;
+            ${kategoriHtml(ay)}
+            ${odemeYerleriHtml(ay)}`;
+    }
+    // 📍 Bugün: içinde bulunulan ayda özetin en üstünde bugünkü ciro + bugünkü giderler (ay bitince görünmez)
+    function bugunHtml(ay) {
+        const simdi = new Date(), bugun = yerelTarih(simdi);
+        if (D.yazdirModu || ay.id !== bugun.slice(0, 7)) return '';
+        const d = (ay.gunluk || []).length ? gunlukDurum(ay) : null;
+        const g = d ? d.gunler.find(x => x.tarih === bugun) : null;
+        const dunT = yerelTarih(new Date(simdi.getFullYear(), simdi.getMonth(), simdi.getDate() - 1));
+        const dun = d ? d.gunler.find(x => x.tarih === dunT) : null;
+        const giderler = tarihSirali((ay.giderler || []).filter(x => String(x.tarih || '').slice(0, 10) === bugun));
+        const sayilan = giderler.filter(x => !x.haric);
+        const nakitG = sayilan.filter(x => x.tur !== 'kredi').reduce((s, x) => s + sayi(x.tutar), 0);
+        const krediG = sayilan.filter(x => x.tur === 'kredi').reduce((s, x) => s + sayi(x.tutar), 0);
+        const kapali = ay.takvim && ay.takvim.aktif ? !(takvimGunleri(ay.id, ay.takvim)[simdi.getDate() - 1] || {}).acik : false;
+        const baslik = simdi.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
+        const saat = ay.sonSenkron ? new Date(ay.sonSenkron).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
+        const ciroVar = g && g.brut;
+        return `<div class="content-card bugun-kart">
+            <div class="card-header">📍 Bugün — ${esc(baslik)}${saat ? `<span class="bugun-saat">🔄 SambaPOS ${saat}</span>` : ''}</div>
+            <div class="card-body">
+                <div class="summary-stats">
+                    <div class="stat-card"><h4>Bugünkü Ciro (Brüt)</h4><div class="stat-number">${ciroVar ? paraK(g.brut) + ' ₺' : '—'}</div></div>
+                    <div class="stat-card profit-card"><h4>Bugünkü Net Ciro</h4><div class="stat-number">${ciroVar ? paraK(g.net) + ' ₺' : '—'}</div></div>
+                    <div class="stat-card"><h4>Adisyon</h4><div class="stat-number">${g ? g.adisyon : 0}</div></div>
+                    <div class="stat-card"><h4>Bugünkü Gider</h4><div class="stat-number">${paraK(nakitG + krediG)} ₺</div></div>
+                </div>
+                <div class="info-note" style="margin-top:0">${ciroVar
+                    ? `💵 Nakit ${paraK(g.nakit)} ₺ · 💳 Kredi ${paraK(g.kredi)} ₺ · 📦 Online ${paraK(g.online)} ₺`
+                    : (kapali ? '🚫 Bugün kapalı gün.' : '⏳ Bugün henüz satış görünmüyor (SambaPOS her güncellemede yenilenir).')}${dun && dun.brut ? ` · Dün: <b>${paraK(dun.net)} ₺</b> net` : ''}${giderler.length ? ` · Gider: nakit ${paraK(nakitG)} ₺, kredi/EFT ${paraK(krediG)} ₺` : ''}</div>
+                ${giderler.length ? `<div class="table-wrapper" style="margin-top:8px"><table><thead><tr><th>Saat</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${giderler.map(x => giderSatiri(x)).join('')}<tr class="total-row"><td colspan="3"><strong>Bugünkü toplam gider</strong></td><td class="amount-right"><strong>${tutarYaz(nakitG + krediG)} ₺</strong></td></tr></tbody></table></div>` : ''}
+            </div>
+        </div>`;
     }
     // içinde bulunulan ay: bugüne kadarki ciro ve ay sonu tahmini (özet sayfasının üstünde)
     function buAyNotu(ay) {
@@ -5601,7 +5850,7 @@ body.yazdirma #yazdirAlan { display: block; }
             satirlar.push(odenmeyen.length ? `📌 Kira: ${odenmeyen.join(', ')} ödenmedi – Diğer aylar ödendi` : '📌 Kira: Tüm aylar ödendi');
         }
         const alarmAy = yilAylari.find(a => (a.alarmlar || []).length);
-        if (alarmAy) alarmAy.alarmlar.forEach(a => satirlar.push(`${esc(a.ikon || '⚡')} ${esc(cumleYaz(a.baslik))}: Toplam ${para(a.toplam, 2)} ₺${sayi(a.taksitSayisi) ? ` · ${sayi(a.taksitSayisi)} taksit × ${para(a.taksit)} ₺` : ''}${a.ilkOdeme ? ` · İlk taksit ${esc(a.ilkOdeme)}` : ''} (Gidere dahil değil)`));
+        if (alarmAy) alarmAy.alarmlar.forEach(a => { const p = takipPlani(alarmAy, a); satirlar.push(`${esc(a.ikon || '⚡')} ${esc(cumleYaz(a.baslik))}: Toplam ${para(a.toplam, 2)} ₺${sayi(a.taksitSayisi) ? ` · ${sayi(a.taksitSayisi)} taksit × ${para(a.taksit)} ₺` : ''}${a.ilkOdeme ? ` · İlk taksit ${esc(a.ilkOdeme)}` : ''}${p && p.odenen ? ` · ${p.odenen}/${p.n} ödendi, kalan ${para(p.kalanTutar, 2)} ₺` : ''} (Gidere dahil değil)`); });
         (D.veri.genelNotlar || []).filter(n => String(n).trim()).forEach(n => satirlar.push(esc(n)));
         if (D.veri.guncelleme) {
             const t = new Date(D.veri.guncelleme);
@@ -5748,6 +5997,7 @@ body.yazdirma #yazdirAlan { display: block; }
         baslat, guncelle, ciz, yazdirHtml, sayfaBaslat,
         secili: () => ({ ay: D.ay, sekme: D.sekme }),
         hesapla, odemeTuru, otomatikHaric, kategorize, calismaGunuHesapla, takvimGunleri, takvimOzet, calismaGunuAy, personelEtkin, gunlukDurum,
+        duzelt, odemeYeri, taksitPlani, DUZELTMELER,
         ayAdi, ayParca, aylarSirali, para, sayi, tutarYaz, esc, trKucuk, tarihKisa
     };
     kok.OzRapor = OzRapor;
