@@ -274,7 +274,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T22:54:29.570Z",
+ "guncelleme": "2026-10-23T22:55:13.880Z",
  "aylar": [
   {
    "id": "2026-10",
@@ -5100,34 +5100,6 @@ body.yazdirma #yazdirAlan { display: block; }
    ],
    "alarmlar": [],
    "notlar": []
-  },
-  {
-   "id": "2025-11",
-   "calismaGunu": 26,
-   "otoSamba": true,
-   "takvim": {
-    "aktif": true,
-    "kapaliHaftaGunleri": [
-     1
-    ],
-    "kapali": [],
-    "acik": []
-   },
-   "gelir": {
-    "nakit": 0,
-    "kredi": 0
-   },
-   "online": {},
-   "giderler": [],
-   "ekGiderler": [],
-   "personel": [],
-   "kira": {
-    "durum": "",
-    "metin": ""
-   },
-   "borclar": [],
-   "alarmlar": [],
-   "notlar": []
   }
  ]
 }</script>
@@ -5176,7 +5148,13 @@ body.yazdirma #yazdirAlan { display: block; }
         'pepsieft': 'pepsi eft', 'alparlan': 'alparslan', 'alparsalan': 'alparslan', 'hayrettın': 'hayrettin', 'bügün': 'bugün',
         'tornavıta': 'tornavida', 'zınpara': 'zımpara', 'çig': 'çiğ', 'legen': 'leğen', 'marol': 'marul', 'sandelye': 'sandalye',
         'bardagı': 'bardağı', 'cay': 'çay', 'makıne': 'makine', 'tamır': 'tamir', 'benzın': 'benzin', 'kuyrık': 'kuyruk', 'koyruk': 'kuyruk',
-        'kurdan': 'kürdan', 'poset': 'poşet', 'kömürci': 'kömürcü'
+        'kurdan': 'kürdan', 'poset': 'poşet', 'kömürci': 'kömürcü', 'doğal fatura': 'doğalgaz faturası', 'maşa pazar': 'maşo pazar'
+    };
+    // yalnızca "Kime Ne Ödendi" gruplaması için: aynı yerin farklı yazılışlarını birleştir (null = kelimeyi yok say)
+    const GRUP_KOKLERI = {
+        'soğan': 'soğancı', 'ambalaj': 'ambalajcı', 'kola': 'kolacı', 'kaşar': 'kaşarcı', 'baharat': 'baharatçı', 'kömür': 'kömürcü',
+        'tavuk': 'tavukçu', 'ayran': 'ayrancı', 'limon': 'limoncu', 'künefe': 'künefeci', 'pazarcı': 'pazar',
+        'kurye': null, 'motorcu': null, 'sıvı': null
     };
 
     const D = { veri: { aylar: [] }, kok: null, ay: null, sekme: 'ozet', secenek: {} };
@@ -5286,8 +5264,12 @@ body.yazdirma #yazdirAlan { display: block; }
     const ODEME_SOZCUKLERI = new Set(['kredi', 'kartı', 'kart', 'kartla', 'kartından', 'karttından', 'eft', 'ile', 'nakit', 'elden', 'verdi', 'ödendi', 'ödenen',
         'borcu', 'borç', 'borcumuz', 'için', 'tl', 'bin', 'ilk', 'taksit', 'bitti', 'kasadan', 'cebinden', 'yusuf', 'usta', 've', 'kart.', 'ödeme', 'fatura', 'faturası']);
     function odemeYeri(aciklama) {
-        const kelimeler = trKucuk(duzelt(aciklama)).split(/[^0-9a-zçğıöşüâîû]+/).filter(w => w && !/^\d/.test(w) && !ODEME_SOZCUKLERI.has(w));
+        const kelimeler = trKucuk(duzelt(aciklama)).split(/[^0-9a-zçğıöşüâîû]+/)
+            .filter(w => w && !/^\d/.test(w) && !ODEME_SOZCUKLERI.has(w))
+            .map(w => (w in GRUP_KOKLERI ? GRUP_KOKLERI[w] : w)).filter(Boolean);
         if (!kelimeler.length) return null;
+        // Yılmaz'ın pazar ve market alışverişleri tek satırda
+        if (kelimeler.includes('yılmaz') && (kelimeler.includes('pazar') || kelimeler.includes('market'))) return { anahtar: 'pazar market yılmaz', ad: 'Pazar/Market Yılmaz' };
         const al = kelimeler.slice(0, kelimeler[1] && kelimeler[1].length <= 2 && kelimeler[2] ? 3 : 2);
         return { anahtar: al.slice().sort().join(' '), ad: al.map(w => w[0].toLocaleUpperCase('tr-TR') + w.slice(1)).join(' ') };
     }
