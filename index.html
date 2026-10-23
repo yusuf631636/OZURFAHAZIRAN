@@ -103,6 +103,12 @@ tr.haric-row .amount-right { color: #dc2626; text-decoration: line-through; }
 .kar-orani-card .stat-number { color: #fde047; font-size: 1.4rem; }
 .kar-orani-card h4 { color: #d1fae5; }
 .info-note { background: #eef2ff; border-left: 4px solid #3b82f6; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
+.takvim-notu { margin: 0 0 10px; background: #f0fdf4; border-left-color: #16a34a; color: #14532d; font-weight: 700; font-size: 0.7rem; }
+.bu-ay-notu { margin: 0 0 10px; background: #eff6ff; border-left-color: #2563eb; color: #1e3a8a; font-size: 0.7rem; line-height: 1.5; }
+.gun-bar { height: 5px; background: #e2e8f0; border-radius: 4px; margin-top: 3px; overflow: hidden; min-width: 50px; }
+.gun-bar span { display: block; height: 100%; background: linear-gradient(90deg, #f97316, #16a34a); border-radius: 4px; }
+tr.kapali-gun td { background: #f8fafc; color: #94a3b8; font-weight: 700; }
+tr.bugun-satir td { background: #fff7ed; }
 .not-listesi { margin-bottom: 14px; }
 .not-listesi .info-note { margin-top: 6px; font-size: 0.7rem; font-weight: 600; background: #fffbeb; border-left-color: #f59e0b; color: #78350f; }
 .footer { text-align: center; font-size: 0.55rem; color: #5f7d9c; padding: 14px 0 6px; border-top: 1px solid #e2edf2; margin-top: 12px; line-height: 1.6; }
@@ -251,7 +257,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T14:39:21.089Z",
+ "guncelleme": "2026-10-23T15:07:35.575Z",
  "aylar": [
   {
    "id": "2026-09",
@@ -930,60 +936,70 @@ body.yazdirma #yazdirAlan { display: block; }
     {
      "ad": "Yılmaz Usta (1-24:2200, 25-31:2500)",
      "gunluk": 0,
+     "tamAy": false,
      "gun": 0,
      "toplam": 70300
     },
     {
      "ad": "Ahmet Usta",
      "gunluk": 2500,
+     "tamAy": true,
      "gun": 26,
      "toplam": 65000
     },
     {
      "ad": "Hasan Garson (tazminat ilk taksit)",
      "gunluk": 0,
+     "tamAy": false,
      "gun": 0,
      "toplam": 25000
     },
     {
      "ad": "Elif Garson",
      "gunluk": 750,
+     "tamAy": true,
      "gun": 26,
      "toplam": 19500
     },
     {
      "ad": "Bulaşıkçı Abla",
      "gunluk": 1200,
+     "tamAy": true,
      "gun": 26,
      "toplam": 31200
     },
     {
      "ad": "Yusuf Usta",
      "gunluk": 2000,
+     "tamAy": true,
      "gun": 26,
      "toplam": 52000
     },
     {
      "ad": "Kasım Usta",
      "gunluk": 2000,
+     "tamAy": true,
      "gun": 26,
      "toplam": 52000
     },
     {
      "ad": "Kurye (haftalık)",
      "gunluk": 15000,
+     "tamAy": false,
      "gun": 4,
      "toplam": 60000
     },
     {
      "ad": "Yüksek Garson",
      "gunluk": 2500,
+     "tamAy": true,
      "gun": 26,
      "toplam": 65000
     },
     {
      "ad": "eleman",
      "gunluk": 200,
+     "tamAy": true,
      "gun": 26,
      "toplam": 5200
     }
@@ -1032,8 +1048,8 @@ body.yazdirma #yazdirAlan { display: block; }
      "taksitSayisi": 6,
      "taksit": 62000,
      "ilkOdeme": "03.10.2026",
-     "periyod": "Her ayın 25'i",
-     "not": "Eylül giderine DAHİL DEĞİL, borç olarak takip ediliyor"
+     "periyod": "Her ayın 2'i",
+     "not": "odendi"
     }
    ],
    "notlar": []
@@ -4957,7 +4973,7 @@ body.yazdirma #yazdirAlan { display: block; }
         ['kasar', 'Kaşar', '🧀', ['kaşar', 'kasar']],
         ['diger', 'Diğer', '💰', []]
     ];
-    const SEKMELER = ['ozet', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
+    const SEKMELER = ['ozet', 'gunluk', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
 
     const D = { veri: { aylar: [] }, kok: null, ay: null, sekme: 'ozet', secenek: {} };
 
@@ -4980,11 +4996,51 @@ body.yazdirma #yazdirAlan { display: block; }
     function aylarSirali(veri) { return ((veri && veri.aylar) || []).filter(a => a && a.id).slice().sort((a, b) => b.id.localeCompare(a.id)); }
     function yilListesi(aylar) { return [...new Set(aylar.map(a => ayParca(a.id).yil))].sort((a, b) => b - a); }
     function tarihSirali(liste) { return liste.slice().sort((a, b) => String(a.tarih || '').localeCompare(String(b.tarih || ''))); }
-    function calismaGunuHesapla(yil, ay, pazartesiKapali) {
+    // kapali: kapalı hafta günleri listesi (0=Pazar, 1=Pazartesi … 6=Cumartesi); eski kullanım: true = Pazartesi kapalı
+    function calismaGunuHesapla(yil, ay, kapali) {
+        const liste = Array.isArray(kapali) ? kapali : (kapali === false ? [] : [1]);
         const gunSayisi = new Date(yil, ay, 0).getDate();
         let n = 0;
-        for (let g = 1; g <= gunSayisi; g++) if (!(pazartesiKapali !== false && new Date(yil, ay - 1, g).getDay() === 1)) n++;
+        for (let g = 1; g <= gunSayisi; g++) if (liste.indexOf(new Date(yil, ay - 1, g).getDay()) < 0) n++;
         return n;
+    }
+    // Ay takvimi: ay.takvim = { aktif, kapaliHaftaGunleri:[1], kapali:["2026-09-15"], acik:["2026-09-07"] }
+    // kapali/acik = haftalık kurala istisna olan tek tek günler (bayram kapalı, normalde kapalı bir gün açık vb.)
+    const HAFTA_GUNLERI = [[1, 'Pzt', 'Pazartesi'], [2, 'Sal', 'Salı'], [3, 'Çar', 'Çarşamba'], [4, 'Per', 'Perşembe'], [5, 'Cum', 'Cuma'], [6, 'Cmt', 'Cumartesi'], [0, 'Paz', 'Pazar']];
+    function takvimGunleri(ayId, tk) {
+        const p = ayParca(ayId), kapaliHafta = (tk && tk.kapaliHaftaGunleri) || [];
+        const kapali = (tk && tk.kapali) || [], acik = (tk && tk.acik) || [];
+        const sonuc = [];
+        for (let g = 1; g <= new Date(p.yil, p.ay, 0).getDate(); g++) {
+            const tarih = `${p.yil}-${String(p.ay).padStart(2, '0')}-${String(g).padStart(2, '0')}`;
+            const haftaGunu = new Date(p.yil, p.ay - 1, g).getDay();
+            const kural = kapaliHafta.indexOf(haftaGunu) < 0;   // haftalık kurala göre açık mı
+            const acikMi = kapali.indexOf(tarih) >= 0 ? false : (acik.indexOf(tarih) >= 0 ? true : kural);
+            sonuc.push({ tarih, gun: g, haftaGunu, kural, acik: acikMi, istisna: acikMi !== kural });
+        }
+        return sonuc;
+    }
+    function takvimOzet(ay) {
+        if (!ay.takvim || !ay.takvim.aktif) return null;
+        const gunler = takvimGunleri(ay.id, ay.takvim);
+        const haftalik = {};
+        gunler.filter(g => !g.acik && !g.istisna).forEach(g => { haftalik[g.haftaGunu] = (haftalik[g.haftaGunu] || 0) + 1; });
+        const gg = t => t.slice(8, 10) + '.' + t.slice(5, 7);
+        const parca = HAFTA_GUNLERI.filter(([n]) => haftalik[n]).map(([n, , ad]) => haftalik[n] + ' ' + ad);
+        const ekKapali = gunler.filter(g => !g.acik && g.istisna).map(g => gg(g.tarih));
+        const ekAcik = gunler.filter(g => g.acik && g.istisna).map(g => gg(g.tarih));
+        const acikSayi = gunler.filter(g => g.acik).length;
+        let metin = `📅 ${acikSayi} açık gün`;
+        if (parca.length || ekKapali.length) metin += ' · Kapalı: ' + parca.concat(ekKapali.length ? [ekKapali.join(', ')] : []).join(' + ');
+        else metin += ' · Her gün açık';
+        if (ekAcik.length) metin += ' · Açık (istisna): ' + ekAcik.join(', ');
+        return { gunler, acik: acikSayi, kapali: gunler.length - acikSayi, metin };
+    }
+    function calismaGunuAy(ay) { const t = takvimOzet(ay); return t ? t.acik : sayi(ay.calismaGunu); }
+    // "Açık gün kadar" işaretli personelin günü ayın açık gün sayısına bağlıdır
+    function personelEtkin(ay) {
+        const gun = calismaGunuAy(ay);
+        return (ay.personel || []).map(p => p.tamAy && sayi(p.gunluk) > 0 ? Object.assign({}, p, { gun, toplam: sayi(p.gunluk) * gun }) : p);
     }
 
     // ------------------------------------------------------------ kurallar (içe aktarmada da kullanılır)
@@ -5010,9 +5066,53 @@ body.yazdirma #yazdirAlan { display: block; }
     }
 
     // ------------------------------------------------------------ hesap
+    function komisyonOrani(ay, veri) {
+        veri = veri || D.veri || {};
+        return ay.komisyon != null && ay.komisyon !== '' ? sayi(ay.komisyon) : (veri.komisyon != null ? sayi(veri.komisyon) : 0.5);
+    }
+    function yerelTarih(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+    // Günlük ciro (SambaPOS'tan çekilen aylarda ay.gunluk): her gün için nakit/kredi/online, brüt, net; kapalı ve gelecek günler işaretli
+    function gunlukDurum(ay) {
+        const kom = komisyonOrani(ay);
+        const harita = {};
+        (ay.gunluk || []).forEach(g => { harita[g.tarih] = g; });
+        const tk = ay.takvim && ay.takvim.aktif ? takvimGunleri(ay.id, ay.takvim) : null;
+        const p = ayParca(ay.id), bugun = yerelTarih(new Date());
+        const gunler = [];
+        for (let i = 1; i <= new Date(p.yil, p.ay, 0).getDate(); i++) {
+            const tarih = `${p.yil}-${String(p.ay).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+            const g = harita[tarih] || {};
+            const online = Object.keys(g.online || {}).reduce((s, k) => s + sayi(g.online[k]), 0);
+            const nakit = sayi(g.nakit), kredi = sayi(g.kredi);
+            const brut = nakit + kredi + online;
+            gunler.push({
+                tarih, gun: i, haftaGunu: new Date(p.yil, p.ay - 1, i).getDay(), nakit, kredi, online, brut,
+                net: nakit + kredi + online * (1 - kom), adisyon: sayi(g.adisyon),
+                kapali: tk ? !tk[i - 1].acik : false, gelecek: tarih > bugun, bugun: tarih === bugun
+            });
+        }
+        const satisli = gunler.filter(g => g.brut > 0);
+        const net = satisli.reduce((s, g) => s + g.net, 0), brut = satisli.reduce((s, g) => s + g.brut, 0);
+        const adisyon = satisli.reduce((s, g) => s + g.adisyon, 0);
+        const ort = satisli.length ? net / satisli.length : 0;
+        const buAyMi = ay.id === bugun.slice(0, 7);
+        // ay sonu tahmini: bugüne kadarki net + günlük ortalama × kalan açık gün (takvim yoksa çalışma gününden kalan)
+        const kalan = tk ? gunler.filter(g => g.tarih > bugun && !g.kapali).length : Math.max(0, calismaGunuAy(ay) - satisli.length);
+        return {
+            gunler, satisli, net, brut, adisyon, ort, buAyMi, kalan,
+            tahmin: buAyMi ? net + ort * kalan : null,
+            enIyi: satisli.reduce((a, g) => (!a || g.net > a.net ? g : a), null),
+            enDusuk: satisli.reduce((a, g) => (!a || g.net < a.net ? g : a), null)
+        };
+    }
+    function gunEtiketi(g) {
+        const kisa = (HAFTA_GUNLERI.find(h => h[0] === g.haftaGunu) || [0, ''])[1];
+        return String(g.gun).padStart(2, '0') + '.' + g.tarih.slice(5, 7) + ' ' + kisa;
+    }
+
     function hesapla(ay, veri) {
         veri = veri || D.veri || {};
-        const komisyon = ay.komisyon != null && ay.komisyon !== '' ? sayi(ay.komisyon) : (veri.komisyon != null ? sayi(veri.komisyon) : 0.5);
+        const komisyon = komisyonOrani(ay, veri);
         const gelir = ay.gelir || {}, online = ay.online || {};
         const platformlar = [];
         let onlineBrut = 0;
@@ -5030,12 +5130,12 @@ body.yazdirma #yazdirAlan { display: block; }
             else nakitGider += t;
         });
         const ekGider = (ay.ekGiderler || []).reduce((s, e) => s + sayi(e.tutar), 0);
-        const personelGider = (ay.personel || []).reduce((s, p) => s + sayi(p.toplam), 0);
+        const personelGider = personelEtkin(ay).reduce((s, p) => s + sayi(p.toplam), 0);
         const brut = nakitGelir + krediGelir + onlineBrut;
         const net = nakitGelir + krediGelir + onlineNet;
         const toplamGider = nakitGider + krediGider + ekGider + personelGider;
         const netKar = net - toplamGider;
-        const calismaGunu = sayi(ay.calismaGunu);
+        const calismaGunu = calismaGunuAy(ay);
         return {
             komisyon, platformlar, onlineBrut, onlineNet, nakitGelir, krediGelir, brut, net,
             nakitGider, krediGider, ekGider, personelGider, toplamGider, netKar, haricToplam, calismaGunu,
@@ -5072,9 +5172,12 @@ body.yazdirma #yazdirAlan { display: block; }
     }
     function altBarHtml(ay) {
         const ad = ayAdi(ay.id);
-        const etiket = { ozet: `📊 ${ad} Özeti`, personel: `👥 ${ad} Personel`, nakit: '💰 Kasadan Yapılan Nakit', kredi: '💳 Yusuf Usta Kredi/EFT', tumgider: '📋 Genel Tüm Gider', karsilastirma: '📈 Ay Karşılaştırma' };
-        return `<div class="sub-button-bar">${SEKMELER.map(s => `<button class="sub-btn${s === 'personel' ? ' personel-highlight' : ''}${s === D.sekme ? ' active' : ''}" data-sekme="${s}">${etiket[s]}</button>`).join('')}</div>`;
+        const etiket = { ozet: `📊 ${ad} Özeti`, gunluk: '📅 Günlük Ciro', personel: `👥 ${ad} Personel`, nakit: '💰 Kasadan Yapılan Nakit', kredi: '💳 Yusuf Usta Kredi/EFT', tumgider: '📋 Genel Tüm Gider', karsilastirma: '📈 Ay Karşılaştırma' };
+        return `<div class="sub-button-bar">${sekmeler(ay).map(s => `<button class="sub-btn${s === 'personel' ? ' personel-highlight' : ''}${s === D.sekme ? ' active' : ''}" data-sekme="${s}">${etiket[s]}</button>`).join('')}</div>`;
     }
+
+    // "Günlük Ciro" sekmesi yalnızca günlük verisi olan aylarda (SambaPOS'tan çekilen) görünür
+    function sekmeler(ay) { return SEKMELER.filter(s => s !== 'gunluk' || (ay.gunluk || []).length); }
 
     function alarmlarHtml(ay) {
         return (ay.alarmlar || []).filter(a => a && (a.baslik || a.toplam)).map(a => `
@@ -5176,6 +5279,7 @@ body.yazdirma #yazdirAlan { display: block; }
         const karZararSatir = (etiket, deger, k) => `<tr><td>${etiket}</td><td class="amount-right">${para(deger, k == null ? 2 : k)}</td></tr>`;
         // ortalamalar seçili yılın ayları üzerinden (eski raporda "6 AYLIK")
         const ortEtiket = ort.adet + ' AYLIK' + (yilListesi(aylarSirali(D.veri)).length > 1 ? ' ' + yil : '');
+        const tk = takvimOzet(ay);
         return `
             ${alarmlarHtml(ay)}
             ${borclarHtml(ay)}
@@ -5183,6 +5287,8 @@ body.yazdirma #yazdirAlan { display: block; }
             <div class="content-card">
                 <div class="card-header">📈 ${ad} (${h.calismaGunu} gün)</div>
                 <div class="card-body">
+                    ${tk ? `<div class="info-note takvim-notu">${esc(tk.metin)}</div>` : ''}
+                    ${buAyNotu(ay)}
                     <div class="summary-stats">
                         <div class="stat-card"><h4>Brüt Ciro</h4><div class="stat-number">${paraK(h.brut)} ₺</div></div>
                         <div class="stat-card"><h4>Net Ciro</h4><div class="stat-number">${paraK(h.net)} ₺</div></div>
@@ -5234,9 +5340,53 @@ body.yazdirma #yazdirAlan { display: block; }
             </div>
             ${kategoriHtml(ay)}`;
     }
+    // içinde bulunulan ay: bugüne kadarki ciro ve ay sonu tahmini (özet sayfasının üstünde)
+    function buAyNotu(ay) {
+        if (!(ay.gunluk || []).length) return '';
+        const d = gunlukDurum(ay);
+        if (!d.buAyMi || !d.satisli.length) return '';
+        const son = d.satisli[d.satisli.length - 1];
+        return `<div class="info-note bu-ay-notu">📅 <b>Bugüne kadar</b> (${d.satisli.length} günde, son: ${gunEtiketi(son)}): <b>${paraK(d.net)} ₺</b> net · günlük ort. <b>${para(d.ort)} ₺</b> · kalan ${d.kalan} açık gün · <b>ay sonu tahmini ≈ ${para(d.tahmin)} ₺</b>${ay.sonSenkron ? ` · 🔄 SambaPOS: ${new Date(ay.sonSenkron).toLocaleString('tr-TR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}` : ''}</div>`;
+    }
+    function gunlukHtml(ay) {
+        const ad = ayAdi(ay.id);
+        const d = gunlukDurum(ay);
+        const enBuyuk = d.satisli.reduce((m, g) => Math.max(m, g.net), 0) || 1;
+        const satirlar = d.gunler.filter(g => !(d.buAyMi && g.gelecek)).map(g => {
+            if (g.kapali && !g.brut) return `<tr class="kapali-gun"><td style="white-space:nowrap;">${gunEtiketi(g)}</td><td colspan="6" style="text-align:center;">🚫 kapalı</td></tr>`;
+            const yuzde = Math.round(g.net / enBuyuk * 100);
+            const isaret = d.enIyi && g.tarih === d.enIyi.tarih ? ' 🏆' : '';
+            return `<tr${g.bugun ? ' class="bugun-satir"' : ''}><td style="white-space:nowrap;">${gunEtiketi(g)}${g.bugun ? ' <b>(bugün)</b>' : ''}</td>
+                <td class="amount-right">${g.nakit ? paraK(g.nakit) : '—'}</td><td class="amount-right">${g.kredi ? paraK(g.kredi) : '—'}</td><td class="amount-right">${g.online ? paraK(g.online) : '—'}</td>
+                <td class="amount-right">${g.brut ? paraK(g.brut) : '—'}</td>
+                <td class="amount-right"><b>${g.brut ? paraK(g.net) : '—'}</b>${isaret}${g.brut ? `<div class="gun-bar"><span style="width:${yuzde}%"></span></div>` : ''}</td>
+                <td class="amount-right">${g.adisyon || '—'}</td></tr>`;
+        }).join('');
+        const top = d.satisli.reduce((t, g) => { t.nakit += g.nakit; t.kredi += g.kredi; t.online += g.online; return t; }, { nakit: 0, kredi: 0, online: 0 });
+        return `
+            <div class="content-card">
+                <div class="card-header">📅 ${ad} Günlük Ciro</div>
+                <div class="card-body">
+                    <div class="summary-stats">
+                        <div class="stat-card"><h4>${d.buAyMi ? 'Bugüne Kadar Net' : 'Net Ciro'}</h4><div class="stat-number">${paraK(d.net)} ₺</div></div>
+                        <div class="stat-card"><h4>Satış Olan Gün</h4><div class="stat-number">${d.satisli.length}</div></div>
+                        <div class="stat-card avg-card"><h4>📊 Günlük Ortalama (Net)</h4><div class="stat-number">${para(d.ort)} ₺</div></div>
+                        ${d.buAyMi ? `<div class="stat-card kar-orani-card"><h4>🔮 Ay Sonu Tahmini</h4><div class="stat-number" style="font-size:1rem">≈ ${para(d.tahmin)} ₺</div><div style="color:#d1fae5;font-size:0.6rem;">kalan ${d.kalan} açık gün × günlük ort.</div></div>` : ''}
+                    </div>
+                    <div class="summary-stats">
+                        ${d.enIyi ? `<div class="stat-card"><h4>🏆 En İyi Gün</h4><div class="stat-number" style="font-size:0.85rem">${gunEtiketi(d.enIyi)} · ${paraK(d.enIyi.net)} ₺</div></div>` : ''}
+                        ${d.enDusuk ? `<div class="stat-card"><h4>⚠️ En Düşük Gün</h4><div class="stat-number" style="font-size:0.85rem">${gunEtiketi(d.enDusuk)} · ${paraK(d.enDusuk.net)} ₺</div></div>` : ''}
+                        <div class="stat-card"><h4>Adisyon</h4><div class="stat-number" style="font-size:0.85rem">${d.adisyon} · ort. ${d.adisyon ? para(d.brut / d.adisyon) : 0} ₺</div></div>
+                    </div>
+                    <div class="table-wrapper"><table><thead><tr><th>Gün</th><th class="amount-right">Nakit</th><th class="amount-right">Kredi</th><th class="amount-right">Online</th><th class="amount-right">Toplam</th><th class="amount-right">Net</th><th class="amount-right" title="Adisyon sayısı">Adis.</th></tr></thead>
+                    <tbody>${satirlar}<tr class="total-row"><td><strong>Toplam</strong></td><td class="amount-right">${paraK(top.nakit)}</td><td class="amount-right">${paraK(top.kredi)}</td><td class="amount-right">${paraK(top.online)}</td><td class="amount-right"><strong>${paraK(d.brut)}</strong></td><td class="amount-right"><strong>${paraK(d.net)}</strong></td><td class="amount-right">${d.adisyon}</td></tr></tbody></table></div>
+                    <div class="info-note">📌 Günler SambaPOS iş gününe göredir (gece yarısından sonraki satış o iş gününe sayılır). Online tutarlar brüt; Net sütununda komisyon düşülmüştür. SambaPOS'ta olmayan platformlar (elle girilen) günlük tabloda yer almaz.</div>
+                </div>
+            </div>`;
+    }
     function personelHtml(ay) {
         const ad = ayAdi(ay.id);
-        const liste = ay.personel || [];
+        const liste = personelEtkin(ay);
         const satirlar = liste.map(p => `<tr><td>${esc(p.ad)}</td><td class="amount-right">${sayi(p.gunluk) > 0 ? para(p.gunluk) + ' ₺' : '-'}</td><td class="amount-right">${sayi(p.gun) > 0 ? sayi(p.gun) : '-'}</td><td class="amount-right">${tutarYaz(p.toplam)} ₺</td></tr>`).join('');
         const toplam = liste.reduce((s, p) => s + sayi(p.toplam), 0);
         return `<div class="content-card" style="border:3px solid #f59e0b;box-shadow:0 10px 30px rgba(245,158,11,0.3);"><div class="card-header" style="background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;font-size:1.05rem;">👥 ${ad} PERSONEL</div><div class="card-body"><div class="table-wrapper"><table><thead><tr><th>Personel</th><th>Günlük</th><th>Gün</th><th>Toplam</th></tr></thead><tbody>${satirlar}<tr class="total-row"><td colspan="3"><strong>Toplam</strong></td><td class="amount-right"><strong>${tutarYaz(toplam)} ₺</strong></td></tr></tbody></table></div></div></div>`;
@@ -5301,7 +5451,7 @@ body.yazdirma #yazdirAlan { display: block; }
     }
     function footerHtml(yilAylari) {
         const satirlar = [];
-        if (yilAylari.length) satirlar.push('⚡ ' + yilAylari.map(a => `${ayAdi(a.id)} ${sayi(a.calismaGunu)}g`).join(' · ') + (D.veri.calismaNotu ? ` (${esc(D.veri.calismaNotu)})` : ''));
+        if (yilAylari.length) satirlar.push('⚡ ' + yilAylari.map(a => `${ayAdi(a.id)} ${calismaGunuAy(a)}g`).join(' · ') + (D.veri.calismaNotu ? ` (${esc(D.veri.calismaNotu)})` : ''));
         const kiraBilinen = yilAylari.filter(a => a.kira && a.kira.durum);
         if (kiraBilinen.length) {
             const odenmeyen = kiraBilinen.filter(a => a.kira.durum === 'odenmedi').map(a => ayAdi(a.id)).reverse();
@@ -5326,12 +5476,12 @@ body.yazdirma #yazdirAlan { display: block; }
             return;
         }
         if (!aylar.some(a => a.id === D.ay)) D.ay = aylar[0].id;
-        if (SEKMELER.indexOf(D.sekme) < 0) D.sekme = 'ozet';
         const yil = ayParca(D.ay).yil;
         const yilAylari = aylar.filter(a => ayParca(a.id).yil === yil);
         const ay = aylar.find(a => a.id === D.ay);
+        if (sekmeler(ay).indexOf(D.sekme) < 0) D.sekme = 'ozet';
         const icerik = {
-            ozet: () => ozetHtml(ay, yilAylari), personel: () => personelHtml(ay), nakit: () => nakitHtml(ay),
+            ozet: () => ozetHtml(ay, yilAylari), gunluk: () => gunlukHtml(ay), personel: () => personelHtml(ay), nakit: () => nakitHtml(ay),
             kredi: () => krediHtml(ay), tumgider: () => tumGiderHtml(ay), karsilastirma: () => karsilastirmaHtml(yilAylari)
         }[D.sekme]();
         D.kok.innerHTML = `<div class="dashboard ana">${brandHtml(aylar)}${yilBarHtml(aylar)}${ayBarHtml(yilAylari)}${altBarHtml(ay)}<div id="tabContent">${icerik}</div>${footerHtml(yilAylari)}</div>`;
@@ -5398,7 +5548,7 @@ body.yazdirma #yazdirAlan { display: block; }
             let html = brandHtml(aylar) + `<div class="info-note" style="margin:-8px 0 14px;">🖨️ PDF rapor · ${kapsamAdi} · Oluşturma: ${simdi}</div>`;
             secilen.forEach((ay, i) => {
                 html += `<div class="yazdir-ay-baslik${i ? ' yeni-sayfa' : ''}">${ayIkon(ay.id)} ${ayAdi(ay.id)} ${ayParca(ay.id).yil}</div>`;
-                html += ozetHtml(ay, yilAylari) + personelHtml(ay) + nakitHtml(ay) + krediHtml(ay);
+                html += ozetHtml(ay, yilAylari) + ((ay.gunluk || []).length ? gunlukHtml(ay) : '') + personelHtml(ay) + nakitHtml(ay) + krediHtml(ay);
             });
             if (secilen.length > 1) html += `<div class="yazdir-ay-baslik yeni-sayfa">📈 ${yil} Ay Karşılaştırma</div>` + karsilastirmaHtml(yilAylari);
             html += footerHtml(yilAylari);
@@ -5451,10 +5601,10 @@ body.yazdirma #yazdirAlan { display: block; }
     }
 
     const OzRapor = {
-        AY_ADLARI, PLATFORMLAR, KATEGORILER,
+        AY_ADLARI, PLATFORMLAR, KATEGORILER, HAFTA_GUNLERI,
         baslat, guncelle, ciz, yazdirHtml, sayfaBaslat,
         secili: () => ({ ay: D.ay, sekme: D.sekme }),
-        hesapla, odemeTuru, otomatikHaric, kategorize, calismaGunuHesapla,
+        hesapla, odemeTuru, otomatikHaric, kategorize, calismaGunuHesapla, takvimGunleri, takvimOzet, calismaGunuAy, personelEtkin, gunlukDurum,
         ayAdi, ayParca, aylarSirali, para, sayi, tutarYaz, esc, trKucuk, tarihKisa
     };
     kok.OzRapor = OzRapor;
