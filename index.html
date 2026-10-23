@@ -257,7 +257,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T15:07:35.575Z",
+ "guncelleme": "2026-10-23T15:12:45.909Z",
  "aylar": [
   {
    "id": "2026-09",
@@ -4942,6 +4942,147 @@ body.yazdirma #yazdirAlan { display: block; }
    ],
    "alarmlar": [],
    "notlar": []
+  },
+  {
+   "id": "2026-10",
+   "calismaGunu": 27,
+   "takvim": {
+    "aktif": true,
+    "kapaliHaftaGunleri": [
+     1
+    ],
+    "kapali": [],
+    "acik": []
+   },
+   "gelir": {
+    "nakit": 0,
+    "kredi": 0
+   },
+   "online": {},
+   "giderler": [],
+   "ekGiderler": [],
+   "personel": [
+    {
+     "ad": "Yılmaz Usta (1-24:2200, 25-31:2500)",
+     "gunluk": 0,
+     "tamAy": false,
+     "gun": 0,
+     "toplam": 70300
+    },
+    {
+     "ad": "Ahmet Usta",
+     "gunluk": 2500,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 67500
+    },
+    {
+     "ad": "Hasan Garson (tazminat ilk taksit)",
+     "gunluk": 0,
+     "tamAy": false,
+     "gun": 0,
+     "toplam": 25000
+    },
+    {
+     "ad": "Elif Garson",
+     "gunluk": 750,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 20250
+    },
+    {
+     "ad": "Bulaşıkçı Abla",
+     "gunluk": 1200,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 32400
+    },
+    {
+     "ad": "Yusuf Usta",
+     "gunluk": 2000,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 54000
+    },
+    {
+     "ad": "Kasım Usta",
+     "gunluk": 2000,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 54000
+    },
+    {
+     "ad": "Kurye (haftalık)",
+     "gunluk": 15000,
+     "tamAy": false,
+     "gun": 4,
+     "toplam": 60000
+    },
+    {
+     "ad": "Yüksek Garson",
+     "gunluk": 2500,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 67500
+    },
+    {
+     "ad": "eleman",
+     "gunluk": 200,
+     "tamAy": true,
+     "gun": 27,
+     "toplam": 5400
+    }
+   ],
+   "kira": {
+    "durum": "odenmedi",
+    "metin": "🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺"
+   },
+   "borclar": [
+    {
+     "ikon": "🧑‍🍳",
+     "ad": "Yusuf Usta borç",
+     "tutar": 34350
+    },
+    {
+     "ikon": "🥩",
+     "ad": "Orhan (et yağı)",
+     "tutar": 34000
+    },
+    {
+     "ikon": "🐄",
+     "ad": "Deniz Kasap",
+     "metin": "21.000 TL"
+    },
+    {
+     "ikon": "🔪",
+     "ad": "Kasap Şifa",
+     "tutar": 35000
+    },
+    {
+     "ikon": "🐟",
+     "ad": "Et Balık Nadir Kasap",
+     "tutar": 18000
+    },
+    {
+     "ikon": "📦",
+     "ad": "Ambalajcı",
+     "tutar": 18973
+    }
+   ],
+   "alarmlar": [
+    {
+     "ikon": "⚡",
+     "baslik": "ELEKTRİK CEZA",
+     "toplam": 370146.16,
+     "taksitSayisi": 6,
+     "taksit": 62000,
+     "ilkOdeme": "03.10.2026",
+     "periyod": "Her ayın 2'i",
+     "not": "odendi"
+    }
+   ],
+   "notlar": [],
+   "otoSamba": true
   }
  ]
 }</script>
@@ -5342,6 +5483,8 @@ body.yazdirma #yazdirAlan { display: block; }
     }
     // içinde bulunulan ay: bugüne kadarki ciro ve ay sonu tahmini (özet sayfasının üstünde)
     function buAyNotu(ay) {
+        if (ay.id === yerelTarih(new Date()).slice(0, 7) && !hesapla(ay).brut)
+            return `<div class="info-note bu-ay-notu">⏳ <b>${ayAdi(ay.id)} verileri SambaPOS'tan bekleniyor.</b> Ciro ve günlük ciro geldikçe kendiliğinden dolacak; personel, borç ve kira önceki aydan kopyalandı.</div>`;
         if (!(ay.gunluk || []).length) return '';
         const d = gunlukDurum(ay);
         if (!d.buAyMi || !d.satisli.length) return '';
