@@ -274,7 +274,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T22:55:13.880Z",
+ "guncelleme": "2026-10-23T22:57:31.128Z",
  "aylar": [
   {
    "id": "2026-10",
@@ -357,13 +357,6 @@ body.yazdirma #yazdirAlan { display: block; }
      "tamAy": true,
      "gun": 27,
      "toplam": 67500
-    },
-    {
-     "ad": "eleman",
-     "gunluk": 200,
-     "tamAy": true,
-     "gun": 27,
-     "toplam": 5400
     }
    ],
    "kira": {
@@ -5452,7 +5445,7 @@ body.yazdirma #yazdirAlan { display: block; }
                 const t = new Date(tarih.getFullYear(), tarih.getMonth(), gun);
                 tarih = t > tarih ? t : new Date(tarih.getFullYear(), tarih.getMonth() + 1, gun);
             }
-            const miktar = i < n ? tutar : Math.max(0, toplam - tutar * (n - 1)) || tutar;
+            const miktar = i < n ? tutar : (Math.round(Math.max(0, toplam - tutar * (n - 1)) * 100) / 100 || tutar);   // son taksit: kalan kuruşlar
             liste.push({ no: i, tarih, miktar, odendi: i <= odenen, gecikti: i > odenen && tarih && tarih < bugun });
         }
         const kalanlar = liste.filter(t => !t.odendi);
