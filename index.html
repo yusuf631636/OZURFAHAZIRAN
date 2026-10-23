@@ -274,7 +274,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-23T22:57:31.128Z",
+ "guncelleme": "2026-10-23T22:59:39.319Z",
  "aylar": [
   {
    "id": "2026-10",
@@ -361,7 +361,7 @@ body.yazdirma #yazdirAlan { display: block; }
    ],
    "kira": {
     "durum": "odenmedi",
-    "metin": "🏠 KİRA 2 AYDIR ÖDENMEDİ — 45.000 ₺ x 2 = 90.000 ₺"
+    "metin": ""
    },
    "borclar": [
     {
@@ -5353,8 +5353,10 @@ body.yazdirma #yazdirAlan { display: block; }
             gunlukCiro: calismaGunu ? net / calismaGunu : 0
         };
     }
+    // ortalamalara yalnızca biten aylar girer (içinde bulunulan yarım ay ortalamayı aşağı çekmesin)
     function ortalama(aylar) {
-        const gecerli = aylar.map(a => hesapla(a)).filter(h => h.net > 0);
+        const buAy = yerelTarih(new Date()).slice(0, 7);
+        const gecerli = aylar.filter(a => a.id !== buAy).map(a => hesapla(a)).filter(h => h.net > 0);
         const toplam = gecerli.reduce((s, h) => s + h.net, 0);
         const gun = gecerli.reduce((s, h) => s + h.calismaGunu, 0);
         return { adet: gecerli.length, aylik: gecerli.length ? toplam / gecerli.length : 0, gunluk: gun ? toplam / gun : 0 };
@@ -5611,6 +5613,9 @@ body.yazdirma #yazdirAlan { display: block; }
         // ortalamalar seçili yılın ayları üzerinden (eski raporda "6 AYLIK")
         const ortEtiket = ort.adet + ' AYLIK' + (yilListesi(aylarSirali(D.veri)).length > 1 ? ' ' + yil : '');
         const tk = takvimOzet(ay);
+        // içinde bulunulan ayda günlük ortalama, ayın tüm günlerine değil satış olan günlere göre
+        const gdTum = (ay.gunluk || []).length ? gunlukDurum(ay) : null;
+        const gd = gdTum && gdTum.buAyMi && gdTum.satisli.length ? gdTum : null;
         return `
             ${bugunHtml(ay)}
             ${alarmlarHtml(ay)}
@@ -5627,7 +5632,7 @@ body.yazdirma #yazdirAlan { display: block; }
                         <div class="stat-card profit-card${zarar}"><h4>Net Kâr</h4><div class="stat-number">${paraK(h.netKar)} ₺</div></div>
                     </div>
                     <div class="summary-stats">
-                        <div class="stat-card avg-card"><h4>📊 GÜNLÜK ORTALAMA CİRO</h4><div class="stat-number">${para(h.gunlukCiro, 2)} ₺/gün</div></div>
+                        <div class="stat-card avg-card"><h4>📊 GÜNLÜK ORTALAMA CİRO${gd ? ' (BUGÜNE KADAR)' : ''}</h4><div class="stat-number">${para(gd ? gd.ort : h.gunlukCiro, 2)} ₺/gün</div></div>
                         <div class="stat-card avg-card"><h4>📈 ${ortEtiket} AYLIK ORTALAMA</h4><div class="stat-number">${paraK(ort.aylik)} ₺/ay</div></div>
                         <div class="stat-card avg-card"><h4>📉 ${ortEtiket} GÜNLÜK ORTALAMA</h4><div class="stat-number">${para(ort.gunluk, 2)} ₺/gün</div></div>
                     </div>
