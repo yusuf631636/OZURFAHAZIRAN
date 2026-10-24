@@ -101,8 +101,7 @@ tr.haric-row .amount-right { color: #dc2626; text-decoration: line-through; }
 .avg-card h4 { color: #dbeafe; }
 .kar-orani-card { background: linear-gradient(135deg, #065f46, #10b981); color: white; border: 2px solid #34d399; }
 .kar-orani-card .stat-number { color: #fde047; font-size: 1.4rem; }
-.kar-orani-card h4 { color: #d1fae5; }
-.info-note { background: #eef2ff; border-left: 4px solid #3b82f6; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
+.kar-orani-card h4 { color: #d1fae5; }.info-note { background: #eef2ff; border-left: 4px solid #3b82f6; padding: 8px 12px; border-radius: 12px; margin-top: 10px; font-size: 0.65rem; }
 .takvim-notu { margin: 0 0 10px; background: #f0fdf4; border-left-color: #16a34a; color: #14532d; font-weight: 700; font-size: 0.7rem; }
 .bu-ay-notu { margin: 0 0 10px; background: #eff6ff; border-left-color: #2563eb; color: #1e3a8a; font-size: 0.7rem; line-height: 1.5; }
 .gun-bar { height: 5px; background: #e2e8f0; border-radius: 4px; margin-top: 3px; overflow: hidden; min-width: 50px; }
@@ -126,36 +125,46 @@ tr.bugun-satir td { background: #fff7ed; }
     font-size: 1rem; font-weight: 900; color: #9a3412; margin-bottom: 10px;
     display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px;
 }
+/* borçlar: kira ayları ve diğer borçlar kart kart (masaüstü 3 sütun, telefon 2), altta toplam */
+.borc-alt-baslik { font-size: 0.72rem; font-weight: 900; color: #9a3412; text-transform: uppercase; letter-spacing: 0.4px; margin: 4px 2px 6px; }
+.borc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .borclar-card .borc-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 7px 10px; border-bottom: 1px dashed #fdba74;
-    font-size: 0.75rem; font-weight: 600; color: #7c2d12;
+    display: flex; flex-direction: column; gap: 3px; min-width: 0;
+    background: white; border: 1px solid #fed7aa; border-radius: 12px; padding: 9px 12px;
 }
-.borclar-card .borc-item:last-child { border-bottom: none; }
-.borclar-card .borc-item .tutar { font-family: monospace; font-weight: 900; font-size: 0.85rem; color: #c2410c; text-align: right; }
-.borc-degisim { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; font-family: -apple-system, 'Segoe UI', sans-serif; vertical-align: middle; }
+.borclar-card .borc-item .borc-ad { font-size: 0.75rem; font-weight: 700; color: #7c2d12; overflow-wrap: anywhere; }
+.borclar-card .borc-item .tutar { font-size: 1.05rem; font-weight: 900; color: #c2410c; font-variant-numeric: tabular-nums; }
+.borc-degisim { align-self: flex-start; display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 0.62rem; font-weight: 800; }
 .borc-degisim.artis { background: #fee2e2; color: #b91c1c; }
 .borc-degisim.azalis { background: #dcfce7; color: #166534; }
 .borc-degisim.yeni { background: #e0e7ff; color: #3730a3; }
-.borc-degisim.ayni { background: #f1f5f9; color: #64748b; }
-.borclar-card .borc-item.kapandi { opacity: 0.75; }
-.borclar-card .borc-item.borc-toplam { border-top: 2px solid #fb923c; border-bottom: none; margin-top: 4px; font-weight: 900; }
-.borclar-card .borc-item.borc-toplam small { display: block; font-size: 0.6rem; color: #9a3412; font-weight: 700; }
-.kira-blok { background: white; border: 2px solid #fdba74; border-radius: 14px; padding: 8px 12px; margin-bottom: 12px; }
-.kira-baslik { font-weight: 900; color: #7c2d12; font-size: 0.85rem; margin-bottom: 6px; }
+.borclar-card .borc-item.kapandi { opacity: 0.75; background: #f0fdf4; border-color: #bbf7d0; }
+.borclar-card .borc-item.kapandi .tutar { color: #15803d; font-size: 0.85rem; }
+.borc-toplam {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px;
+    background: #9a3412; color: white; border-radius: 12px; padding: 10px 14px; font-weight: 900; font-size: 0.85rem;
+}
+.borc-toplam.artti { background: #b91c1c; }
+.borc-toplam small { display: block; font-size: 0.62rem; font-weight: 700; color: #fed7aa; }
+.borc-toplam .tutar { text-align: right; font-size: 1.15rem; font-variant-numeric: tabular-nums; color: #fef3c7; }
+.kira-blok { background: white; border: 2px solid #fdba74; border-radius: 14px; padding: 10px 12px; margin-bottom: 12px; }
+.kira-baslik { font-weight: 900; color: #7c2d12; font-size: 0.85rem; margin-bottom: 8px; }
 .kira-baslik small { display: block; font-weight: 600; color: #9a3412; font-size: 0.65rem; margin-top: 1px; }
-.kira-satir { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 4px; border-top: 1px dashed #fed7aa; font-size: 0.8rem; font-weight: 700; color: #1e293b; }
-.kira-satir b { font-weight: 800; text-align: right; }
+.kira-aylar { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.kira-satir { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; font-size: 0.75rem; font-weight: 800; color: #1e293b; }
+.kira-satir b { font-weight: 800; font-size: 0.78rem; }
+.kira-satir.odendi { background: #f0fdf4; border-color: #bbf7d0; }
 .kira-satir.odendi b { color: #15803d; }
 .kira-satir.bekliyor b { color: #475569; }
+.kira-satir.kiragunu { background: #fff7ed; border-color: #fdba74; }
 .kira-satir.kiragunu b { color: #c2410c; }
+.kira-satir.gecikti { background: #fef2f2; border-color: #fca5a5; }
 .kira-satir.gecikti b { color: #dc2626; }
 .kira-not { font-size: 0.7rem; color: #7c2d12; padding: 4px; }
 .kira-blok .kira-uyari { margin: 8px 0 0; }
 .alarm-durum { text-align: center; font-weight: 900; font-size: 0.85rem; border-radius: 10px; padding: 6px 10px; margin-bottom: 8px; }
 .alarm-durum.gecti { background: #fbbf24; color: #7f1d1d; }
 .alarm-durum.yakin { background: #fef3c7; color: #9a3412; }
-.borclar-card .kira-aylar { font-size: 0.65rem; font-weight: 700; opacity: 0.9; margin-top: 2px; letter-spacing: 0; }
 .taksit-cipler { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-top: 10px; }
 .taksit-cip { background: rgba(255,255,255,0.15); color: #fef3c7; border: 1px solid rgba(255,255,255,0.35); border-radius: 14px; padding: 3px 9px; font-size: 0.68rem; font-weight: 800; }
 .taksit-cip.odendi { background: #15803d; border-color: #86efac; color: white; }
@@ -220,6 +229,30 @@ tr.bugun-satir td { background: #fff7ed; }
     background: #fbbf24; color: #7f1d1d; padding: 4px 12px; border-radius: 20px;
     font-size: 0.75rem; font-weight: 900; display: inline-block; margin-top: 10px; letter-spacing: 0.5px;
 }
+/* sade taksit kartı: dört kutu yan yana; yanıp sönme yalnız ödeme günü yaklaşınca / geçince */
+.elektrik-alarm.sade { padding: 14px 16px; }
+.elektrik-alarm.sade:not(.acil) { animation: none; box-shadow: 0 6px 16px rgba(220,38,38,0.25); }
+.elektrik-alarm.sade h2 { flex-wrap: wrap; margin-bottom: 10px; }
+.elektrik-alarm.sade h2 small { margin-left: auto; font-size: 0.68rem; font-weight: 800; color: #fde68a; text-transform: none; letter-spacing: 0; }
+.alarm-kutular { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.alarm-kutu { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.22); border-radius: 12px; padding: 8px 10px; min-width: 0; }
+.alarm-kutu span { display: block; font-size: 0.58rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; color: #fecaca; }
+.alarm-kutu b { display: block; margin-top: 2px; font-family: monospace; font-size: 1rem; font-weight: 900; color: #fde047; white-space: nowrap; }
+.alarm-kutu small { display: block; font-size: 0.65rem; font-weight: 700; color: #fef3c7; }
+.elektrik-alarm.sade .taksit-cipler { margin-top: 10px; }
+/* uzun listeler: daha ince satırlar, fazlası "Tümünü göster" ile */
+.kategori-list { gap: 6px; }
+.kategori-item { border-width: 1px; border-radius: 12px; }
+.kategori-header { padding: 9px 12px; }
+.kategori-header .kategori-toggle { width: 22px; height: 22px; }
+.kategori-list .kategori-item.fazla { display: none; }
+.kategori-list.hepsi .kategori-item.fazla { display: block; }
+.tumunu-goster {
+    display: block; width: 100%; margin-top: 8px; padding: 8px; border: 1px dashed #fdba74; border-radius: 12px;
+    background: #fff7ed; color: #9a3412; font-weight: 800; font-size: 0.75rem; cursor: pointer;
+}
+.tumunu-goster:hover { background: #ffedd5; }
+.ay-bitmedi { margin-top: 6px; padding: 5px 8px; border-radius: 8px; background: rgba(0,0,0,0.15); color: #fef3c7; font-size: 0.68rem; font-weight: 700; }
 /* yayınlanan sayfadaki indir / pdf düğmeleri (başlık kartının içinde, içeriğin üstüne binmez) */
 .brand-arac { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .brand-arac button {
@@ -261,9 +294,20 @@ body.yazdirma #yazdirAlan { display: block; }
     .elektrik-alarm h2 { font-size: 0.9rem; }
     .elektrik-alarm .row { font-size: 0.7rem; }
     .elektrik-alarm .row .val { font-size: 0.85rem; }
+    .alarm-kutular { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .alarm-kutu { padding: 6px 8px; }
+    .alarm-kutu b { font-size: 0.85rem; }
+    .elektrik-alarm.sade h2 small { margin-left: 0; width: 100%; }
     .borclar-card h2 { font-size: 0.85rem; }
-    .borclar-card .borc-item { font-size: 0.65rem; }
-    .borclar-card .borc-item .tutar { font-size: 0.75rem; }
+    .borc-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .borclar-card .borc-item { padding: 7px 9px; }
+    .borclar-card .borc-item .borc-ad { font-size: 0.68rem; }
+    .borclar-card .borc-item .tutar { font-size: 0.9rem; }
+    .kira-aylar { grid-template-columns: 1fr; gap: 5px; }
+    .kira-satir { flex-direction: row; justify-content: space-between; align-items: center; padding: 6px 9px; }
+    .kira-satir b { text-align: right; }
+    .borc-toplam { padding: 9px 11px; font-size: 0.75rem; }
+    .borc-toplam .tutar { font-size: 1rem; }
     .kategori-header { padding: 10px 10px; flex-wrap: wrap; gap: 4px; }
     .kategori-header .kategori-name { font-size: 0.7rem; flex-wrap: wrap; }
     .kategori-header .kategori-tutar { font-size: 0.75rem; }
@@ -289,7 +333,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "genelNotlar": [
   "📦 Online %50 komisyon (Getir, Yemeksepeti, Migros, Trendyol)"
  ],
- "guncelleme": "2026-10-24T08:15:58.915Z",
+ "guncelleme": "2026-10-24T08:42:07.893Z",
  "aylar": [
   {
    "id": "2026-10",
@@ -309,10 +353,587 @@ body.yazdirma #yazdirAlan { display: block; }
    "online": {
     "yemeksepeti": 3104.97,
     "migros": 0,
-    "diger": 153013.24,
+    "trendyol": 153013.24,
     "getir": 0
    },
-   "giderler": [],
+   "giderler": [
+    {
+     "tarih": "2026-10-01T12:32:54",
+     "aciklama": "ilaçlama eft kredi kartı",
+     "tutar": 2000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-01T12:33:23",
+     "aciklama": "salı günü kurye turan eft kredi kartı",
+     "tutar": 15000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-01T15:02:29",
+     "aciklama": "kola su şalgam eft kartı ile",
+     "tutar": 9000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-01T17:17:23",
+     "aciklama": "sogan",
+     "tutar": 3500,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-01T17:18:24",
+     "aciklama": "cay",
+     "tutar": 280,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-01T17:18:42",
+     "aciklama": "market",
+     "tutar": 60,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T14:54:21",
+     "aciklama": "baharatçı kredi kartınla",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T14:57:30",
+     "aciklama": "maya",
+     "tutar": 100,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T16:05:22",
+     "aciklama": "sogan",
+     "tutar": 2000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T17:51:34",
+     "aciklama": "kunefe",
+     "tutar": 600,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T19:05:27",
+     "aciklama": "pazar yılmaz",
+     "tutar": 1400,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-02T20:41:26",
+     "aciklama": "detarjan",
+     "tutar": 250,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-03T12:18:12",
+     "aciklama": "market",
+     "tutar": 620,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-03T21:22:18",
+     "aciklama": "market",
+     "tutar": 620,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-03T21:22:29",
+     "aciklama": "pazar yılmaz",
+     "tutar": 900,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T11:37:22",
+     "aciklama": "KAŞARCI KREDİ KARTI",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T11:37:35",
+     "aciklama": "KOLACI KALAN KREDİKARTI",
+     "tutar": 1000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T11:37:47",
+     "aciklama": "KÖMÜRCÜ KREDİ KARTI EFT",
+     "tutar": 3000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T12:56:09",
+     "aciklama": "ayrancı kredi kartı",
+     "tutar": 7000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T21:04:54",
+     "aciklama": "market yılmaz",
+     "tutar": 820,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T21:05:23",
+     "aciklama": "pazar yılmaz",
+     "tutar": 950,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-06T21:08:28",
+     "aciklama": "pazaryılmaz",
+     "tutar": 150,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-07T11:42:36",
+     "aciklama": "yag",
+     "tutar": 480,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-07T19:38:04",
+     "aciklama": "sogan",
+     "tutar": 1500,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-08T11:15:28",
+     "aciklama": "kolacı",
+     "tutar": 1990,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-08T11:15:47",
+     "aciklama": "turan dün eft kredi kartı",
+     "tutar": 23000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-08T20:39:57",
+     "aciklama": "ılmaz pazar",
+     "tutar": 750,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-08T20:40:05",
+     "aciklama": "market",
+     "tutar": 380,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T12:19:51",
+     "aciklama": "market",
+     "tutar": 250,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T12:38:12",
+     "aciklama": "kaşarci kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T16:06:11",
+     "aciklama": "kunefe",
+     "tutar": 1800,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T20:46:00",
+     "aciklama": "MARKET",
+     "tutar": 650,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T20:52:56",
+     "aciklama": "TURAN",
+     "tutar": 5000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-09T20:54:26",
+     "aciklama": "SOGAN",
+     "tutar": 3500,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-10T12:14:43",
+     "aciklama": "ambalajcı kredi kartı ile",
+     "tutar": 6000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-10T12:14:57",
+     "aciklama": "kasap orhan kredi kartı ile",
+     "tutar": 18000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-10T21:57:31",
+     "aciklama": "pazar yılmaz",
+     "tutar": 1150,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-11T13:33:25",
+     "aciklama": "kasap nadir kredi kartla",
+     "tutar": 25000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-11T20:45:23",
+     "aciklama": "market",
+     "tutar": 550,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-11T20:46:35",
+     "aciklama": "seker",
+     "tutar": 60,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T16:00:29",
+     "aciklama": "test",
+     "tutar": 1,
+     "tur": "nakit",
+     "kaynak": "samba",
+     "haric": true,
+     "not": "TEST KAYDI"
+    },
+    {
+     "tarih": "2026-10-13T16:22:07",
+     "aciklama": "turan eft kredi kartı",
+     "tutar": 15000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T17:03:59",
+     "aciklama": "yag",
+     "tutar": 480,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T17:04:10",
+     "aciklama": "maya",
+     "tutar": 300,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T17:50:44",
+     "aciklama": "sogan",
+     "tutar": 5000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T22:05:49",
+     "aciklama": "çay",
+     "tutar": 280,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T22:06:01",
+     "aciklama": "benzın",
+     "tutar": 200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-13T22:06:31",
+     "aciklama": "pazar yılmaz",
+     "tutar": 1350,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-14T11:11:31",
+     "aciklama": "kolacı kredi eft",
+     "tutar": 4620,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-14T13:42:45",
+     "aciklama": "kapı kilidi",
+     "tutar": 450,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-14T16:24:36",
+     "aciklama": "benzın",
+     "tutar": 200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-14T19:31:56",
+     "aciklama": "yogurt",
+     "tutar": 140,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-14T21:25:02",
+     "aciklama": "motor tekerı için",
+     "tutar": 150,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-15T14:46:16",
+     "aciklama": "DOMATES",
+     "tutar": 300,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-15T20:22:48",
+     "aciklama": "MARKET",
+     "tutar": 650,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-15T20:23:00",
+     "aciklama": "PAZAR",
+     "tutar": 500,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T08:33:10",
+     "aciklama": "kömürcü eft kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T08:33:25",
+     "aciklama": "dogan dün eft kredi kartı",
+     "tutar": 1500,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T08:33:37",
+     "aciklama": "ayrancı kredi kartı",
+     "tutar": 9000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T14:13:46",
+     "aciklama": "kaşarci kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T14:49:45",
+     "aciklama": "baharatçi kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T16:05:25",
+     "aciklama": "kunefe",
+     "tutar": 1200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-16T20:16:51",
+     "aciklama": "market",
+     "tutar": 350,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-17T12:13:08",
+     "aciklama": "ambalaj kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-17T13:20:01",
+     "aciklama": "uncu kredi kartı",
+     "tutar": 20000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-17T20:51:12",
+     "aciklama": "pazar yılmaz",
+     "tutar": 1000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-17T20:51:28",
+     "aciklama": "market yılmaz",
+     "tutar": 500,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-18T19:34:18",
+     "aciklama": "sogan",
+     "tutar": 7000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-20T18:31:21",
+     "aciklama": "kunefe",
+     "tutar": 1200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-20T20:19:25",
+     "aciklama": "pazar yılmaz",
+     "tutar": 1200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-20T20:19:39",
+     "aciklama": "market yılmaz",
+     "tutar": 600,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-20T20:28:51",
+     "aciklama": "sogan",
+     "tutar": 1000,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-21T09:38:01",
+     "aciklama": "limoncu eft kredi kartı",
+     "tutar": 4500,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-21T09:38:15",
+     "aciklama": "turan kurye eft kredi kartı",
+     "tutar": 13000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-21T10:37:18",
+     "aciklama": "kasap orhan kredi kartı ile",
+     "tutar": 18000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-21T14:19:11",
+     "aciklama": "kasap nadir kredi kartı ile",
+     "tutar": 25000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-22T11:50:03",
+     "aciklama": "kolacı kredi kartı",
+     "tutar": 2300,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-22T15:23:00",
+     "aciklama": "baharatçi kredi kartı",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-22T15:49:54",
+     "aciklama": "çatal",
+     "tutar": 75,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-22T20:41:02",
+     "aciklama": "pazar",
+     "tutar": 1050,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-23T20:30:25",
+     "aciklama": "market",
+     "tutar": 750,
+     "tur": "nakit",
+     "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-23T21:40:17",
+     "aciklama": "maya",
+     "tutar": 200,
+     "tur": "nakit",
+     "kaynak": "samba"
+    }
+   ],
    "ekGiderler": [],
    "personel": [
     {
@@ -441,7 +1062,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 20120,
      "kredi": 17135,
      "online": {
-      "diger": 3777.25,
+      "trendyol": 3777.25,
       "yemeksepeti": 1130
      },
      "adisyon": 64
@@ -451,7 +1072,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 23045,
      "kredi": 4380,
      "online": {
-      "diger": 6975.25
+      "trendyol": 6975.25
      },
      "adisyon": 70
     },
@@ -467,7 +1088,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 30630,
      "kredi": 5060,
      "online": {
-      "diger": 12217.35
+      "trendyol": 12217.35
      },
      "adisyon": 89
     },
@@ -476,7 +1097,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 21175.75,
      "kredi": 7350,
      "online": {
-      "diger": 6960.5
+      "trendyol": 6960.5
      },
      "adisyon": 72
     },
@@ -485,7 +1106,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 23260,
      "kredi": 3870,
      "online": {
-      "diger": 5645.52
+      "trendyol": 5645.52
      },
      "adisyon": 58
     },
@@ -501,7 +1122,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 20941,
      "kredi": 5075,
      "online": {
-      "diger": 12280.73,
+      "trendyol": 12280.73,
       "yemeksepeti": 1634.97
      },
      "adisyon": 94
@@ -511,7 +1132,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 25835,
      "kredi": 10625,
      "online": {
-      "diger": 10892.41,
+      "trendyol": 10892.41,
       "yemeksepeti": 340
      },
      "adisyon": 87
@@ -521,7 +1142,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 19380,
      "kredi": 18675,
      "online": {
-      "diger": 15755.01
+      "trendyol": 15755.01
      },
      "adisyon": 100
     },
@@ -530,7 +1151,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 20210.75,
      "kredi": 2715,
      "online": {
-      "diger": 8496.04
+      "trendyol": 8496.04
      },
      "adisyon": 77
     },
@@ -539,7 +1160,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 17208.75,
      "kredi": 2085,
      "online": {
-      "diger": 7802.74
+      "trendyol": 7802.74
      },
      "adisyon": 65
     },
@@ -548,7 +1169,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 28110.75,
      "kredi": 4315,
      "online": {
-      "diger": 2146.5
+      "trendyol": 2146.5
      },
      "adisyon": 76
     },
@@ -557,7 +1178,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 18767.75,
      "kredi": 2050,
      "online": {
-      "diger": 10244.72
+      "trendyol": 10244.72
      },
      "adisyon": 66
     },
@@ -566,7 +1187,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 29170,
      "kredi": 5065,
      "online": {
-      "diger": 8269.57
+      "trendyol": 8269.57
      },
      "adisyon": 78
     },
@@ -575,7 +1196,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 31491.26,
      "kredi": 6375,
      "online": {
-      "diger": 10418.25
+      "trendyol": 10418.25
      },
      "adisyon": 92
     },
@@ -584,7 +1205,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 22140,
      "kredi": 8105,
      "online": {
-      "diger": 8585.98
+      "trendyol": 8585.98
      },
      "adisyon": 82
     },
@@ -593,7 +1214,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 24155.25,
      "kredi": 3025,
      "online": {
-      "diger": 6654.22
+      "trendyol": 6654.22
      },
      "adisyon": 74
     },
@@ -602,7 +1223,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 20394.5,
      "kredi": 1775,
      "online": {
-      "diger": 7403.64
+      "trendyol": 7403.64
      },
      "adisyon": 67
     },
@@ -611,12 +1232,11 @@ body.yazdirma #yazdirAlan { display: block; }
      "nakit": 27010,
      "kredi": 3085,
      "online": {
-      "diger": 8487.56
+      "trendyol": 8487.56
      },
      "adisyon": 80
     }
-   ],
-   "sonSenkron": "2026-10-24T08:15:58.915Z"
+   ]
   },
   {
    "id": "2026-09",
@@ -5335,11 +5955,14 @@ body.yazdirma #yazdirAlan { display: block; }
         ['pazar_market', 'Pazar & Market', '🥬', ['pazar', 'market', 'narket']],
         ['kasap_et', 'Kasap & Et', '🥩', ['kasap', '=et', 'orhan', 'nadir', 'şifa', 'kuyruk', 'koyruk', 'tavuk']],
         ['sogan', 'Soğan', '🧅', ['sogan', 'soğan', 'sağan']],
-        ['yag', 'Yağ', '🫒', ['yağ', 'yag', 'tereyağ']],
+        ['yag', 'Yağ', '🛢️', ['yağ', 'yag', 'tereyağ']],
         ['un_ekmek', 'Un & Ekmek & Maya', '🍞', ['=un', 'uncu', 'unu', 'bulgur', 'maya', 'makbul']],
         ['ambalaj', 'Ambalaj & Poşet', '📦', ['ambalaj', 'amblaj', 'ambalej', 'ambalaş', 'poşet', 'poset', 'bardak', 'bardag', 'bardağ', 'streç', 'strec']],
         ['icecek', 'İçecek & Kola & Ayran', '🥤', ['kola', 'pepsi', 'ayran', '=su', 'sucu', 'çay']],
         ['kasar', 'Kaşar', '🧀', ['kaşar', 'kasar']],
+        ['kurye', 'Kurye & Motor', '🛵', ['kurye', 'turan', 'doğan', 'motor', 'benzin']],
+        ['komur', 'Kömür', '🔥', ['kömür', 'komur']],
+        ['temizlik', 'Temizlik & İlaçlama', '🧹', ['deterjan', 'ilaçlama', 'temizlik', 'çamaşır', 'sabun', 'çöp']],
         ['diger', 'Diğer', '💰', []]
     ];
     const SEKMELER = ['ozet', 'gunluk', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
@@ -5359,8 +5982,12 @@ body.yazdirma #yazdirAlan { display: block; }
         'pepsieft': 'pepsi eft', 'alparlan': 'alparslan', 'alparsalan': 'alparslan', 'hayrettın': 'hayrettin', 'bügün': 'bugün',
         'tornavıta': 'tornavida', 'zınpara': 'zımpara', 'çig': 'çiğ', 'legen': 'leğen', 'marol': 'marul', 'sandelye': 'sandalye',
         'bardagı': 'bardağı', 'cay': 'çay', 'makıne': 'makine', 'tamır': 'tamir', 'benzın': 'benzin', 'kuyrık': 'kuyruk', 'koyruk': 'kuyruk',
-        'kurdan': 'kürdan', 'poset': 'poşet', 'kömürci': 'kömürcü', 'doğal fatura': 'doğalgaz faturası', 'maşa pazar': 'maşo pazar'
+        'kurdan': 'kürdan', 'poset': 'poşet', 'kömürci': 'kömürcü', 'doğal fatura': 'doğalgaz faturası', 'maşa pazar': 'maşo pazar',
+        'dogan': 'doğan', 'ılmaz': 'yılmaz', 'pazaryılmaz': 'pazar yılmaz', 'seker': 'şeker', 'tekerı': 'tekeri'
     };
+    // Windows'ta çizilemeyen yeni emojiler (kare / iki ayrı simge görünür) yerine eşdeğeri
+    const IKON_ESDEGER = { '🧑‍🍳': '👨‍🍳', '🫒': '🛢️', '🧑‍🔧': '👨‍🔧', '🧑‍💼': '👨‍💼' };
+    function ikon(s, varsayilan) { s = s || varsayilan || ''; return IKON_ESDEGER[s] || s; }
     // yalnızca "Kime Ne Ödendi" gruplaması için: aynı yerin farklı yazılışlarını birleştir (null = kelimeyi yok say)
     const GRUP_KOKLERI = {
         'soğan': 'soğancı', 'ambalaj': 'ambalajcı', 'kola': 'kolacı', 'kaşar': 'kaşarcı', 'baharat': 'baharatçı', 'kömür': 'kömürcü',
@@ -5473,7 +6100,11 @@ body.yazdirma #yazdirAlan { display: block; }
     // "kime ödendi": ödeme sözcükleri (kredi, kart, eft, nakit, elden…) ve sayılar atılır, kalan ilk 2 kelime (2. kelime
     // kısaysa 3) ödeme yeridir; kelime sırası önemsiz (pazar yılmaz = yılmaz pazar)
     const ODEME_SOZCUKLERI = new Set(['kredi', 'kartı', 'kart', 'kartla', 'kartından', 'karttından', 'eft', 'ile', 'nakit', 'elden', 'verdi', 'ödendi', 'ödenen',
-        'borcu', 'borç', 'borcumuz', 'için', 'tl', 'bin', 'ilk', 'taksit', 'bitti', 'kasadan', 'cebinden', 'yusuf', 'usta', 've', 'kart.', 'ödeme', 'fatura', 'faturası']);
+        'borcu', 'borç', 'borcumuz', 'için', 'tl', 'bin', 'ilk', 'taksit', 'bitti', 'kasadan', 'cebinden', 'yusuf', 'usta', 've', 'kart.', 'ödeme', 'fatura', 'faturası',
+        'kartınla', 'kartıyla', 'kartına', 'havale', 'iban', 'peşin', 'avans', 'parası', 'ödemesi', 'hesabı', 'kalan', 'kalanı',
+        'dün', 'bugün', 'günü', 'pazartesi', 'salı', 'çarşamba', 'perşembe', 'cuma', 'cumartesi']);
+    // "kolacı", "uncu", "kömürcü" gibi meslek adıyla başlayan açıklamada yalnızca o ad (kolacı su şalgam = kolacı)
+    function meslekMi(w) { return /(cı|ci|cu|cü|çı|çi|çu|çü)$/.test(w) && w.length >= 4; }
     function odemeYeri(aciklama) {
         const kelimeler = trKucuk(duzelt(aciklama)).split(/[^0-9a-zçğıöşüâîû]+/)
             .filter(w => w && !/^\d/.test(w) && !ODEME_SOZCUKLERI.has(w))
@@ -5481,7 +6112,7 @@ body.yazdirma #yazdirAlan { display: block; }
         if (!kelimeler.length) return null;
         // Yılmaz'ın pazar ve market alışverişleri tek satırda
         if (kelimeler.includes('yılmaz') && (kelimeler.includes('pazar') || kelimeler.includes('market'))) return { anahtar: 'pazar market yılmaz', ad: 'Pazar/Market Yılmaz' };
-        const al = kelimeler.slice(0, kelimeler[1] && kelimeler[1].length <= 2 && kelimeler[2] ? 3 : 2);
+        const al = meslekMi(kelimeler[0]) ? kelimeler.slice(0, 1) : kelimeler.slice(0, kelimeler[1] && kelimeler[1].length <= 2 && kelimeler[2] ? 3 : 2);
         return { anahtar: al.slice().sort().join(' '), ad: al.map(w => w[0].toLocaleUpperCase('tr-TR') + w.slice(1)).join(' ') };
     }
 
@@ -5627,21 +6258,24 @@ body.yazdirma #yazdirAlan { display: block; }
             const s = p.siradaki;
             const durum = !s ? '' : (s.gecikti ? `<div class="alarm-durum gecti">❌ ${s.no}. taksit ödenmedi — ödeme günü ${gunAyYaz(s.tarih)} idi (${gunFarki(new Date(), s.tarih)} gün geçti)</div>`
                 : (s.yakin ? `<div class="alarm-durum yakin">⏰ ${s.no}. taksitin ödeme günü ${gunFarki(new Date(), s.tarih) === 0 ? 'BUGÜN' : gunAyYaz(s.tarih)}</div>` : ''));
+            // sade kart: dört kutu yan yana (telefonda 2×2), altında taksit çipleri
+            const kutu = (etiket, deger, alt) => `<div class="alarm-kutu"><span>${etiket}</span><b>${deger}</b>${alt ? `<small>${alt}</small>` : ''}</div>`;
             return `
-            <div class="elektrik-alarm">
-                <h2>${esc(a.ikon || '⚡')} ${esc(a.baslik)} — BORÇ</h2>
+            <div class="elektrik-alarm sade${s && (s.gecikti || s.yakin) ? ' acil' : ''}">
+                <h2>${esc(a.ikon || '⚡')} ${esc(a.baslik)} — BORÇ<small>Her ay ${para(a.taksit)} ₺ · ${esc(a.periyod || '')} · ${p.n} taksit</small></h2>
                 ${durum}
-                <div class="row"><span>TOPLAM BORÇ</span><span class="val">${para(p.odenenTutar + p.kalanTutar, 2)} ₺</span></div>
-                <div class="row"><span>ÖDENEN</span><span class="val">${p.odenen} taksit · ${para(p.odenenTutar, 2)} ₺</span></div>
-                <div class="row"><span>KALAN</span><span class="val">${p.kalanAdet} taksit · ${para(p.kalanTutar, 2)} ₺</span></div>
-                ${s ? `<div class="row"><span>SIRADAKİ ÖDEME</span><span class="val">${s.no}. taksit · ${para(s.miktar, s.miktar % 1 ? 2 : 0)} ₺${s.tarih ? ' · ' + gunAyYaz(s.tarih) : ''}</span></div>` : ''}
+                <div class="alarm-kutular">
+                    ${kutu('Toplam borç', para(p.odenenTutar + p.kalanTutar, 2) + ' ₺')}
+                    ${kutu('Ödenen', para(p.odenenTutar, 2) + ' ₺', p.odenen + ' taksit')}
+                    ${kutu('Kalan', para(p.kalanTutar, 2) + ' ₺', p.kalanAdet + ' taksit')}
+                    ${s ? kutu('Sıradaki ödeme', s.tarih ? gunAyYaz(s.tarih) : '—', s.no + '. taksit · ' + para(s.miktar, s.miktar % 1 ? 2 : 0) + ' ₺') : ''}
+                </div>
                 <div class="taksit-cipler">${p.liste.map(t => {
                     const od = /^(\d{4})-(\d{2})-(\d{2})$/.exec(t.odemeTarihi || '');
                     const gun = od ? new Date(+od[1], +od[2] - 1, +od[3]) : t.tarih;
                     return `<span class="taksit-cip${t.odendi ? ' odendi' : (t.gecikti || t.yakin ? ' gecikti' : '')}" title="${t.odendi ? 'ödendi' + (od ? ' ' + gunAyYaz(gun) : '') : 'ödeme günü ' + (t.tarih ? gunAyYaz(t.tarih) : '')}">${t.no}. ${t.odendi ? '✅' : (t.gecikti ? '❌' : (t.yakin ? '⏰' : '⏳'))}${gun ? ' ' + gunAyYaz(gun) : ''}</span>`;
                 }).join('')}</div>
-                <div style="text-align:center;"><span class="date-badge">📅 Her ay ${para(a.taksit)} ₺ · ${esc(a.periyod || '')} · toplam ${p.n} taksit</span></div>
-                ${a.not ? `<div style="text-align:center;margin-top:8px;font-size:0.7rem;color:#fef3c7;">📝 ${esc(a.not)}</div>` : ''}
+                ${a.not ?`<div style="text-align:center;margin-top:8px;font-size:0.7rem;color:#fef3c7;">📝 ${esc(a.not)}</div>` : ''}
             </div>`;
         }).join('');
     }
@@ -5699,7 +6333,7 @@ body.yazdirma #yazdirAlan { display: block; }
         const g = kiraGunleri();
         return `<div class="kira-blok">
             <div class="kira-baslik">🏠 KİRA <small>aylık ${para(kiraTutari(ay))} ₺ · her ayın kirası sonraki ayın ${g.bas === g.son ? g.son : g.bas + '–' + g.son}'sinde ödenir</small></div>
-            ${satirlar}
+            <div class="kira-aylar">${satirlar}</div>
             ${ozel ? `<div class="kira-not">📝 ${esc(ozel)}</div>` : ''}
             ${d.odenmeyen.length ? `<div class="kira-uyari">⚠️ ÖDENMEMİŞ KİRA: ${esc(d.odenmeyen.map(a => ayAdi(a.id)).join(', '))} — toplam ${para(d.toplam)} ₺</div>` : ''}
         </div>`;
@@ -5768,14 +6402,17 @@ body.yazdirma #yazdirAlan { display: block; }
         const borcTutari = b => sayi(b.tutar) || (b.metin && /^[\d.,\s]+(tl|₺)?$/i.test(b.metin.trim()) ? sayi(b.metin.replace(/[^\d,]/g, '').replace(',', '.')) : 0);
         const oncekiler = {};
         if (onceki) (onceki.borclar || []).forEach(b => { if (b.ad) oncekiler[anahtar(b)] = b; });
+        // değişmeyen borçta rozet yok (her satırda "aynı" yazısı kalabalık yapıyordu); yalnız artış/azalış/yeni görünür
         const fark = (simdi, eski) => {
             const f = simdi - eski;
-            if (!f) return '<span class="borc-degisim ayni">= aynı</span>';
-            return f > 0 ? `<span class="borc-degisim artis" title="geçen ay ${para(eski)} TL">▲ ${para(f)}</span>` : `<span class="borc-degisim azalis" title="geçen ay ${para(eski)} TL">▼ ${para(-f)}</span>`;
+            if (!f) return '';
+            return f > 0 ? `<span class="borc-degisim artis" title="geçen ay ${para(eski)} ₺">▲ ${para(f)}</span>` : `<span class="borc-degisim azalis" title="geçen ay ${para(eski)} ₺">▼ ${para(-f)}</span>`;
         };
-        let toplam = 0, oncekiToplam = 0, sayilan = 0;
+        // her borç bir kart (masaüstünde 3, telefonda 2 sütun); altta kira ve elektrik hariç toplam
+        let kartlar = '', toplam = 0, oncekiToplam = 0, sayilan = 0;
         (ay.borclar || []).forEach(b => {
-            const deger = b.metin ? esc(b.metin) : (sayi(b.tutar) ? para(b.tutar) + ' TL' : '');
+            // "21.000 TL" gibi yazılmış tutarlar da diğerleriyle aynı biçimde (₺)
+            const deger = b.metin ? (borcTutari(b) && !sayi(b.tutar) ? para(borcTutari(b)) + ' ₺' : esc(b.metin)) : (sayi(b.tutar) ? para(b.tutar) + ' ₺' : '');
             if (!deger) return;
             const simdi = borcTutari(b), eski = oncekiler[anahtar(b)];
             let degisim = '';
@@ -5785,15 +6422,20 @@ body.yazdirma #yazdirAlan { display: block; }
                 delete oncekiler[anahtar(b)];
             }
             if (simdi) { toplam += simdi; sayilan++; }
-            items += `<div class="borc-item"><span>${esc(b.ikon || '💸')} ${esc(b.ad)}</span><span class="tutar">${deger}${degisim}</span></div>`;
+            kartlar += `<div class="borc-item"><span class="borc-ad">${esc(ikon(b.ikon, '💸'))} ${esc(b.ad)}</span><span class="tutar">${deger}</span>${degisim}</div>`;
         });
         if (onceki) {
             Object.keys(oncekiler).forEach(k => {
                 const b = oncekiler[k];
-                if (borcTutari(b)) items += `<div class="borc-item kapandi"><span>${esc(b.ikon || '💸')} ${esc(b.ad)}</span><span class="tutar">✅ kapandı <span class="borc-degisim azalis">geçen ay ${para(borcTutari(b))} TL</span></span></div>`;
+                if (borcTutari(b)) kartlar += `<div class="borc-item kapandi"><span class="borc-ad">${esc(ikon(b.ikon, '💸'))} ${esc(b.ad)}</span><span class="tutar">✅ Kapandı</span><span class="borc-degisim azalis">geçen ay ${para(borcTutari(b))} ₺</span></div>`;
             });
             (onceki.borclar || []).forEach(b => { oncekiToplam += borcTutari(b); });
-            if (sayilan || oncekiToplam) items += `<div class="borc-item borc-toplam"><span>Σ Toplam borç</span><span class="tutar">${para(toplam)} TL${fark(toplam, oncekiToplam)}<small> geçen ay ${para(oncekiToplam)} TL</small></span></div>`;
+        }
+        if (kartlar) items += `<div class="borc-alt-baslik">Diğer borçlar</div><div class="borc-grid">${kartlar}</div>`;
+        if (sayilan || oncekiToplam) {
+            const degisimYazisi = !onceki ? '' : (toplam === oncekiToplam ? 'geçen aydan değişmedi'
+                : `geçen ay ${para(oncekiToplam)} ₺ · ${toplam > oncekiToplam ? '▲ ' + para(toplam - oncekiToplam) + ' ₺ arttı' : '▼ ' + para(oncekiToplam - toplam) + ' ₺ azaldı'}`);
+            items += `<div class="borc-toplam${onceki && toplam > oncekiToplam ? ' artti' : ''}"><span>Σ Toplam borç <small>kira ve elektrik hariç</small></span><span class="tutar">${para(toplam)} ₺${degisimYazisi ? `<small>${degisimYazisi}</small>` : ''}</span></div>`;
         }
         return items ? `<div class="borclar-card"><h2>💸 BORÇLAR</h2>${items}</div>` : '';
     }
@@ -5875,15 +6517,17 @@ body.yazdirma #yazdirAlan { display: block; }
             return Object.assign(g, { ad: Object.keys(g.adlar).sort((a, b) => g.adlar[b] - g.adlar[a])[0], toplam: g.nakit + g.kredi });
         }).sort((a, b) => b.toplam - a.toplam);
         if (!liste.length) return '';
-        const akordeon = liste.map(g => `
-            <div class="kategori-item">
+        // ekranda en çok ödenen 12 yer; gerisi "Tümünü göster" ile açılır (PDF'te hepsi)
+        const ILK = 12, gizli = D.yazdirModu ? 0 : Math.max(0, liste.length - ILK);
+        const akordeon = liste.map((g, i) => `
+            <div class="kategori-item${gizli && i >= ILK ? ' fazla' : ''}">
                 <div class="kategori-header">
-                    <div class="kategori-name">👤 ${esc(g.ad)} <span style="color:#64748b;font-size:0.7rem;font-weight:600;">(${g.items.length} ödeme${g.nakit && g.kredi ? ` · nakit ${tutarYaz(g.nakit)} · kredi ${tutarYaz(g.kredi)}` : (g.kredi ? ' · kredi/EFT' : ' · nakit')})</span></div>
+                    <div class="kategori-name">${esc(g.ad)} <span style="color:#64748b;font-size:0.7rem;font-weight:600;">(${g.items.length} ödeme${g.nakit && g.kredi ? ` · nakit ${tutarYaz(g.nakit)} · kredi ${tutarYaz(g.kredi)}` : (g.kredi ? ' · kredi/EFT' : ' · nakit')})</span></div>
                     <div style="display:flex;align-items:center;"><span class="kategori-tutar">${tutarYaz(g.toplam)} ₺</span><span class="kategori-toggle">+</span></div>
                 </div>
                 <div class="kategori-body"><table><thead><tr><th>Tarih</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${g.items.map(x => giderSatiri(x)).join('')}</tbody></table></div>
             </div>`).join('');
-        return `<div class="content-card"><div class="card-header">👤 ${ayAdi(ay.id)} Kime Ne Ödendi${D.yazdirModu ? '' : ' (Basınca Açılır)'}</div><div class="card-body"><div class="kategori-list">${akordeon}</div><div class="info-note" style="margin-top:12px;">📌 Aynı yere yapılan ödemeler açıklamadaki ada göre bir araya toplanır (kredi, kart, eft, nakit gibi sözcükler ve yazım hataları dikkate alınmaz). ${liste.length} farklı ödeme yeri.</div></div></div>`;
+        return `<div class="content-card"><div class="card-header">👤 ${ayAdi(ay.id)} Kime Ne Ödendi${D.yazdirModu ? '' : ' (Basınca Açılır)'}</div><div class="card-body"><div class="kategori-list">${akordeon}</div>${gizli ? `<button type="button" class="tumunu-goster" data-tumu>▼ Tümünü göster (${gizli} yer daha)</button>` : ''}<div class="info-note" style="margin-top:12px;">📌 Aynı yere yapılan ödemeler açıklamadaki ada göre bir araya toplanır (kredi, kart, eft, nakit gibi sözcükler ve yazım hataları dikkate alınmaz). ${liste.length} farklı ödeme yeri.</div></div></div>`;
     }
 
     // ------------------------------------------------------------ sekmeler
@@ -5893,6 +6537,7 @@ body.yazdirma #yazdirAlan { display: block; }
         const ort = ortalama(yilAylari);
         // içinde bulunulan ayda ciro henüz gelmediyse kâr gösterilmez (yalnız gider görünüp "zarar" sanılmasın)
         const ciroBekleniyor = !h.brut && ay.id === yerelTarih(new Date()).slice(0, 7);
+        const ayDevamEdiyor = !ciroBekleniyor && !D.yazdirModu && ay.id === yerelTarih(new Date()).slice(0, 7);
         const zarar = h.netKar < 0 && !ciroBekleniyor ? ' zarar' : '';
         const karMetni = ciroBekleniyor ? '—' : paraK(h.netKar) + ' ₺';
         const online = h.platformlar.map(p => `<div class="stat-card"><h4>${esc(p.ad)}</h4><div class="stat-number">${para(p.net, 2)} ₺</div></div>`).join('');
@@ -5934,6 +6579,7 @@ body.yazdirma #yazdirAlan { display: block; }
                         <h4 style="color:#ffecb3;">NET KAR</h4>
                         <div class="stat-number" style="color:#facc15;">${karMetni}</div>
                         <div style="color:#e2f0e6;font-size:0.7rem;">${ciroBekleniyor ? 'Ciro gelince hesaplanır' : paraK(h.net) + ' − ' + paraK(h.toplamGider)}</div>
+                        ${ayDevamEdiyor ? `<div class="ay-bitmedi">⏳ Ay bitmedi: personel ayın tamamı için yazılı, ciro ve giderler bugüne kadar. Kâr ay sonunda netleşir.</div>` : ''}
                     </div>
                     <div class="stat-card kar-orani-card" style="margin-top:6px;">
                         <h4>📊 KÂR ORANI</h4>
@@ -6162,9 +6808,10 @@ body.yazdirma #yazdirAlan { display: block; }
         if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 70), behavior: 'smooth' });
     }
     function tikla(e) {
-        const t = e.target.closest('[data-yil],[data-ay],[data-sekme],[data-islem],.kategori-header');
+        const t = e.target.closest('[data-yil],[data-ay],[data-sekme],[data-islem],[data-tumu],.kategori-header');
         if (!t || !D.kok.contains(t)) return;
         if (t.dataset.islem) { if (D.secenek.islem) D.secenek.islem(t.dataset.islem); return; }
+        if (t.hasAttribute('data-tumu')) { t.previousElementSibling.classList.add('hepsi'); t.remove(); return; }
         if (t.classList.contains('kategori-header')) { t.parentElement.classList.toggle('open'); return; }
         if (t.dataset.yil) {
             const ilk = aylarSirali(D.veri).find(a => ayParca(a.id).yil === +t.dataset.yil);
