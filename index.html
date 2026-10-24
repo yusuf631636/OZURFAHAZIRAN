@@ -47,7 +47,7 @@ h1 small { background: #fef3c7; padding: 3px 12px; border-radius: 30px; font-siz
 .main-btn.active {
     background: #f97316; color: white; border-color: #f97316;
     box-shadow: 0 6px 16px rgba(249,115,22,0.45);
-    animation: pulse-active 1.8s infinite;
+    animation: pulse-active 1.8s 3;   /* 3 kez yanıp durur: sürekli animasyon kasa bilgisayarını ağırlaştırıyordu */
 }
 @keyframes pulse-active {
     0%, 100% { box-shadow: 0 6px 16px rgba(249,115,22,0.45); transform: scale(1); }
@@ -185,9 +185,21 @@ tr.bugun-satir td { background: #fff7ed; }
 /* canlı: açık (hesabı kapanmamış) masalar */
 .acik-masalar { background: #fff7ed; border: 1px solid #fdba74; border-radius: 12px; padding: 8px 10px; margin-bottom: 8px; }
 .acik-masalar.bos { background: #f0fdf4; border-color: #bbf7d0; color: #166534; font-size: 0.72rem; font-weight: 700; }
-.acik-baslik { font-size: 0.75rem; font-weight: 700; color: #7c2d12; }
-.masa-cipler { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-.masa-cip { background: white; border: 1px solid #fed7aa; border-radius: 14px; padding: 3px 9px; font-size: 0.68rem; font-weight: 600; color: #1e293b; }
+.acik-ozet {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 4px; width: 100%; background: none; border: none; padding: 0;
+    font: inherit; font-size: 0.75rem; font-weight: 700; color: #7c2d12; text-align: left; cursor: pointer;
+}
+.detay-dugme { margin-left: auto; background: #f97316; color: white; border-radius: 12px; padding: 3px 10px; font-size: 0.68rem; font-weight: 800; }
+.adisyon-listesi { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.adisyon { background: white; border: 1px solid #fed7aa; border-radius: 10px; }
+.adisyon.acik { border-color: #f97316; }
+.adisyon-baslik { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 10px; font-size: 0.72rem; font-weight: 700; color: #1e293b; cursor: pointer; }
+.adisyon-baslik > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.adisyon-sag { white-space: nowrap; color: #475569; font-weight: 600; }
+.adisyon-sag b { color: #c2410c; }
+.adisyon-icerik { border-top: 1px dashed #fdba74; padding: 4px 10px 6px; background: #fffbeb; border-radius: 0 0 10px 10px; }
+.urun { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; font-size: 0.7rem; color: #334155; }
+.urun.alt { margin-top: 3px; padding-top: 4px; border-top: 1px solid #fde68a; font-size: 0.64rem; color: #64748b; font-weight: 700; }
 .borclar-card .kira-uyari {
     background: #dc2626; color: white; padding: 8px 12px; border-radius: 10px;
     font-size: 0.8rem; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px;
@@ -226,7 +238,7 @@ tr.bugun-satir td { background: #fff7ed; }
     background: linear-gradient(135deg, #7f1d1d, #dc2626);
     color: white; border-radius: 18px; padding: 16px 18px; margin-bottom: 14px;
     box-shadow: 0 10px 25px rgba(220,38,38,0.35); border: 3px solid #fbbf24;
-    animation: pulse-alarm 2s infinite;
+    animation: pulse-alarm 2s 3;
 }
 @keyframes pulse-alarm {
     0%, 100% { box-shadow: 0 10px 25px rgba(220,38,38,0.35); }
@@ -345,7 +357,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "komisyon": 0.5,
  "calismaNotu": "Pazartesi kapalı",
  "genelNotlar": [],
- "guncelleme": "2026-10-24T09:25:03.454Z",
+ "guncelleme": "2026-10-24T09:55:16.896Z",
  "aylar": [
   {
    "id": "2026-10",
@@ -360,7 +372,7 @@ body.yazdirma #yazdirAlan { display: block; }
    },
    "gelir": {
     "nakit": 493934.51,
-    "kredi": 113010
+    "kredi": 113895
    },
    "online": {
     "yemeksepeti": 3104.97,
@@ -944,6 +956,13 @@ body.yazdirma #yazdirAlan { display: block; }
      "tutar": 200,
      "tur": "nakit",
      "kaynak": "samba"
+    },
+    {
+     "tarih": "2026-10-24T12:52:15",
+     "aciklama": "tavukçu kredi kartı eft",
+     "tutar": 6760,
+     "tur": "kredi",
+     "kaynak": "samba"
     }
    ],
    "ekGiderler": [],
@@ -1020,7 +1039,7 @@ body.yazdirma #yazdirAlan { display: block; }
    "borclar": [
     {
      "ikon": "🧑‍🍳",
-     "ad": "Yusuf Usta borç",
+     "ad": "Yusuf Ustanın Dükkandan Alacaği  Kart Kullanımı",
      "tutar": 56949
     },
     {
@@ -1251,12 +1270,12 @@ body.yazdirma #yazdirAlan { display: block; }
     {
      "tarih": "2026-10-24",
      "nakit": 290,
-     "kredi": 0,
+     "kredi": 885,
      "online": {},
-     "adisyon": 3
+     "adisyon": 9
     }
    ],
-   "sonSenkron": "2026-10-24T09:25:03.454Z"
+   "sonSenkron": "2026-10-24T09:55:16.896Z"
   },
   {
    "id": "2026-09",
@@ -6633,9 +6652,10 @@ body.yazdirma #yazdirAlan { display: block; }
             ${kategoriHtml(ay)}
             ${odemeYerleriHtml(ay)}`;
     }
-    // ---- canlı "Bugün" kartı (patron ekranı): restorandaki program dakikada bir SambaPOS'tan okuyup GitHub'daki canli
-    // dalına yazar; sayfa açıkken 1,5 dakikada bir okunur (masaüstünde doğrudan /api/canli). Gelmezse aylık veriden gösterilir.
-    const CANLI_SURE = 90000;
+    // ---- canlı "Bugün" kartı (patron ekranı): restorandaki program 30 sn'de bir SambaPOS'tan okuyup GitHub'daki canli
+    // dalına yazar; sayfa açıkken dakikada bir okunur (GitHub saatte 60 okumaya izin verir; değişmeyen okuma sayılmaz).
+    // Masaüstünde doğrudan /api/canli. Gelmezse aylık veriden gösterilir.
+    const CANLI_SURE = 60000;
     function canliAdresleri() {
         if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return ['/api/canli'];
         const k = kok.OZ_CANLI;
@@ -6678,13 +6698,24 @@ body.yazdirma #yazdirAlan { display: block; }
         const dk = Math.max(0, Math.round((Date.now() - new Date(t).getTime()) / 60000));
         return dk < 60 ? dk + ' dk' : Math.floor(dk / 60) + ' sa ' + (dk % 60) + ' dk';
     }
+    // açık adisyonlar tek satır özet; "Detay" ile liste, bir adisyona basınca içindeki ürünler (yenilemede açık kalır)
     function acikMasalarHtml(c) {
         const am = c.acikMasalar || {};
-        if (!sayi(am.adet)) return `<div class="acik-masalar bos">✅ Açık masa yok, bütün hesaplar kapanmış.</div>`;
+        if (!sayi(am.adet)) return `<div class="acik-masalar bos">✅ Açık adisyon yok, bütün hesaplar kapanmış.</div>`;
         const odenmemis = sayi(am.kalan) !== sayi(am.toplam) ? ` · ödenmemiş <b>${paraK(am.kalan)} ₺</b>` : '';
+        const acilan = D.acikAdisyonlar || {};
+        const liste = (am.liste || []).map(m => {
+            const ac = !!acilan[m.no], urunler = m.urunler || [];
+            const kismi = sayi(m.kalan) && sayi(m.kalan) !== sayi(m.toplam) ? ` · ${paraK(sayi(m.toplam) - sayi(m.kalan))} ₺ ödendi` : '';
+            return `<div class="adisyon${ac ? ' acik' : ''}" data-adisyon="${esc(m.no)}">
+                <div class="adisyon-baslik"><span>${masaIkon(m.tur)} ${esc(m.ad || 'Adisyon ' + m.no)}</span><span class="adisyon-sag"><b>${paraK(sayi(m.kalan) || sayi(m.toplam))} ₺</b> · ${sureYaz(m.acilis)} ${ac ? '▾' : '▸'}</span></div>
+                ${ac ? `<div class="adisyon-icerik">${urunler.map(u => `<div class="urun"><span>${tutarYaz(u.adet)} × ${esc(u.ad)}${u.porsiyon ? ' (' + esc(u.porsiyon) + ')' : ''}</span><span>${u.ikram ? 'ikram / iptal' : paraK(u.tutar) + ' ₺'}</span></div>`).join('') || '<div class="urun">Ürün yok</div>'}
+                    <div class="urun alt"><span>Adisyon ${esc(m.no)} · açılış ${new Date(m.acilis).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}${kismi}</span><span>Toplam ${paraK(m.toplam)} ₺</span></div></div>` : ''}
+            </div>`;
+        }).join('');
         return `<div class="acik-masalar">
-            <div class="acik-baslik">🍽️ Açık masalar (hesabı kapanmamış): <b>${am.adet}</b> · toplam <b>${paraK(am.toplam)} ₺</b>${odenmemis}</div>
-            <div class="masa-cipler">${(am.liste || []).map(m => `<span class="masa-cip" title="Adisyon ${esc(m.no)}">${masaIkon(m.tur)} ${esc(m.ad || 'Adisyon ' + m.no)} · <b>${paraK(sayi(m.kalan) || sayi(m.toplam))} ₺</b> · ${sureYaz(m.acilis)}</span>`).join('')}</div>
+            <button type="button" class="acik-ozet" data-acik-detay>🧾 Açık adisyon: <b>${am.adet}</b> · toplam <b>${paraK(am.toplam)} ₺</b>${odenmemis}<span class="detay-dugme">${D.acikDetay ? 'Gizle ▴' : 'Detay ▾'}</span></button>
+            ${D.acikDetay ? `<div class="adisyon-listesi">${liste}</div>` : ''}
         </div>`;
     }
     // 📍 Bugün: içinde bulunulan ayda özetin en üstünde bugünkü ciro + açık masalar + bugünkü giderler (ay bitince görünmez)
@@ -6699,7 +6730,9 @@ body.yazdirma #yazdirAlan { display: block; }
             const kom = komisyonOrani(ay), ciro = c.ciro || {};
             const nakit = sayi(ciro.nakit), kredi = sayi(ciro.kredi);
             const online = Object.keys(ciro).filter(k => k !== 'nakit' && k !== 'kredi').reduce((s, k) => s + sayi(ciro[k]), 0);
-            g = { nakit, kredi, online, brut: nakit + kredi + online, net: nakit + kredi + online * (1 - kom), adisyon: sayi((c.adisyon || {}).adet) };
+            // online platformlar ayrı ayrı (Trendyol, Yemeksepeti ...)
+            const platformYazi = PLATFORMLAR.filter(([k]) => sayi(ciro[k])).map(([k, ad]) => `📦 ${ad} ${paraK(ciro[k])} ₺`).join(' · ');
+            g = { nakit, kredi, online, platformYazi, brut: nakit + kredi + online, net: nakit + kredi + online * (1 - kom), adisyon: sayi((c.adisyon || {}).adet) };
         }
         const dunT = yerelTarih(new Date(simdi.getFullYear(), simdi.getMonth(), simdi.getDate() - 1));
         const dun = d ? d.gunler.find(x => x.tarih === dunT) : null;
@@ -6710,8 +6743,8 @@ body.yazdirma #yazdirAlan { display: block; }
         const kapali = ay.takvim && ay.takvim.aktif ? !(takvimGunleri(ay.id, ay.takvim)[simdi.getDate() - 1] || {}).acik : false;
         const baslik = simdi.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
         const saat = ay.sonSenkron ? new Date(ay.sonSenkron).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
-        const canliYas = c ? Math.round((Date.now() - new Date(c.zaman).getTime()) / 60000) : 0;
-        const sagUst = c ? `<span class="bugun-saat canli">🟢 Canlı · ${canliYas < 1 ? 'az önce' : canliYas + ' dk önce'}</span>` : (saat ? `<span class="bugun-saat">🔄 SambaPOS ${saat}</span>` : '');
+        // restoran yalnız değişince gönderir: "x dk önce" yaşlanıyormuş gibi görünmesin diye son bilginin saati
+        const sagUst = c ? `<span class="bugun-saat canli">🟢 Canlı · ${new Date(c.zaman).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })}</span>` : (saat ? `<span class="bugun-saat">🔄 SambaPOS ${saat}</span>` : '');
         const gunKapandi = c && !c.acik && c.kapanis ? ` · 🔒 Gün sonu alındı (${new Date(c.kapanis).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })})` : '';
         const ciroVar = g && g.brut;
         return `<div class="content-card bugun-kart">
@@ -6728,7 +6761,7 @@ body.yazdirma #yazdirAlan { display: block; }
                     .map(a => `<div class="info-note kira-hatirlat">🏠 ${esc(kiraVadeMetni(a))}</div>`).join('')}
                 ${taksitHatirlatmalari(ay)}
                 <div class="info-note" style="margin-top:0">${ciroVar
-                    ? `💵 Nakit ${paraK(g.nakit)} ₺ · 💳 Kredi ${paraK(g.kredi)} ₺ · 📦 Online ${paraK(g.online)} ₺`
+                    ? `💵 Nakit ${paraK(g.nakit)} ₺ · 💳 Kredi ${paraK(g.kredi)} ₺ · ${g.platformYazi || '📦 Online ' + paraK(g.online) + ' ₺'}`
                     : (kapali ? '🚫 Bugün kapalı gün.' : '⏳ Bugün henüz satış görünmüyor.')}${gunKapandi}${dun && dun.brut ? ` · Dün: <b>${paraK(dun.net)} ₺</b> net` : ''}${giderler.length ? ` · Gider: nakit ${paraK(nakitG)} ₺, kredi/EFT ${paraK(krediG)} ₺` : ''}</div>
                 ${giderler.length ? `<div class="table-wrapper" style="margin-top:8px"><table><thead><tr><th>Saat</th><th>Açıklama</th><th>Tür</th><th>Tutar</th></tr></thead><tbody>${giderler.map(x => giderSatiri(x)).join('')}<tr class="total-row"><td colspan="3"><strong>Bugünkü toplam gider</strong></td><td class="amount-right"><strong>${tutarYaz(nakitG + krediG)} ₺</strong></td></tr></tbody></table></div>` : ''}
             </div>
@@ -6895,9 +6928,17 @@ body.yazdirma #yazdirAlan { display: block; }
         if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 70), behavior: 'smooth' });
     }
     function tikla(e) {
-        const t = e.target.closest('[data-yil],[data-ay],[data-sekme],[data-islem],[data-tumu],.kategori-header');
+        const t = e.target.closest('[data-yil],[data-ay],[data-sekme],[data-islem],[data-tumu],[data-acik-detay],.adisyon-baslik,.kategori-header');
         if (!t || !D.kok.contains(t)) return;
         if (t.dataset.islem) { if (D.secenek.islem) D.secenek.islem(t.dataset.islem); return; }
+        if (t.hasAttribute('data-acik-detay')) { D.acikDetay = !D.acikDetay; bugunYenile(); return; }
+        if (t.classList.contains('adisyon-baslik')) {
+            const no = t.parentElement.dataset.adisyon;
+            D.acikAdisyonlar = D.acikAdisyonlar || {};
+            D.acikAdisyonlar[no] = !D.acikAdisyonlar[no];
+            bugunYenile();
+            return;
+        }
         if (t.hasAttribute('data-tumu')) { t.previousElementSibling.classList.add('hepsi'); t.remove(); return; }
         if (t.classList.contains('kategori-header')) { t.parentElement.classList.toggle('open'); return; }
         if (t.dataset.yil) {
