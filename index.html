@@ -54,6 +54,18 @@ h1 small { background: #fef3c7; padding: 3px 12px; border-radius: 30px; font-siz
     50% { box-shadow: 0 6px 26px rgba(249,115,22,0.85), 0 0 0 4px rgba(249,115,22,0.2); transform: scale(1.05); }
 }
 .main-btn:hover:not(.active) { background: #fff3e6; border-color: #fdba74; transform: translateY(-2px); }
+/* "Diğer aylar" açılır düğmesi: ana ekranda yalnız bu ay + önceki ay durur, eski aylar buraya toplanır */
+.diger-aylar { margin: -6px 0 16px; text-align: center; }
+.diger-aylar > summary { list-style: none; display: inline-flex; cursor: pointer; }
+.diger-aylar > summary::-webkit-details-marker { display: none; }
+.diger-btn { background: #1e293b; color: #e2e8f0; border-color: #334155; box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+.diger-btn:hover { background: #334155; border-color: #475569; }
+.diger-aylar[open] > summary.diger-btn { background: #b45309; color: #fff; border-color: #f59e0b; }
+.diger-govde { margin-top: 12px; display: flex; flex-direction: column; gap: 14px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px; }
+.diger-yil-ad { display: block; font-weight: 900; font-size: 0.72rem; color: #64748b; margin-bottom: 8px; letter-spacing: 0.5px; }
+.diger-ay-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.diger-ay-grid .main-btn { flex: 0 1 auto; }
 .sub-button-bar {
     display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
     justify-content: center; padding: 6px 0 10px; border-bottom: 3px solid #e2e8f0;
@@ -99,6 +111,40 @@ tr.haric-row .amount-right { color: #dc2626; text-decoration: line-through; }
 .stat-card { flex: 1; min-width: 80px; background: white; border-radius: 16px; padding: 10px 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.03); border: 1px solid #eef2f0; }
 .stat-card h4 { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.3px; color: #6c86a3; margin-bottom: 4px; }
 .stat-number { font-size: 1rem; font-weight: 800; color: #1e2f3e; }
+/* kartların altına sade açıklama (ilkokul mezunu da anlasın) */
+.stat-alt { font-size: 0.56rem; color: #94a3b8; font-weight: 600; margin-top: 3px; }
+.profit-card .stat-alt, .avg-card .stat-alt { color: #cbe6d6; }
+/* En üstte sade sonuç şeridi: yeşil = kazanç, kırmızı = zarar */
+.sonuc-ozet { border-radius: 16px; padding: 14px 16px; margin-bottom: 12px; text-align: center; }
+.sonuc-ozet.iyi { background: linear-gradient(135deg, #dcfce7, #bbf7d0); border: 2px solid #16a34a; }
+.sonuc-ozet.kotu { background: linear-gradient(135deg, #fee2e2, #fecaca); border: 2px solid #dc2626; }
+.sonuc-ozet.bekliyor { background: #fffbeb; border: 2px solid #f59e0b; color: #78350f; font-size: 0.8rem; font-weight: 600; }
+.sonuc-baslik { font-weight: 900; font-size: 0.95rem; color: #14532d; letter-spacing: 0.3px; }
+.sonuc-ozet.kotu .sonuc-baslik { color: #7f1d1d; }
+.sonuc-tutar { font-weight: 900; font-size: 1.9rem; margin: 2px 0 6px; color: #15803d; font-family: 'Segoe UI', monospace; }
+.sonuc-ozet.kotu .sonuc-tutar { color: #b91c1c; }
+.sonuc-satir { font-size: 0.74rem; color: #334155; font-weight: 600; }
+.sonuc-not { margin-top: 8px; font-size: 0.66rem; color: #92400e; background: #fffbeb; border-radius: 10px; padding: 7px 10px; font-weight: 600; }
+/* Başlıktaki sade sonuç (İndir/PDF yerine): seçili ayın kazanç/zararı */
+.brand-sonuc { margin-top: 10px; border-radius: 12px; padding: 8px 12px; text-align: center; }
+.brand-sonuc.iyi { background: #dcfce7; border: 1px solid #16a34a; }
+.brand-sonuc.kotu { background: #fee2e2; border: 1px solid #dc2626; }
+.brand-sonuc.bekliyor { background: #fffbeb; border: 1px solid #f59e0b; color: #78350f; font-size: 0.82rem; font-weight: 700; }
+.bs-ana { display: block; font-weight: 900; font-size: 1rem; color: #14532d; }
+.brand-sonuc.kotu .bs-ana { color: #7f1d1d; }
+.bs-alt { display: block; font-size: 0.68rem; color: #475569; font-weight: 600; margin-top: 2px; }
+/* dikkat çeksin diye açılışta birkaç kez yanıp söner (sürekli değil: kasa bilgisayarı yavaşlamasın) */
+.brand-sonuc.iyi { animation: sonuc-yanip 1.05s ease-in-out 6; }
+.brand-sonuc.kotu { animation: sonuc-yanip-k 1.05s ease-in-out 6; }
+@keyframes sonuc-yanip { 0%, 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); } 50% { box-shadow: 0 0 0 6px rgba(22,163,74,0.4); } }
+@keyframes sonuc-yanip-k { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); } 50% { box-shadow: 0 0 0 6px rgba(220,38,38,0.45); } }
+/* Büyük kırmızı BORÇLAR düğmesi: ay butonlarının yanında, telefonda net; basılınca koyulaşır */
+.borc-btn { display: block; width: 100%; margin: 0 0 16px; border: none; border-radius: 16px; padding: 13px 16px; cursor: pointer;
+    background: linear-gradient(135deg, #ef4444, #991b1b); color: #fff; box-shadow: 0 6px 16px rgba(220,38,38,0.4); transition: transform 0.15s; }
+.borc-btn:hover { transform: translateY(-2px); }
+.borc-btn .bb-ana { display: block; font-weight: 900; font-size: 1.15rem; letter-spacing: 0.5px; }
+.borc-btn .bb-alt { display: block; font-size: 0.74rem; opacity: 0.95; margin-top: 2px; font-weight: 600; }
+.borc-btn.active { background: linear-gradient(135deg, #7f1d1d, #450a0a); box-shadow: inset 0 2px 8px rgba(0,0,0,0.4); }
 .profit-card { background: linear-gradient(135deg, #1f3b2c, #2b5a42); color: white; }
 .profit-card .stat-number { color: #facc15; }
 .profit-card h4 { color: #ffecb3; }
@@ -117,6 +163,10 @@ tr.kapali-gun td { background: #f8fafc; color: #94a3b8; font-weight: 700; }
 tr.bugun-satir td { background: #fff7ed; }
 .not-listesi { margin-bottom: 14px; }
 .not-listesi .info-note { margin-top: 6px; font-size: 0.7rem; font-weight: 600; background: #fffbeb; border-left-color: #f59e0b; color: #78350f; }
+/* Ayın notları kartı: her not ayrı, sarı sol şeritli, telefonda temiz saran satır */
+.not-karti .not-madde { background: #fffbeb; border-left: 4px solid #f59e0b; color: #78350f;
+    padding: 9px 12px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.not-karti .not-madde + .not-madde { margin-top: 8px; }
 .footer { text-align: center; font-size: 0.55rem; color: #5f7d9c; padding: 14px 0 6px; border-top: 1px solid #e2edf2; margin-top: 12px; line-height: 1.6; }
 .positive { color: #15803d; font-weight: 800; }
 .negative { color: #dc2626; font-weight: 800; }
@@ -357,7 +407,7 @@ body.yazdirma #yazdirAlan { display: block; }
  "komisyon": 0.5,
  "calismaNotu": "Pazartesi kapalı",
  "genelNotlar": [],
- "guncelleme": "2026-11-01T19:36:59.885Z",
+ "guncelleme": "2026-11-03T07:13:25.184Z",
  "aylar": [
   {
    "id": "2026-11",
@@ -380,7 +430,15 @@ body.yazdirma #yazdirAlan { display: block; }
     "trendyol": 12772.25,
     "getir": 0
    },
-   "giderler": [],
+   "giderler": [
+    {
+     "tarih": "2026-11-03T10:10:29",
+     "aciklama": "kaşarci kredi kartı ile",
+     "tutar": 5000,
+     "tur": "kredi",
+     "kaynak": "samba"
+    }
+   ],
    "ekGiderler": [],
    "personel": [
     {
@@ -507,7 +565,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "adisyon": 87
     }
    ],
-   "sonSenkron": "2026-11-01T19:36:59.664Z"
+   "sonSenkron": "2026-11-03T07:13:24.897Z"
   },
   {
    "id": "2026-10",
@@ -1668,7 +1726,7 @@ body.yazdirma #yazdirAlan { display: block; }
      "adisyon": 64
     }
    ],
-   "sonSenkron": "2026-11-01T19:36:59.885Z"
+   "sonSenkron": "2026-11-03T07:13:25.184Z"
   },
   {
    "id": "2026-09",
@@ -6397,7 +6455,7 @@ body.yazdirma #yazdirAlan { display: block; }
         ['temizlik', 'Temizlik & İlaçlama', '🧹', ['deterjan', 'ilaçlama', 'temizlik', 'çamaşır', 'sabun', 'çöp']],
         ['diger', 'Diğer', '💰', []]
     ];
-    const SEKMELER = ['ozet', 'gunluk', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
+    const SEKMELER = ['ozet', 'borclar', 'gunluk', 'personel', 'nakit', 'kredi', 'tumgider', 'karsilastirma'];
     // Yazım düzeltme sözlüğü (küçük harf; tek kelime ya da iki kelime). Veri değişmez, raporda düzeltilmiş gösterilir.
     // Kullanıcı eklemeleri: veri.duzeltmeler {"yanlış": "doğru"} (Düzenle → Notlar). veri.yazimDuzelt === false ile kapanır.
     const DUZELTMELER = {
@@ -6650,9 +6708,18 @@ body.yazdirma #yazdirAlan { display: block; }
         let alt = '📊 Henüz ay eklenmedi';
         if (son && yillar.length > 1) alt = '📊 ' + yillar.map(y => y + ': ' + aylar.filter(a => ayParca(a.id).yil === y).length + ' ay').join(' · ') + ' | En güncel: ' + ayAdi(son.id) + ' ' + ayParca(son.id).yil;
         else if (son) alt = '📊 ' + aylar.length + ' ay | En güncel: ' + ayAdi(son.id);
-        const arac = D.secenek.yayinAraci && son
-            ? '<div class="brand-arac"><button type="button" data-islem="indir" title="Bu raporu HTML dosyası olarak indir">⬇️ İndir</button><button type="button" data-islem="pdf" title="Seçili ayı PDF olarak kaydet / yazdır">🖨️ PDF</button></div>' : '';
-        return `<div class="brand"><h1>🧾 ${esc(D.veri.isletme || 'ÖZ URFA KEBAP')} ${son ? `<small>${ayAdi(son.id)} ${ayParca(son.id).yil} Güncel</small>` : ''}</h1><div class="sub">${esc(alt)}</div>${arac}</div>`;
+        // İndir/PDF yerine: seçili ayın kazanç/zarar sonucu üstte durur; dikkat çeksin diye açılışta birkaç kez yanıp söner
+        // (sürekli animasyon kasa bilgisayarını ağırlattığından sınırlı tekrar).
+        let sonuc = '';
+        const sAy = aylar.find(a => a.id === D.ay) || son;
+        if (sAy && !D.yazdirModu) {
+            const h = hesapla(sAy), bekliyor = !h.brut && sAy.id === yerelTarih(new Date()).slice(0, 7);
+            const ayDevam = !bekliyor && sAy.id === yerelTarih(new Date()).slice(0, 7);
+            sonuc = bekliyor
+                ? `<div class="brand-sonuc bekliyor">⏳ ${ayAdi(sAy.id)} ayı satışı henüz gelmedi</div>`
+                : `<div class="brand-sonuc ${h.netKar < 0 ? 'kotu' : 'iyi'}"><span class="bs-ana">${h.netKar < 0 ? '🔴' : '🟢'} ${ayAdi(sAy.id)} ayı ${h.netKar < 0 ? 'ZARAR' : 'KAZANÇ'} · ${paraK(Math.abs(h.netKar))} ₺</span><span class="bs-alt">💵 Satış ${paraK(h.net)} − 💸 Gider ${paraK(h.toplamGider)} · Kâr %${h.karOrani.toFixed(1).replace('.', ',')}${ayDevam ? ' · ay sürüyor' : ''}</span></div>`;
+        }
+        return `<div class="brand"><h1>🧾 ${esc(D.veri.isletme || 'ÖZ URFA KEBAP')} ${son ? `<small>${ayAdi(son.id)} ${ayParca(son.id).yil} Güncel</small>` : ''}</h1><div class="sub">${esc(alt)}</div>${sonuc}</div>`;
     }
     function yilBarHtml(aylar) {
         const yillar = yilListesi(aylar);
@@ -6663,10 +6730,34 @@ body.yazdirma #yazdirAlan { display: block; }
     function ayBarHtml(yilAylari) {
         return `<div class="main-button-bar">${yilAylari.map(a => `<button class="main-btn${a.id === D.ay ? ' active' : ''}" data-ay="${a.id}">${ayIkon(a.id)} ${ayAdi(a.id)}</button>`).join('')}</div>`;
     }
+    // Ana ekran ay gezintisi: en güncel ay + önceki ay (ve açık olan eski ay) butonları görünür; kalan aylar
+    // "Diğer aylar" düğmesine basınca yıllara göre açılır. Çok ay birikince ana ekran kalabalıklaşmasın diye.
+    function ayNavHtml(aylar) {
+        if (!aylar.length) return '';
+        const btn = (a, yilYaz) => `<button class="main-btn${a.id === D.ay ? ' active' : ''}" data-ay="${a.id}">${ayIkon(a.id)} ${ayAdi(a.id)}${yilYaz ? ' ' + ayParca(a.id).yil : ''}</button>`;
+        const anaIdler = aylar.slice(0, 2).map(a => a.id);          // bu ay + önceki ay
+        if (D.ay && !anaIdler.includes(D.ay)) anaIdler.push(D.ay);  // açık olan eski ay da görünsün
+        const ana = aylar.filter(a => anaIdler.includes(a.id));
+        const diger = aylar.filter(a => !anaIdler.includes(a.id));
+        // "Diğer aylar" düğmesi ay butonlarıyla AYNI sırada durur; basınca altında yıllara göre açılır (alt satıra tek başına düşmez)
+        const digerBtn = diger.length ? `<button class="main-btn diger-btn${D.digerAcik ? ' active' : ''}" data-diger="1">📂 Diğer aylar (${diger.length})</button>` : '';
+        let h = `<div class="main-button-bar">${ana.map(a => btn(a, true)).join('')}${digerBtn}</div>`;
+        if (diger.length && D.digerAcik) {
+            const gruplar = yilListesi(diger).map(y => {
+                const list = diger.filter(a => ayParca(a.id).yil === y);
+                return `<div class="diger-yil"><span class="diger-yil-ad">📅 ${y}</span><div class="diger-ay-grid">${list.map(a => btn(a, false)).join('')}</div></div>`;
+            }).join('');
+            h += `<div class="diger-govde">${gruplar}</div>`;
+        }
+        // Büyük kırmızı BORÇLAR düğmesi: ayların hemen yanında/altında; basınca elektrik + kira + diğer borçlar ekranı açılır
+        h += `<button class="borc-btn${D.sekme === 'borclar' ? ' active' : ''}" data-sekme="borclar"><span class="bb-ana">💳 BORÇLAR</span><span class="bb-alt">${D.sekme === 'borclar' ? '✓ açık — elektrik, kira ve diğer borçlar' : 'Mevcut borçlar için bas'}</span></button>`;
+        return h;
+    }
     function altBarHtml(ay) {
         const ad = ayAdi(ay.id);
-        const etiket = { ozet: `📊 ${ad} Özeti`, gunluk: '📅 Günlük Ciro', personel: `👥 ${ad} Personel`, nakit: '💰 Kasadan Yapılan Nakit', kredi: '💳 Yusuf Usta Kredi/EFT', tumgider: '📋 Genel Tüm Gider', karsilastirma: '📈 Ay Karşılaştırma' };
-        return `<div class="sub-button-bar">${sekmeler(ay).map(s => `<button class="sub-btn${s === 'personel' ? ' personel-highlight' : ''}${s === D.sekme ? ' active' : ''}" data-sekme="${s}">${etiket[s]}</button>`).join('')}</div>`;
+        const etiket = { ozet: `📊 ${ad} Özeti`, borclar: '💳 Borçlar ve Ödenecekler', gunluk: '📅 Günlük Ciro', personel: `👥 ${ad} Personel`, nakit: '💰 Kasadan Yapılan Nakit', kredi: '💳 Yusuf Usta Kredi/EFT', tumgider: '📋 Genel Tüm Gider', karsilastirma: '📈 Ay Karşılaştırma' };
+        // "borclar" alt sekmede gösterilmez: ay butonlarının yanındaki büyük kırmızı BORÇLAR düğmesiyle açılır
+        return `<div class="sub-button-bar">${sekmeler(ay).filter(s => s !== 'borclar').map(s => `<button class="sub-btn${s === 'personel' ? ' personel-highlight' : ''}${s === D.sekme ? ' active' : ''}" data-sekme="${s}">${etiket[s]}</button>`).join('')}</div>`;
     }
 
     // "Günlük Ciro" sekmesi yalnızca günlük verisi olan aylarda (SambaPOS'tan çekilen) görünür
@@ -6758,14 +6849,17 @@ body.yazdirma #yazdirAlan { display: block; }
     // günü geçmiş ödenmemiş kira varsa altında kırmızı toplam
     function kiraHtml(ay) {
         if (!kiraHali(ay)) return '';
-        const aylar = aylarSirali(D.veri).filter(a => a.id <= ay.id && kiraHali(a)).slice(0, 3).reverse();
-        const satirlar = aylar.map(a => `<div class="kira-satir ${kiraHali(a)}"><span>${ayAdi(a.id)}${ayParca(a.id).yil !== ayParca(ay.id).yil ? ' ' + ayParca(a.id).yil : ''}</span><b>${esc(kiraDurumYazisi(a))}</b></div>`).join('');
         const d = kiraDurumu(ay);
         const ozel = kiraOzelYazi(ay.kira || {});
         const g = kiraGunleri();
+        // sadece ödenmemiş / ödeme günü gelmiş kiraları göster (ödenmiş aylar listelenmez; hepsi ödenmişse tek yeşil satır)
+        const odenmemis = aylarSirali(D.veri).filter(a => a.id <= ay.id && ['gecikti', 'kiragunu', 'bekliyor'].includes(kiraHali(a))).reverse();
+        const ic = odenmemis.length
+            ? `<div class="kira-aylar">${odenmemis.map(a => `<div class="kira-satir ${kiraHali(a)}"><span>${ayAdi(a.id)}${ayParca(a.id).yil !== ayParca(ay.id).yil ? ' ' + ayParca(a.id).yil : ''}</span><b>${esc(kiraDurumYazisi(a))}</b></div>`).join('')}</div>`
+            : `<div class="kira-satir odendi"><span>Kira</span><b>✅ Güncel — hepsi ödendi</b></div>`;
         return `<div class="kira-blok">
             <div class="kira-baslik">🏠 KİRA <small>aylık ${para(kiraTutari(ay))} ₺ · her ayın kirası sonraki ayın ${g.bas === g.son ? g.son : g.bas + '–' + g.son}'sinde ödenir</small></div>
-            <div class="kira-aylar">${satirlar}</div>
+            ${ic}
             ${ozel ? `<div class="kira-not">📝 ${esc(ozel)}</div>` : ''}
             ${d.odenmeyen.length ? `<div class="kira-uyari">⚠️ ÖDENMEMİŞ KİRA: ${esc(d.odenmeyen.map(a => ayAdi(a.id)).join(', '))} — toplam ${para(d.toplam)} ₺</div>` : ''}
         </div>`;
@@ -6871,9 +6965,11 @@ body.yazdirma #yazdirAlan { display: block; }
         }
         return items ? `<div class="borclar-card"><h2>💸 BORÇLAR</h2>${items}</div>` : '';
     }
+    // Ayın notları: tek başına kutu yerine diğer bölümler gibi başlıklı kartta, telefonda satırlar temiz sarar
     function notlarHtml(ay) {
         const n = (ay.notlar || []).filter(x => String(x).trim());
-        return n.length ? `<div class="not-listesi">${n.map(x => `<div class="info-note">📝 ${esc(x)}</div>`).join('')}</div>` : '';
+        if (!n.length) return '';
+        return `<div class="content-card not-karti"><div class="card-header">📝 ${ayAdi(ay.id)} Notları</div><div class="card-body">${n.map(x => `<div class="not-madde">${esc(x)}</div>`).join('')}</div></div>`;
     }
 
     // krediEtiket: kredi sekmesinde "Kredi/EFT", tüm gider ve kategori listelerinde "Kredi" (eski rapordaki gibi)
@@ -6963,6 +7059,11 @@ body.yazdirma #yazdirAlan { display: block; }
     }
 
     // ------------------------------------------------------------ sekmeler
+    // "Borçlar ve Ödenecekler" sekmesi: elektrik cezası (taksitli borç) + kira + diğer borçlar tek ekranda
+    function borclarSekmeHtml(ay) {
+        const ic = `${alarmlarHtml(ay)}${borclarHtml(ay)}`;
+        return ic.trim() ? ic : `<div class="content-card"><div class="card-body"><div class="bos-ay">Bu ay borç / ödenecek kaydı yok.</div></div></div>`;
+    }
     function ozetHtml(ay, yilAylari) {
         const h = hesapla(ay);
         const ad = ayAdi(ay.id), yil = ayParca(ay.id).yil;
@@ -6980,10 +7081,17 @@ body.yazdirma #yazdirAlan { display: block; }
         // içinde bulunulan ayda günlük ortalama, ayın tüm günlerine değil satış olan günlere göre
         const gdTum = (ay.gunluk || []).length ? gunlukDurum(ay) : null;
         const gd = gdTum && gdTum.buAyMi && gdTum.satisli.length ? gdTum : null;
+        // En üste sade sonuç: ilkokul mezunu bir kişi tek bakışta anlasın — bu ay kazanç mı, zarar mı, ne kadar.
+        const sonucBanner = ciroBekleniyor
+            ? `<div class="sonuc-ozet bekliyor">⏳ <b>${ad} ayının satışı henüz gelmedi.</b> Kazanç / zarar ay ilerledikçe burada görünecek.</div>`
+            : `<div class="sonuc-ozet ${h.netKar < 0 ? 'kotu' : 'iyi'}">
+                    <div class="sonuc-baslik">${h.netKar < 0 ? '🔴 ' + ad + ' ayı ZARAR' : '🟢 ' + ad + ' ayı KAZANÇ'}</div>
+                    <div class="sonuc-tutar">${paraK(Math.abs(h.netKar))} ₺</div>
+                    <div class="sonuc-satir">💵 Satış <b>${paraK(h.net)} ₺</b> &nbsp;−&nbsp; 💸 Gider <b>${paraK(h.toplamGider)} ₺</b> &nbsp;·&nbsp; Kâr oranı %${h.karOrani.toFixed(1).replace('.', ',')}</div>
+                    ${ayDevamEdiyor ? `<div class="sonuc-not">⏳ Ay bitmedi: personel ayın tamamı yazılı, ciro ve giderler bugüne kadar. Kâr ay sonunda netleşir.</div>` : ''}
+               </div>`;
         return `
             ${bugunHtml(ay)}
-            ${alarmlarHtml(ay)}
-            ${borclarHtml(ay)}
             ${notlarHtml(ay)}
             <div class="content-card">
                 <div class="card-header">📈 ${ad} (${h.calismaGunu} gün)</div>
@@ -6991,9 +7099,8 @@ body.yazdirma #yazdirAlan { display: block; }
                     ${tk ? `<div class="info-note takvim-notu">${esc(tk.metin)}</div>` : ''}
                     ${buAyNotu(ay)}
                     <div class="summary-stats">
-                        <div class="stat-card"><h4>Brüt Ciro</h4><div class="stat-number">${paraK(h.brut)} ₺</div></div>
-                        <div class="stat-card"><h4>Net Ciro</h4><div class="stat-number">${paraK(h.net)} ₺</div></div>
-                        <div class="stat-card profit-card${zarar}"><h4>Net Kâr</h4><div class="stat-number">${karMetni}</div></div>
+                        <div class="stat-card"><h4>Brüt Ciro</h4><div class="stat-number">${paraK(h.brut)} ₺</div><div class="stat-alt">toplam satış</div></div>
+                        <div class="stat-card"><h4>Net Ciro</h4><div class="stat-number">${paraK(h.net)} ₺</div><div class="stat-alt">komisyon düşülmüş</div></div>
                     </div>
                     <div class="summary-stats">
                         <div class="stat-card avg-card"><h4>📊 GÜNLÜK ORTALAMA CİRO${gd ? ' (BUGÜNE KADAR)' : ''}</h4><div class="stat-number">${para(gd ? gd.ort : h.gunlukCiro, 2)} ₺/gün</div></div>
@@ -7006,17 +7113,6 @@ body.yazdirma #yazdirAlan { display: block; }
                         <div class="stat-card"><h4>Kredi Gider</h4><div class="stat-number">${paraK(h.krediGider)} ₺</div></div>
                         <div class="stat-card"><h4>Personel</h4><div class="stat-number">${paraK(h.personelGider)} ₺</div></div>
                         ${h.ekGider ? `<div class="stat-card"><h4>Ek Gider</h4><div class="stat-number">${paraK(h.ekGider)} ₺</div></div>` : ''}
-                    </div>
-                    <div class="stat-card profit-card${zarar}" style="margin-top:6px;">
-                        <h4 style="color:#ffecb3;">NET KAR</h4>
-                        <div class="stat-number" style="color:#facc15;">${karMetni}</div>
-                        <div style="color:#e2f0e6;font-size:0.7rem;">${ciroBekleniyor ? 'Ciro gelince hesaplanır' : paraK(h.net) + ' − ' + paraK(h.toplamGider)}</div>
-                        ${ayDevamEdiyor ? `<div class="ay-bitmedi">⏳ Ay bitmedi: personel ayın tamamı için yazılı, ciro ve giderler bugüne kadar. Kâr ay sonunda netleşir.</div>` : ''}
-                    </div>
-                    <div class="stat-card kar-orani-card" style="margin-top:6px;">
-                        <h4>📊 KÂR ORANI</h4>
-                        <div class="stat-number">${ciroBekleniyor ? '—' : h.karOrani.toFixed(2) + '%'}</div>
-                        <div style="color:#d1fae5;font-size:0.65rem;">Net Kâr / Net Ciro</div>
                     </div>
                 </div>
             </div>
@@ -7306,10 +7402,10 @@ body.yazdirma #yazdirAlan { display: block; }
         const ay = aylar.find(a => a.id === D.ay);
         if (sekmeler(ay).indexOf(D.sekme) < 0) D.sekme = 'ozet';
         const icerik = {
-            ozet: () => ozetHtml(ay, yilAylari), gunluk: () => gunlukHtml(ay), personel: () => personelHtml(ay), nakit: () => nakitHtml(ay),
+            ozet: () => ozetHtml(ay, yilAylari), borclar: () => borclarSekmeHtml(ay), gunluk: () => gunlukHtml(ay), personel: () => personelHtml(ay), nakit: () => nakitHtml(ay),
             kredi: () => krediHtml(ay), tumgider: () => tumGiderHtml(ay), karsilastirma: () => karsilastirmaHtml(yilAylari)
         }[D.sekme]();
-        D.kok.innerHTML = `<div class="dashboard ana">${brandHtml(aylar)}${yilBarHtml(aylar)}${ayBarHtml(yilAylari)}${altBarHtml(ay)}<div id="tabContent">${icerik}</div>${footerHtml(yilAylari)}</div>`;
+        D.kok.innerHTML = `<div class="dashboard ana">${brandHtml(aylar)}${ayNavHtml(aylar)}${altBarHtml(ay)}<div id="tabContent">${icerik}</div>${footerHtml(yilAylari)}</div>`;
         document.title = `${D.veri.isletme ? baslikYaz(D.veri.isletme) : 'Öz Urfa Kebap'} | ${ayAdi(aylar[0].id)} ${ayParca(aylar[0].id).yil} Komple Rapor`;
         try { history.replaceState(null, '', '#' + D.ay + '/' + D.sekme); } catch (e) { /* file:// */ }
         if (D.secenek.degisti) D.secenek.degisti(D.ay, D.sekme);
@@ -7320,7 +7416,7 @@ body.yazdirma #yazdirAlan { display: block; }
         if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 70), behavior: 'smooth' });
     }
     function tikla(e) {
-        const t = e.target.closest('[data-yil],[data-ay],[data-sekme],[data-islem],[data-tumu],[data-acik-detay],.adisyon-baslik,.kategori-header');
+        const t = e.target.closest('[data-yil],[data-ay],[data-diger],[data-sekme],[data-islem],[data-tumu],[data-acik-detay],.adisyon-baslik,.kategori-header');
         if (!t || !D.kok.contains(t)) return;
         if (t.dataset.islem) { if (D.secenek.islem) D.secenek.islem(t.dataset.islem); return; }
         if (t.hasAttribute('data-acik-detay')) { D.acikDetay = !D.acikDetay; bugunYenile(); return; }
@@ -7338,7 +7434,8 @@ body.yazdirma #yazdirAlan { display: block; }
             if (ilk) { D.ay = ilk.id; D.sekme = 'ozet'; }
             ciz(); return;
         }
-        if (t.dataset.ay) { D.ay = t.dataset.ay; D.sekme = 'ozet'; ciz(); kaydir(); return; }
+        if (t.dataset.diger) { D.digerAcik = !D.digerAcik; ciz(); return; }
+        if (t.dataset.ay) { D.ay = t.dataset.ay; D.sekme = 'ozet'; D.digerAcik = false; ciz(); kaydir(); return; }
         if (t.dataset.sekme) { D.sekme = t.dataset.sekme; ciz(); kaydir(); }
     }
     function hashOku() {
